@@ -1,4 +1,9 @@
-.welcome{
-    font-size:2rem;
-    color: rgb(91, 146, 219);
+/* .welcome {
+  font-size: 2rem;
+  color: rgb(91, 146, 219);
+} */
+.container {
+  background-color: rgb(158, 185, 192);
+  padding: 20px;
+  width: 700px;
 }
