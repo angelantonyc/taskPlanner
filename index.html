@@ -79,7 +79,6 @@
     <!-- Navbar ends here -->
     <!-- homepage starts here -->
     <section id="home">
-      
       <div class="container mt-5 list w-100 pt-3 hometable">
         <!-- Add task button nav starts here -->
         <nav>
@@ -88,6 +87,8 @@
           </a>
         </nav>
         <!-- Add task button nav ends here -->
+
+                <!-- Tasks list starts here -->
         <table class="table table-hover">
           <thead>
             <tr>
@@ -107,7 +108,24 @@
               <td>Wireframe</td>
               <td>Done</td>
               <td>Reny</td>
-              <td>More Info</td>
+              <td class="w-25">
+                <a
+                  class="btn"
+                  data-toggle="collapse"
+                  href="#collapseExample1"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseExample1"
+                >
+                  More Info...
+                </a>
+                <div class="collapse" id="collapseExample1">
+                  <div class="card card-body">
+                    Wireframe the project using ninjamock<br />
+                    Due Date: 12-11-2020
+                  </div>
+                </div>
+              </td>
 
               <td>
                 <!-- Edit Modal Start -->
@@ -166,7 +184,7 @@
                                   id="exampleFormControlTextarea1"
                                   rows="3"
                                 >
-Wirefarme the project using ninjamock</textarea
+Wireframe the project using ninjamock</textarea
                                 >
                               </div>
 
@@ -282,7 +300,24 @@ Wirefarme the project using ninjamock</textarea
               <td>Documentation</td>
               <td>To-do</td>
               <td>Angel</td>
-              <td>More Info</td>
+              <td class="w-25">
+                <a
+                  class="btn"
+                  data-toggle="collapse"
+                  href="#collapseExample2"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseExample2"
+                >
+                  More Info...
+                </a>
+                <div class="collapse" id="collapseExample2">
+                  <div class="card card-body">
+                    Document each steps in the project for future use<br />
+                    Due Date: 12-1-2021
+                  </div>
+                </div>
+              </td>
               <td>
                 <!-- Edit Modal Start -->
                 <button
@@ -455,7 +490,24 @@ Document each steps in the project for future use</textarea
               <td>Coding</td>
               <td>Review</td>
               <td>Reny</td>
-              <td>More Info</td>
+              <td class="w-25">
+                <a
+                  class="btn"
+                  data-toggle="collapse"
+                  href="#collapseExample3"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseExample3"
+                >
+                  More Info...
+                </a>
+                <div class="collapse" id="collapseExample3">
+                  <div class="card card-body">
+                    Code each tasks using HTML, CSS, JavaScript<br />
+                    Due Date: 12-12-2020
+                  </div>
+                </div>
+              </td>
               <td>
                 <!-- Edit Modal Start -->
                 <button
@@ -513,7 +565,7 @@ Document each steps in the project for future use</textarea
                                   id="exampleFormControlTextarea1"
                                   rows="3"
                                 >
-Code each tasks</textarea
+Code each tasks using HTML, CSS, JavaScript</textarea
                                 >
                               </div>
 
@@ -523,7 +575,7 @@ Code each tasks</textarea
                                   type="text"
                                   class="form-control"
                                   id="inputPassword4"
-                                  value="12-11-2020"
+                                  value="12-12-2020"
                                 />
                               </div>
                               <div class="form-group col-md-10">
@@ -536,10 +588,10 @@ Code each tasks</textarea
                               <div class="form-group col-md-10">
                                 <label for="inputState">Status</label>
                                 <select id="inputState" class="form-control">
-                                  <option selected>Done</option>
+                                  <option selected>Review</option>
                                   <option>To do</option>
                                   <option>In progress</option>
-                                  <option>Review</option>
+                                  <option>Done</option>
                                 </select>
                               </div>
                               <!-- <button type="submit" class="btn btn-success">Save Changes</button>
@@ -628,7 +680,24 @@ Code each tasks</textarea
               <td>Styling</td>
               <td>In-Progress</td>
               <td>Angel</td>
-              <td>More Info</td>
+              <td class="w-25">
+                <a
+                  class="btn"
+                  data-toggle="collapse"
+                  href="#collapseExample4"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseExample4"
+                >
+                  More Info...
+                </a>
+                <div class="collapse" id="collapseExample4">
+                  <div class="card card-body">
+                    Styling the webpages using CSS and Bootstrap<br />
+                    Due Date: 22-1-2021
+                  </div>
+                </div>
+              </td>
               <td>
                 <!-- Edit Modal Start -->
                 <button
@@ -674,7 +743,7 @@ Code each tasks</textarea
                                   class="form-control"
                                   id="inputEmail4"
                                   name="inputEmail4"
-                                  value="Wireframe"
+                                  value="Styling"
                                 />
                               </div>
                               <div class="form-group col-md-10">
@@ -686,7 +755,7 @@ Code each tasks</textarea
                                   id="exampleFormControlTextarea1"
                                   rows="3"
                                 >
-Wirefarme the project using ninjamock</textarea
+Styling the webpages using CSS and Bootstrap</textarea
                                 >
                               </div>
 
@@ -696,23 +765,23 @@ Wirefarme the project using ninjamock</textarea
                                   type="text"
                                   class="form-control"
                                   id="inputPassword4"
-                                  value="12-11-2020"
+                                  value="22-1-2021"
                                 />
                               </div>
                               <div class="form-group col-md-10">
                                 <label for="inputState">Assigned To</label>
                                 <select id="inputState" class="form-control">
-                                  <option selected>Reny</option>
-                                  <option>Angel</option>
+                                  <option selected>Angel</option>
+                                  <option>Reny</option>
                                 </select>
                               </div>
                               <div class="form-group col-md-10">
                                 <label for="inputState">Status</label>
                                 <select id="inputState" class="form-control">
-                                  <option selected>Done</option>
+                                  <option selected>In progress</option>
                                   <option>To do</option>
-                                  <option>In progress</option>
                                   <option>Review</option>
+                                  <option>Done</option>
                                 </select>
                               </div>
                               <!-- <button type="submit" class="btn btn-success">Save Changes</button>
@@ -798,10 +867,27 @@ Wirefarme the project using ninjamock</textarea
             </tr>
             <tr>
               <th scope="row">5</th>
-              <td>Colloboration</td>
+              <td>Collaboration</td>
               <td>To-Do</td>
               <td>Reny</td>
-              <td>More Info</td>
+              <td class="w-25">
+                <a
+                  class="btn"
+                  data-toggle="collapse"
+                  href="#collapseExample5"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseExample5"
+                >
+                  More Info...
+                </a>
+                <div class="collapse" id="collapseExample5">
+                  <div class="card card-body">
+                    Collaborating the project using Github<br />
+                    Due Date: 22-12-2020
+                  </div>
+                </div>
+              </td>
               <td>
                 <!-- Edit Modal Start -->
                 <button
@@ -847,7 +933,7 @@ Wirefarme the project using ninjamock</textarea
                                   class="form-control"
                                   id="inputEmail4"
                                   name="inputEmail4"
-                                  value="Wireframe"
+                                  value="Collaboration"
                                 />
                               </div>
                               <div class="form-group col-md-10">
@@ -859,7 +945,7 @@ Wirefarme the project using ninjamock</textarea
                                   id="exampleFormControlTextarea1"
                                   rows="3"
                                 >
-Wirefarme the project using ninjamock</textarea
+Collaborating the project using Github</textarea
                                 >
                               </div>
 
@@ -869,7 +955,7 @@ Wirefarme the project using ninjamock</textarea
                                   type="text"
                                   class="form-control"
                                   id="inputPassword4"
-                                  value="12-11-2020"
+                                  value="22-12-2020"
                                 />
                               </div>
                               <div class="form-group col-md-10">
@@ -882,10 +968,10 @@ Wirefarme the project using ninjamock</textarea
                               <div class="form-group col-md-10">
                                 <label for="inputState">Status</label>
                                 <select id="inputState" class="form-control">
-                                  <option selected>Done</option>
-                                  <option>To do</option>
+                                  <option selected>To do</option>
                                   <option>In progress</option>
                                   <option>Review</option>
+                                  <option>Done</option>
                                 </select>
                               </div>
                               <!-- <button type="submit" class="btn btn-success">Save Changes</button>
@@ -971,6 +1057,7 @@ Wirefarme the project using ninjamock</textarea
             </tr>
           </tbody>
         </table>
+        <!-- Tasks list starts here -->
       </div>
     </section>
     <!-- homepage ends here -->
