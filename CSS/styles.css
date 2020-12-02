@@ -2,11 +2,11 @@
   font-size: 2rem;
   color: rgb(91, 146, 219);
 } */
-.add {
+.formcolor {
   background-color: rgb(158, 185, 192);
-  padding: 20px;
-  width: 700px;
+  /* padding: 20px;
+  width: 700px; */
 }
-.hometable{
+/* .hometable {
   background-color: rgb(158, 185, 192);
-}
+} */

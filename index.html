@@ -79,14 +79,81 @@
     <!-- Navbar ends here -->
     <!-- homepage starts here -->
     <section id="home">
-      <div class="container mt-5 list w-100 pt-3 hometable">
-        <!-- Add task button nav starts here -->
-        <nav>
-          <a href="Add.html">
-            <button type="button" class="btn btn-primary mr-5 float-right">Add Task</button>
-          </a>
-        </nav>
-        <!-- Add task button nav ends here -->
+      <div class="container mt-5 list w-100 pt-3 formcolor">
+    <!-- Add Task button start -->
+        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addTask">
+          Add Task
+        </button>
+    <!-- Add Task button end -->
+        <!-- Add Task Modal start -->
+        <div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle1">
+                  Add Task
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <section id="add">
+                  <div class="container mt-3 border card w-75 formcolor">
+        
+                    <h1>Add Task</h1>
+                    <form>
+                      <div class="form-group col-md-10">
+                        <label for="inputEmail4">Task Name</label>
+                        <input type="email" class="form-control" id="inputEmail4" name="inputEmail4">
+                      </div>
+                      <div class="form-group col-md-10">
+                        <label for="exampleFormControlTextarea1">Description</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                      <div class="form-group col-md-10">
+                        <label for="inputPassword4">Due Date</label>
+                        <input type="password" class="form-control" id="inputPassword4">
+                      </div>
+                      <div class="form-group col-md-10">
+                        <label for="inputState">Assigned To</label>
+                        <select id="inputState" class="form-control">
+                          <option selected> </option>
+                          <option>Reny</option>
+                          <option>Angel</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-10">
+                        <label for="inputState">Status</label>
+                        <select id="inputState" class="form-control">
+                          <option selected> </option>
+                          <option>To do</option>
+                          <option>In progress</option>
+                          <option>Review</option>
+                          <option>Done</option>
+        
+                        </select>
+                      </div>
+        
+                      <!-- <button type="submit" class="btn btn-success">Save Changes</button>
+                                    <button type="submit" class="btn btn-success">Cancel</button> -->
+                    </form>
+                  </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+       <!-- Add Task Modal end -->
 
         <!-- Tasks list starts here -->
         <table class="table table-hover table-responsive">
@@ -104,6 +171,7 @@
             </tr>
           </thead>
           <tbody>
+            <!-- start of row1 -->
             <tr>
               <th scope="row">1</th>
               <td>Wireframe</td>
@@ -129,7 +197,7 @@
               </td>
 
               <td>
-                <!-- Edit Modal Start -->
+                <!-- Row1 start of Edit Modal-->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -163,7 +231,7 @@
                       </div>
                       <div class="modal-body">
                         <section id="edit1">
-                          <div class="container mt-5 border card w-75">
+                          <div class="container mt-5 border card w-75 formcolor">
                             <h1>Edit Task</h1>
                             <form>
                               <div class="form-group col-md-10">
@@ -214,8 +282,6 @@ Wireframe the project using ninjamock
                                   <option>Review</option>
                                 </select>
                               </div>
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
-                                <button type="submit" class="btn btn-success">Cancel</button> -->
                             </form>
                           </div>
                         </section>
@@ -235,11 +301,11 @@ Wireframe the project using ninjamock
                     </div>
                   </div>
                 </div>
-                <!-- Edit Modal End -->
+                <!-- Row1 End of Edit Modal -->
               </td>
 
               <td>
-                <!--Delete Modal Start-->
+                <!--Row 1 Delete Modal Start-->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -292,10 +358,12 @@ Wireframe the project using ninjamock
                     </div>
                   </div>
                 </div>
-                <!-- Delete End Modal -->
+                <!-- Row1 Delete Modal End -->
               </td>
               <td>Bookmark</td>
             </tr>
+            <!-- end of row1 -->
+            <!-- start of row2 -->
             <tr>
               <th scope="row">2</th>
               <td>Documentation</td>
@@ -320,7 +388,7 @@ Wireframe the project using ninjamock
                 </div>
               </td>
               <td>
-                <!-- Edit Modal Start -->
+                <!-- Row 2 Edit Modal Start -->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -405,8 +473,6 @@ Document each steps in the project for future use</textarea
                                   <option>Done</option>
                                 </select>
                               </div>
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
-                                <button type="submit" class="btn btn-success">Cancel</button> -->
                             </form>
                           </div>
                         </section>
@@ -426,10 +492,10 @@ Document each steps in the project for future use</textarea
                     </div>
                   </div>
                 </div>
-                <!-- Edit Modal End -->
+                <!-- Row2 Edit Modal End -->
               </td>
               <td>
-                <!--Delete Modal Start-->
+                <!-- Row2 Delete Modal Start-->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -482,10 +548,12 @@ Document each steps in the project for future use</textarea
                     </div>
                   </div>
                 </div>
-                <!-- Delete End Modal -->
+                <!-- Row2 Delete Modal End -->
               </td>
               <td>Bookmark</td>
             </tr>
+            <!-- end of row2 -->
+            <!-- start of row3 -->
             <tr>
               <th scope="row">3</th>
               <td>Coding</td>
@@ -510,7 +578,7 @@ Document each steps in the project for future use</textarea
                 </div>
               </td>
               <td>
-                <!-- Edit Modal Start -->
+                <!-- Row3 Edit Modal Start -->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -595,8 +663,6 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                                   <option>Done</option>
                                 </select>
                               </div>
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
-                                <button type="submit" class="btn btn-success">Cancel</button> -->
                             </form>
                           </div>
                         </section>
@@ -616,10 +682,10 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                     </div>
                   </div>
                 </div>
-                <!-- Edit Modal End -->
+                <!-- Row3 Edit Modal End -->
               </td>
               <td>
-                <!--Delete Modal Start-->
+                <!--Row3 Delete Modal Start-->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -672,10 +738,12 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                     </div>
                   </div>
                 </div>
-                <!-- Delete End Modal -->
+                <!-- Row3 Delete Modal End-->
               </td>
               <td>Bookmarked</td>
             </tr>
+            <!-- end of row3 -->
+            <!-- start of row4 -->
             <tr>
               <th scope="row">4</th>
               <td>Styling</td>
@@ -700,7 +768,7 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                 </div>
               </td>
               <td>
-                <!-- Edit Modal Start -->
+                <!-- Row4 Edit Modal Start -->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -785,8 +853,6 @@ Styling the webpages using CSS and Bootstrap</textarea
                                   <option>Done</option>
                                 </select>
                               </div>
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
-                                <button type="submit" class="btn btn-success">Cancel</button> -->
                             </form>
                           </div>
                         </section>
@@ -806,10 +872,10 @@ Styling the webpages using CSS and Bootstrap</textarea
                     </div>
                   </div>
                 </div>
-                <!-- Edit Modal End -->
+                <!-- Row4 Edit Modal End -->
               </td>
               <td>
-                <!--Delete Modal Start-->
+                <!--Row4 Delete Modal Start-->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -862,10 +928,12 @@ Styling the webpages using CSS and Bootstrap</textarea
                     </div>
                   </div>
                 </div>
-                <!-- Delete End Modal -->
+                <!-- Row4 Delete Modal End -->
               </td>
               <td>Bookmark</td>
             </tr>
+            <!-- end of row4 -->
+            <!-- start of row5 -->
             <tr>
               <th scope="row">5</th>
               <td>Collaboration</td>
@@ -890,7 +958,7 @@ Styling the webpages using CSS and Bootstrap</textarea
                 </div>
               </td>
               <td>
-                <!-- Edit Modal Start -->
+                <!-- Row5 Edit Modal Start -->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -975,8 +1043,6 @@ Collaborating the project using Github</textarea
                                   <option>Done</option>
                                 </select>
                               </div>
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
-                                <button type="submit" class="btn btn-success">Cancel</button> -->
                             </form>
                           </div>
                         </section>
@@ -996,10 +1062,10 @@ Collaborating the project using Github</textarea
                     </div>
                   </div>
                 </div>
-                <!-- Edit Modal End -->
+                <!-- Row5 Edit Modal End -->
               </td>
               <td>
-                <!--Delete Modal Start-->
+                <!--Row5 Delete Modal Start-->
                 <button
                   type="button"
                   class="btn btn-primary"
@@ -1052,10 +1118,11 @@ Collaborating the project using Github</textarea
                     </div>
                   </div>
                 </div>
-                <!-- Delete End Modal -->
+                <!-- Row5 Delete Modal End -->
               </td>
               <td>Bookmark</td>
             </tr>
+            <!-- end of row5 -->
           </tbody>
         </table>
         <!-- Tasks list ends here -->
