@@ -23,7 +23,7 @@
     <title>Task Planner</title>
   </head>
 
-  <body>
+  <body class="bgcolor">
     <!-- Navbar starts here -->
     <section id="navigation">
       <nav
@@ -41,8 +41,8 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse navtxtcolor" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto ">
             <li class="nav-item active">
               <a class="nav-link" href="#"
                 >Home <span class="sr-only">(current)</span></a
@@ -60,11 +60,12 @@
     <!-- Navbar ends here -->
     <!-- homepage starts here -->
     <section id="home">
-      <div class="container mt-5 list w-100 pt-3">
+      <h1 class="titlestyle">Task Planner</h1>
+      <div class="container mt-5 list w-100">
         <!-- Add Task button start -->
         <button
           type="button"
-          class="btn btn-primary float-right"
+          class="btn btn-primary float-left my-2"
           data-toggle="modal"
           data-target="#addTask"
         >
@@ -83,9 +84,9 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle1">
+                <h2 class="modal-title" id="exampleModalLongTitle1">
                   Add Task
-                </h5>
+                </h2>
                 <button
                   type="button"
                   class="close"
@@ -95,10 +96,9 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body bgcolor">
                 <section id="add">
-                  <div class="container mt-3 border card w-75 formcolor">
-                    <h1>Add Task</h1>
+                  <div class="container border card w-75 formcolor py-2">
                     <form>
                       <div class="form-group col-md-10">
                         <label for="inputEmail4">Task Name</label>
@@ -138,16 +138,12 @@
                       <div class="form-group col-md-10">
                         <label for="inputState">Status</label>
                         <select id="inputState" class="form-control">
-                          <option selected></option>
-                          <option>To do</option>
+                          <option selected>To-do</option>
                           <option>In progress</option>
                           <option>Review</option>
                           <option>Done</option>
                         </select>
                       </div>
-
-                      <!-- <button type="submit" class="btn btn-success">Save Changes</button>
-                                    <button type="submit" class="btn btn-success">Cancel</button> -->
                     </form>
                   </div>
                 </section>
@@ -171,7 +167,7 @@
 
         <!-- Tasks list starts here -->
         <table
-          class="table table-hover table-responsive rounded border border-info"
+          class="table table-hover table-responsive border-info shadow p-3 mb-5 rounded"
         >
           <!-- table heading starts here -->
           <thead>
@@ -260,9 +256,9 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle1">
+                        <h2 class="modal-title" id="exampleModalLongTitle1">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -272,12 +268,11 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         <section id="edit1">
                           <div
-                            class="container mt-5 border card w-75 formcolor"
+                            class="container border card w-75 formcolor py-2"
                           >
-                            <h1>Edit Task</h1>
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -402,13 +397,13 @@ Wireframe the project using ninjamock
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -499,9 +494,9 @@ Wireframe the project using ninjamock
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle2">
+                        <h2 class="modal-title" id="exampleModalLongTitle2">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -514,9 +509,8 @@ Wireframe the project using ninjamock
                       <div class="modal-body">
                         <section id="edit2">
                           <div
-                            class="container mt-5 border card w-75 formcolor"
+                            class="container border card w-75 formcolor py-2"
                           >
-                            <h1>Edit Task</h1>
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -640,13 +634,13 @@ Document each steps in the project for future use</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -735,9 +729,9 @@ Document each steps in the project for future use</textarea
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle3">
+                        <h2 class="modal-title" id="exampleModalLongTitle3">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -750,9 +744,8 @@ Document each steps in the project for future use</textarea
                       <div class="modal-body">
                         <section id="edit3">
                           <div
-                            class="container mt-5 border card w-75 formcolor"
+                            class="container border card w-75 formcolor py-2"
                           >
-                            <h1>Edit Task</h1>
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -876,13 +869,13 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -971,9 +964,9 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle4">
+                        <h2 class="modal-title" id="exampleModalLongTitle4">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -986,9 +979,8 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                       <div class="modal-body">
                         <section id="edit4">
                           <div
-                            class="container mt-5 border card w-75 formcolor"
+                            class="container border card w-75 formcolor py-2"
                           >
-                            <h1>Edit Task</h1>
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -1112,13 +1104,13 @@ Styling the webpages using CSS and Bootstrap</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -1207,9 +1199,9 @@ Styling the webpages using CSS and Bootstrap</textarea
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle5">
+                        <h2 class="modal-title" id="exampleModalLongTitle5">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -1222,9 +1214,8 @@ Styling the webpages using CSS and Bootstrap</textarea
                       <div class="modal-body">
                         <section id="edit5">
                           <div
-                            class="container mt-5 border card w-75 formcolor"
+                            class="container border card w-75 formcolor py-2"
                           >
-                            <h1>Edit Task</h1>
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -1348,13 +1339,13 @@ Collaborating the project using Github</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
