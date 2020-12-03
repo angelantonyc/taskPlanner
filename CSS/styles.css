@@ -1,9 +1,20 @@
-.navstyling{
-    background-color: rgb(158, 185, 192);
+.navstyling {
+  background-color: rgb(75, 162, 184);
+}
+.navtxtcolor {
+  color: black;
+  font-weight: bold;
 }
 .formcolor {
-  background-color: rgb(158, 185, 192);
+  background-color: rgb(75, 162, 184);
   /* padding: 20px;
   width: 700px; */
 }
 
+.bgcolor {
+  background-color: rgb(236, 237, 238);
+}
+.titlestyle {
+  text-align: center;
+  margin-top: 0.5em;
+}
