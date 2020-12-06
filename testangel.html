@@ -23,12 +23,11 @@
     <title>Task Planner</title>
   </head>
 
-  <body>
+  <body class="bgcolor">
     <!-- Navbar starts here -->
     <section id="navigation">
       <nav
-        class="navbar navbar-expand-lg navbar-light justify-content-between"
-        style="background-color: rgb(158, 185, 192)"
+        class="navbar navbar-expand-lg navbar-light justify-content-between navstyling"
       >
         <a class="navbar-brand" href="#"></a>
         <button
@@ -42,8 +41,8 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse navtxtcolor" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto ">
             <li class="nav-item active">
               <a class="nav-link" href="#"
                 >Home <span class="sr-only">(current)</span></a
@@ -54,20 +53,6 @@
             </li>
           </ul>
 
-          <!-- <form class="form-inline">
-            <input
-              class="form-control mr-sm-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              class="btn btn-outline-primary my-2 my-sm-0 mr-5"
-              type="submit"
-            >
-              Search
-            </button>
-          </form> -->
           <span class="navbar-text"> Welcome, Username!! </span>
         </div>
       </nav>
@@ -75,19 +60,115 @@
     <!-- Navbar ends here -->
     <!-- homepage starts here -->
     <section id="home">
-      <div class="container mt-5 list w-100 pt-3 hometable">
-        <!-- Add task button nav starts here -->
-        <nav>
-          <a href="Add.html">
-            <button type="button" class="btn btn-primary mr-5 float-right">
-              Add Task
-            </button>
-          </a>
-        </nav>
-        <!-- Add task button nav ends here -->
+      <h1 class="titlestyle">Task Planner</h1>
+      <div class="container mt-5 list w-100">
+        <!-- Add Task button start -->
+        <button
+          type="button"
+          class="btn btn-primary float-left my-2"
+          data-toggle="modal"
+          data-target="#addTask"
+        >
+          Add Task
+        </button>
+        <!-- Add Task button end -->
+        <!-- Add Task Modal start -->
+        <div
+          class="modal fade"
+          id="addTask"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLongTitle1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLongTitle1">
+                  Add Task
+                </h2>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body bgcolor">
+                <section id="add">
+                  <div class="container border card w-75 formcolor py-2">
+                    <form>
+                      <div class="form-group col-md-10">
+                        <label for="inputEmail4">Task Name</label>
+                        <input
+                          type="email"
+                          class="form-control"
+                          id="inputEmail4"
+                          name="inputEmail4"
+                        />
+                      </div>
+                      <div class="form-group col-md-10">
+                        <label for="exampleFormControlTextarea1"
+                          >Description</label
+                        >
+                        <textarea
+                          class="form-control"
+                          id="exampleFormControlTextarea1"
+                          rows="3"
+                        ></textarea>
+                      </div>
+                      <div class="form-group col-md-10">
+                        <label for="inputPassword4">Due Date</label>
+                        <input
+                          type="password"
+                          class="form-control"
+                          id="inputPassword4"
+                        />
+                      </div>
+                      <div class="form-group col-md-10">
+                        <label for="inputState">Assigned To</label>
+                        <select id="inputState" class="form-control">
+                          <option selected></option>
+                          <option>Reny</option>
+                          <option>Angel</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-10">
+                        <label for="inputState">Status</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>To-do</option>
+                          <option>In progress</option>
+                          <option>Review</option>
+                          <option>Done</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                </section>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Add Task Modal end -->
 
         <!-- Tasks list starts here -->
-        <table class="table table-hover table-responsive rounded border border-info">
+        <table
+          class="table table-hover table-responsive border-info shadow p-4 mb-4 rounded hometable"
+        >
           <!-- table heading starts here -->
           <thead>
             <tr>
@@ -108,7 +189,7 @@
             <tr>
               <th scope="row">1</th>
               <td>Wireframe</td>
-              <td>Done</td>
+              <td><span class="badge badge-success w-100">Done</span></td>
               <td>Reny</td>
               <td>12-11-2020</td>
               <td>
@@ -117,7 +198,7 @@
               <td class="w-25">
                 <!-- More info of task 1 starts here -->
                 <a
-                  class="btn btn-outline-success pt-0 mt-0"
+                  class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample1"
                   role="button"
@@ -127,7 +208,7 @@
                   More Info...
                 </a>
                 <div class="collapse" id="collapseExample1">
-                  <div class="card card-body">
+                  <div class="card card-body border-0 mt-1 infocolor">
                     Wireframe the project using ninjamock
                   </div>
                 </div>
@@ -135,6 +216,8 @@
               </td>
 
               <td>
+                <!-- Tooltip of edit Modal of task 1 Starts here -->
+                <a data-toggle="tooltip" data-placement="left" title="Edit item">
                 <!-- Edit Modal of task 1 Starts here -->
                 <button
                   type="button"
@@ -164,6 +247,8 @@
                   <!-- Edit -->
                   <!-- Edit icon of task 1 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of edit Modal of task 1 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModalLong1"
@@ -175,9 +260,9 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle1">
+                        <h2 class="modal-title" id="exampleModalLongTitle1">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -187,10 +272,11 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         <section id="edit1">
-                          <div class="container mt-5 border card w-75">
-                            <h1>Edit Task</h1>
+                          <div
+                            class="container border card w-75 formcolor py-2"
+                          >
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -265,12 +351,16 @@ Wireframe the project using ninjamock
               </td>
 
               <td>
+                <!-- Tooltip of delete Modal of task 1 Starts here -->
+                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
                 <!--Delete Modal of task 1 Starts here-->
                 <button
                   type="button"
                   class="btn btn-outline-danger"
                   data-toggle="modal"
                   data-target="#exampleModal1"
+                  data-keyboard="false"
+                  data-backdrop="static"
                 >
                   <!-- delete icon 1 starts here -->
                   <svg
@@ -291,6 +381,8 @@ Wireframe the project using ninjamock
                   </svg>
                   <!-- delete icon 1 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of delete Modal of task 1 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModal1"
@@ -313,13 +405,13 @@ Wireframe the project using ninjamock
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -344,7 +436,7 @@ Wireframe the project using ninjamock
             <tr>
               <th scope="row">2</th>
               <td>Documentation</td>
-              <td>To-do</td>
+              <td><span class="badge badge-danger w-100">To- Do</span></td>
               <td>Angel</td>
               <td>12-1-2021</td>
               <td>
@@ -353,7 +445,7 @@ Wireframe the project using ninjamock
               <td class="w-25">
                 <!-- More info of task 2 starts here -->
                 <a
-                  class="btn btn-outline-success pt-0 mt-0"
+                  class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample2"
                   role="button"
@@ -363,13 +455,15 @@ Wireframe the project using ninjamock
                   More Info...
                 </a>
                 <div class="collapse" id="collapseExample2">
-                  <div class="card card-body">
+                  <div class="card card-body border-0 mt-1 infocolor">
                     Document each steps in the project for future use
                   </div>
                 </div>
                 <!-- More info of task 2 ends here -->
               </td>
               <td>
+                <!-- Tooltip of edit Modal of task 2 Starts here -->
+                <a data-toggle="tooltip" data-placement="left" title="Edit item"> 
                 <!-- Edit Modal of task 2 Starts here -->
                 <button
                   type="button"
@@ -399,6 +493,8 @@ Wireframe the project using ninjamock
                   <!-- Edit -->
                   <!-- Edit icon of task 2 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of edit Modal of task 2 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModalLong2"
@@ -410,9 +506,9 @@ Wireframe the project using ninjamock
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle2">
+                        <h2 class="modal-title" id="exampleModalLongTitle2">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -424,8 +520,9 @@ Wireframe the project using ninjamock
                       </div>
                       <div class="modal-body">
                         <section id="edit2">
-                          <div class="container mt-5 border card w-75">
-                            <h1>Edit Task</h1>
+                          <div
+                            class="container border card w-75 formcolor py-2"
+                          >
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -499,12 +596,16 @@ Document each steps in the project for future use</textarea
                 <!-- Edit Modal of task 2 Ends here  -->
               </td>
               <td>
+                <!-- Tooltip of delete Modal of task 2 Starts here -->
+                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
                 <!--Delete Modal of task 2 Starts here-->
                 <button
                   type="button"
                   class="btn btn-outline-danger"
                   data-toggle="modal"
                   data-target="#exampleModal2"
+                  data-keyboard="false"
+                  data-backdrop="static"
                 >
                   <!-- delete icon 2 starts here -->
                   <svg
@@ -525,6 +626,8 @@ Document each steps in the project for future use</textarea
                   </svg>
                   <!-- delete icon 2 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of delete Modal of task 2 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModal2"
@@ -547,13 +650,13 @@ Document each steps in the project for future use</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -576,7 +679,7 @@ Document each steps in the project for future use</textarea
             <tr>
               <th scope="row">3</th>
               <td>Coding</td>
-              <td>Review</td>
+              <td><span class="badge badge-info w-100">Review</span></td>
               <td>Reny</td>
               <td>12-12-2020</td>
               <td>
@@ -585,7 +688,7 @@ Document each steps in the project for future use</textarea
               <td class="w-25">
                 <!-- More info of task 3 starts here -->
                 <a
-                  class="btn btn-outline-success pt-0 mt-0"
+                  class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample3"
                   role="button"
@@ -595,13 +698,15 @@ Document each steps in the project for future use</textarea
                   More Info...
                 </a>
                 <div class="collapse" id="collapseExample3">
-                  <div class="card card-body">
+                  <div class="card card-body border-0 mt-1 infocolor">
                     Code each tasks using HTML, CSS, JavaScript
                   </div>
                 </div>
                 <!-- More info of task 3 ends here -->
               </td>
               <td>
+                <!-- Tooltip of edit Modal of task 3 Starts here -->
+                <a data-toggle="tooltip" data-placement="left" title="Edit item"> 
                 <!-- Edit Modal  of task 3 Starts here -->
                 <button
                   type="button"
@@ -631,6 +736,8 @@ Document each steps in the project for future use</textarea
                   <!-- Edit -->
                   <!-- Edit icon of task 3 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of edit Modal of task 3 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModalLong3"
@@ -642,9 +749,9 @@ Document each steps in the project for future use</textarea
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle3">
+                        <h2 class="modal-title" id="exampleModalLongTitle3">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -656,8 +763,9 @@ Document each steps in the project for future use</textarea
                       </div>
                       <div class="modal-body">
                         <section id="edit3">
-                          <div class="container mt-5 border card w-75">
-                            <h1>Edit Task</h1>
+                          <div
+                            class="container border card w-75 formcolor py-2"
+                          >
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -731,12 +839,16 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                 <!-- Edit Modal of task 3 Ends here  -->
               </td>
               <td>
+                <!-- Tooltip of delete Modal of task 3 Starts here -->
+                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
                 <!--Delete Modal of task 3 Starts here-->
                 <button
                   type="button"
                   class="btn btn-outline-danger"
                   data-toggle="modal"
                   data-target="#exampleModal3"
+                  data-keyboard="false"
+                  data-backdrop="static"
                 >
                   <!-- delete icon 3 starts here -->
                   <svg
@@ -757,6 +869,8 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                   </svg>
                   <!-- delete icon 3 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of delete Modal of task 3 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModal3"
@@ -779,13 +893,13 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -808,7 +922,9 @@ Code each tasks using HTML, CSS, JavaScript</textarea
             <tr>
               <th scope="row">4</th>
               <td>Styling</td>
-              <td>In-Progress</td>
+              <td>
+                <span class="badge badge-primary w-100">In- Progress</span>
+              </td>
               <td>Angel</td>
               <td>22-1-2021</td>
               <td>
@@ -817,7 +933,7 @@ Code each tasks using HTML, CSS, JavaScript</textarea
               <td class="w-25">
                 <!-- More info of task 4 starts here -->
                 <a
-                  class="btn btn-outline-success pt-0 mt-0"
+                  class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample4"
                   role="button"
@@ -827,13 +943,15 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                   More Info...
                 </a>
                 <div class="collapse" id="collapseExample4">
-                  <div class="card card-body">
+                  <div class="card card-body border-0 mt-1 infocolor">
                     Styling the webpages using CSS and Bootstrap
                   </div>
                 </div>
                 <!-- More info of task 4 ends here -->
               </td>
               <td>
+                <!-- Tooltip of edit Modal of task 4 Starts here -->
+                <a data-toggle="tooltip" data-placement="left" title="Edit item"> 
                 <!-- Edit Modal of task 4 Starts here -->
                 <button
                   type="button"
@@ -863,6 +981,8 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                   <!-- Edit -->
                   <!-- Edit icon of task 4 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of edit Modal of task 4 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModalLong4"
@@ -874,9 +994,9 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle4">
+                        <h2 class="modal-title" id="exampleModalLongTitle4">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -888,8 +1008,9 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                       </div>
                       <div class="modal-body">
                         <section id="edit4">
-                          <div class="container mt-5 border card w-75">
-                            <h1>Edit Task</h1>
+                          <div
+                            class="container border card w-75 formcolor py-2"
+                          >
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -963,6 +1084,8 @@ Styling the webpages using CSS and Bootstrap</textarea
                 <!-- Edit Modal of task 4 Ends here  -->
               </td>
               <td>
+                <!-- Tooltip of delete Modal of task 4 Starts here -->
+                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
                 <!--Delete Modal of task 4 Starts here-->
                 <button
                   type="button"
@@ -991,6 +1114,8 @@ Styling the webpages using CSS and Bootstrap</textarea
                   </svg>
                   <!-- delete icon 4 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of delete Modal of task 4 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModal4"
@@ -1013,13 +1138,13 @@ Styling the webpages using CSS and Bootstrap</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -1042,7 +1167,7 @@ Styling the webpages using CSS and Bootstrap</textarea
             <tr>
               <th scope="row">5</th>
               <td>Collaboration</td>
-              <td>To-Do</td>
+              <td><span class="badge badge-danger w-100">To- Do</span></td>
               <td>Reny</td>
               <td>22-12-2020</td>
               <td>
@@ -1051,7 +1176,7 @@ Styling the webpages using CSS and Bootstrap</textarea
               <td class="w-25">
                 <!-- More info of task 5 starts here -->
                 <a
-                  class="btn btn-outline-success pt-0 mt-0"
+                  class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample5"
                   role="button"
@@ -1061,13 +1186,15 @@ Styling the webpages using CSS and Bootstrap</textarea
                   More Info...
                 </a>
                 <div class="collapse" id="collapseExample5">
-                  <div class="card card-body">
+                  <div class="card card-body border-0 mt-1 infocolor">
                     Collaborating the project using Github
                   </div>
                 </div>
                 <!-- More info of task 5 ends here -->
               </td>
               <td>
+                <!-- Tooltip of edit Modal of task 1 Starts here -->
+                <a data-toggle="tooltip" data-placement="left" title="Edit item"> 
                 <!-- Edit Modal of task 5 Starts here -->
                 <button
                   type="button"
@@ -1097,6 +1224,8 @@ Styling the webpages using CSS and Bootstrap</textarea
                   <!-- Edit -->
                   <!-- Edit icon of task 5 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of edit Modal of task 5 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModalLong5"
@@ -1108,9 +1237,9 @@ Styling the webpages using CSS and Bootstrap</textarea
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle5">
+                        <h2 class="modal-title" id="exampleModalLongTitle5">
                           Edit Task
-                        </h5>
+                        </h2>
                         <button
                           type="button"
                           class="close"
@@ -1122,8 +1251,9 @@ Styling the webpages using CSS and Bootstrap</textarea
                       </div>
                       <div class="modal-body">
                         <section id="edit5">
-                          <div class="container mt-5 border card w-75">
-                            <h1>Edit Task</h1>
+                          <div
+                            class="container border card w-75 formcolor py-2"
+                          >
                             <form>
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
@@ -1197,12 +1327,16 @@ Collaborating the project using Github</textarea
                 <!-- Edit Modal of task 5 Ends here  -->
               </td>
               <td>
+                <!-- Tooltip of delete Modal of task 5 Starts here -->
+                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
                 <!--Delete Modal of task 5 Starts here-->
                 <button
                   type="button"
                   class="btn btn-outline-danger"
                   data-toggle="modal"
                   data-target="#exampleModal5"
+                  data-keyboard="false"
+                  data-backdrop="static"
                 >
                   <!-- delete icon 5 starts here -->
                   <svg
@@ -1223,6 +1357,8 @@ Collaborating the project using Github</textarea
                   </svg>
                   <!-- delete icon 5 ends here -->
                 </button>
+                </a>
+                <!-- Tooltip of delete Modal of task 5 ends here -->
                 <div
                   class="modal fade"
                   id="exampleModal5"
@@ -1245,13 +1381,13 @@ Collaborating the project using Github</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body bgcolor">
                         Are you sure you want to delete this?
                       </div>
                       <div class="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          class="btn btn-danger"
                           data-dismiss="modal"
                         >
                           Yes
@@ -1276,59 +1412,59 @@ Collaborating the project using Github</textarea
       </div>
     </section>
 
-    <!-- Images carousel  -->
-    <div class="container">
-      <div
-        id="carouselExampleControls"
-        class="carousel slide h-25"
-        data-ride="carousel"
-      >
-        <div class="carousel-inner h-25">
-          <div class="carousel-item active h-25">
-            <img
-              src="./images/quote7.png"
-              class="d-block w-100 h-25"
-              alt="..."
-            />
+    <section id="quote">
+      <!-- Images carousel  -->
+      <div class="container">
+        <div
+          id="carouselExampleControls"
+          class="carousel slide h-25"
+          data-ride="carousel"
+        >
+          <div class="carousel-inner h-25">
+            <div class="carousel-item active h-25">
+              <img
+                src="./images/quote7.png"
+                class="d-block w-100 h-25"
+                alt="..."
+              />
+            </div>
+            <div class="carousel-item h-25">
+              <img
+                src="./images/quote10.png"
+                class="d-block w-100 h-25"
+                alt="..."
+              />
+            </div>
+            <div class="carousel-item h-25">
+              <img
+                src="./images/quote9.png"
+                class="d-block w-100 h-25"
+                alt="..."
+              />
+            </div>
           </div>
-          <div class="carousel-item h-25">
-            <img
-              src="./images/quote10.png"
-              class="d-block w-100 h-25"
-              alt="..."
-            />
-            <!-- <p>"I have not failed. 
-I've just found 10,000 ways that won't work." - Thomas Alva Edison</p> -->
-          </div>
-          <div class="carousel-item h-25">
-            <img
-              src="./images/quote9.png"
-              class="d-block w-100 h-25"
-              alt="..."
-            />
-          </div>
+          <a
+            class="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a
+            class="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a
-          class="carousel-control-prev"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a
-          class="carousel-control-next"
-          href="#carouselExampleControls"
-          role="button"
-          data-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
-    </div>
-    <!-- Images carousel ends -->
+      <!-- Images carousel ends -->
+    </section>
     <!-- homepage ends here -->
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -1350,5 +1486,10 @@ I've just found 10,000 ways that won't work." - Thomas Alva Edison</p> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
   </body>
 </html>
