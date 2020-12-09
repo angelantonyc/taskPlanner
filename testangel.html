@@ -41,8 +41,11 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse navtxtcolor" id="navbarNavDropdown">
-          <ul class="navbar-nav mr-auto ">
+        <div
+          class="collapse navbar-collapse navtxtcolor"
+          id="navbarNavDropdown"
+        >
+          <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="#"
                 >Home <span class="sr-only">(current)</span></a
@@ -61,14 +64,31 @@
     <!-- homepage starts here -->
     <section id="home">
       <h1 class="titlestyle">Task Planner</h1>
-      <div class="container mt-5 list w-100">
+      <div class="container mt-3 list w-100">
         <!-- Add Task button start -->
         <button
           type="button"
           class="btn btn-primary float-left my-2"
           data-toggle="modal"
           data-target="#addTask"
+          data-keyboard="false"
+          data-backdrop="static"
         >
+          <!-- Add icon starts here -->
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="bi bi-plus-circle-fill mb-1"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
+            />
+          </svg>
+          <!-- Add icon ends here -->
           Add Task
         </button>
         <!-- Add Task button end -->
@@ -96,10 +116,10 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body bgcolor">
-                <section id="add">
-                  <div class="container border card w-75 formcolor py-2">
-                    <form>
+              <form>
+                <div class="modal-body bgcolor">
+                  <section id="add">
+                    <div class="container border card w-75 formcolor py-2">
                       <div class="form-group col-md-10">
                         <label for="inputEmail4">Task Name</label>
                         <input
@@ -144,22 +164,22 @@
                           <option>Done</option>
                         </select>
                       </div>
-                    </form>
-                  </div>
-                </section>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button type="button" class="btn btn-primary">
-                  Save changes
-                </button>
-              </div>
+                    </div>
+                  </section>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -167,7 +187,7 @@
 
         <!-- Tasks list starts here -->
         <table
-          class="table table-hover table-responsive border-info shadow p-4 mb-4 rounded hometable"
+          class="table table-sm table-hover table-responsive border-info shadow p-4 mb-4 rounded hometable"
         >
           <!-- table heading starts here -->
           <thead>
@@ -175,9 +195,8 @@
               <th scope="col">#</th>
               <th scope="col" class="w-25">Task Name</th>
               <th scope="col">Status</th>
-              <th scope="col" class="w-25">Assigned to</th>
+              <th scope="col" class="w-25 pl-2 text-center">Assigned to</th>
               <th scope="col" class="w-25">Due Date</th>
-              <th scope="col">Priority</th>
               <th scope="col" class="w-25">Description</th>
               <th scope="col"></th>
               <th scope="col"></th>
@@ -189,12 +208,12 @@
             <tr>
               <th scope="row">1</th>
               <td>Wireframe</td>
-              <td><span class="badge badge-success w-100">Done</span></td>
-              <td>Reny</td>
+              <td><span class="badge badge-pill badge-success w-100">Done</span></td>
+              <td class="text-center">Reny</td>
               <td>12-11-2020</td>
-              <td>
+              <!-- <td>
                 <span class="badge w-100 badge-pill badge-info">Low</span>
-              </td>
+              </td> -->
               <td class="w-25">
                 <!-- More info of task 1 starts here -->
                 <a
@@ -217,36 +236,39 @@
 
               <td>
                 <!-- Tooltip of edit Modal of task 1 Starts here -->
-                <a data-toggle="tooltip" data-placement="left" title="Edit item">
-                <!-- Edit Modal of task 1 Starts here -->
-                <button
-                  type="button"
-                  class="btn btn-outline-info"
-                  data-toggle="modal"
-                  data-target="#exampleModalLong1"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title="Edit item"
                 >
-                  <!-- Edit icon of task 1 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-pencil-square"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!-- Edit Modal of task 1 Starts here -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-info"
+                    data-toggle="modal"
+                    data-target="#exampleModalLong1"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                    />
-                  </svg>
-                  <!-- Edit -->
-                  <!-- Edit icon of task 1 ends here -->
-                </button>
+                    <!-- Edit icon of task 1 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-pencil-square"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                    <!-- Edit icon of task 1 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of edit Modal of task 1 ends here -->
                 <div
@@ -272,12 +294,12 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body bgcolor">
-                        <section id="edit1">
-                          <div
-                            class="container border card w-75 formcolor py-2"
-                          >
-                            <form>
+                      <form>
+                        <div class="modal-body bgcolor">
+                          <section id="edit1">
+                            <div
+                              class="container border card w-75 formcolor py-2"
+                            >
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
                                 <input
@@ -328,22 +350,22 @@ Wireframe the project using ninjamock
                               </div>
                               <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            </form>
-                          </div>
-                        </section>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
-                        </button>
-                      </div>
+                            </div>
+                          </section>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" class="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -352,35 +374,39 @@ Wireframe the project using ninjamock
 
               <td>
                 <!-- Tooltip of delete Modal of task 1 Starts here -->
-                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
-                <!--Delete Modal of task 1 Starts here-->
-                <button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  data-toggle="modal"
-                  data-target="#exampleModal1"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Delete item"
                 >
-                  <!-- delete icon 1 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-trash"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!--Delete Modal of task 1 Starts here-->
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    data-toggle="modal"
+                    data-target="#exampleModal1"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                    />
-                  </svg>
-                  <!-- delete icon 1 ends here -->
-                </button>
+                    <!-- delete icon 1 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-trash"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                      />
+                    </svg>
+                    <!-- delete icon 1 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of delete Modal of task 1 ends here -->
                 <div
@@ -436,12 +462,12 @@ Wireframe the project using ninjamock
             <tr>
               <th scope="row">2</th>
               <td>Documentation</td>
-              <td><span class="badge badge-danger w-100">To- Do</span></td>
-              <td>Angel</td>
+              <td><span class="badge badge-pill badge-danger w-100">To- Do</span></td>
+              <td class="text-center">Angel</td>
               <td>12-1-2021</td>
-              <td>
+              <!-- <td>
                 <span class="badge w-100 badge-pill badge-info">Low</span>
-              </td>
+              </td> -->
               <td class="w-25">
                 <!-- More info of task 2 starts here -->
                 <a
@@ -463,36 +489,39 @@ Wireframe the project using ninjamock
               </td>
               <td>
                 <!-- Tooltip of edit Modal of task 2 Starts here -->
-                <a data-toggle="tooltip" data-placement="left" title="Edit item"> 
-                <!-- Edit Modal of task 2 Starts here -->
-                <button
-                  type="button"
-                  class="btn btn-outline-info"
-                  data-toggle="modal"
-                  data-target="#exampleModalLong2"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title="Edit item"
                 >
-                  <!-- Edit icon of task 2 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-pencil-square"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!-- Edit Modal of task 2 Starts here -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-info"
+                    data-toggle="modal"
+                    data-target="#exampleModalLong2"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                    />
-                  </svg>
-                  <!-- Edit -->
-                  <!-- Edit icon of task 2 ends here -->
-                </button>
+                    <!-- Edit icon of task 2 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-pencil-square"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                    <!-- Edit icon of task 2 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of edit Modal of task 2 ends here -->
                 <div
@@ -518,12 +547,12 @@ Wireframe the project using ninjamock
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
-                        <section id="edit2">
-                          <div
-                            class="container border card w-75 formcolor py-2"
-                          >
-                            <form>
+                      <form>
+                        <div class="modal-body bgcolor">
+                          <section id="edit2">
+                            <div
+                              class="container border card w-75 formcolor py-2"
+                            >
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
                                 <input
@@ -574,22 +603,22 @@ Document each steps in the project for future use</textarea
                               </div>
                               <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            </form>
-                          </div>
-                        </section>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
-                        </button>
-                      </div>
+                            </div>
+                          </section>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" class="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -597,35 +626,39 @@ Document each steps in the project for future use</textarea
               </td>
               <td>
                 <!-- Tooltip of delete Modal of task 2 Starts here -->
-                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
-                <!--Delete Modal of task 2 Starts here-->
-                <button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  data-toggle="modal"
-                  data-target="#exampleModal2"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Delete item"
                 >
-                  <!-- delete icon 2 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-trash"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!--Delete Modal of task 2 Starts here-->
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    data-toggle="modal"
+                    data-target="#exampleModal2"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                    />
-                  </svg>
-                  <!-- delete icon 2 ends here -->
-                </button>
+                    <!-- delete icon 2 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-trash"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                      />
+                    </svg>
+                    <!-- delete icon 2 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of delete Modal of task 2 ends here -->
                 <div
@@ -679,12 +712,12 @@ Document each steps in the project for future use</textarea
             <tr>
               <th scope="row">3</th>
               <td>Coding</td>
-              <td><span class="badge badge-info w-100">Review</span></td>
-              <td>Reny</td>
+              <td><span class="badge badge-pill badge-info w-100">Review</span></td>
+              <td class="text-center">Reny</td>
               <td>12-12-2020</td>
-              <td>
+              <!-- <td>
                 <span class="badge w-100 badge-pill badge-danger">High</span>
-              </td>
+              </td> -->
               <td class="w-25">
                 <!-- More info of task 3 starts here -->
                 <a
@@ -706,36 +739,40 @@ Document each steps in the project for future use</textarea
               </td>
               <td>
                 <!-- Tooltip of edit Modal of task 3 Starts here -->
-                <a data-toggle="tooltip" data-placement="left" title="Edit item"> 
-                <!-- Edit Modal  of task 3 Starts here -->
-                <button
-                  type="button"
-                  class="btn btn-outline-info"
-                  data-toggle="modal"
-                  data-target="#exampleModalLong3"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title="Edit item"
                 >
-                  <!-- Edit icon of task 3 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-pencil-square"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!-- Edit Modal  of task 3 Starts here -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-info"
+                    data-toggle="modal"
+                    data-target="#exampleModalLong3"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                    />
-                  </svg>
-                  <!-- Edit -->
-                  <!-- Edit icon of task 3 ends here -->
-                </button>
+                    <!-- Edit icon of task 3 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-pencil-square"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                    <!-- Edit -->
+                    <!-- Edit icon of task 3 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of edit Modal of task 3 ends here -->
                 <div
@@ -761,12 +798,12 @@ Document each steps in the project for future use</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
-                        <section id="edit3">
-                          <div
-                            class="container border card w-75 formcolor py-2"
-                          >
-                            <form>
+                      <form>
+                        <div class="modal-body bgcolor">
+                          <section id="edit3">
+                            <div
+                              class="container border card w-75 formcolor py-2"
+                            >
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
                                 <input
@@ -817,22 +854,22 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                               </div>
                               <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            </form>
-                          </div>
-                        </section>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
-                        </button>
-                      </div>
+                            </div>
+                          </section>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" class="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -840,35 +877,39 @@ Code each tasks using HTML, CSS, JavaScript</textarea
               </td>
               <td>
                 <!-- Tooltip of delete Modal of task 3 Starts here -->
-                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
-                <!--Delete Modal of task 3 Starts here-->
-                <button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  data-toggle="modal"
-                  data-target="#exampleModal3"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Delete item"
                 >
-                  <!-- delete icon 3 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-trash"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!--Delete Modal of task 3 Starts here-->
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    data-toggle="modal"
+                    data-target="#exampleModal3"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                    />
-                  </svg>
-                  <!-- delete icon 3 ends here -->
-                </button>
+                    <!-- delete icon 3 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-trash"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                      />
+                    </svg>
+                    <!-- delete icon 3 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of delete Modal of task 3 ends here -->
                 <div
@@ -923,13 +964,13 @@ Code each tasks using HTML, CSS, JavaScript</textarea
               <th scope="row">4</th>
               <td>Styling</td>
               <td>
-                <span class="badge badge-primary w-100">In- Progress</span>
+                <span class="badge badge-pill badge-primary w-100">In- Progress</span>
               </td>
-              <td>Angel</td>
+              <td class="text-center">Angel</td>
               <td>22-1-2021</td>
-              <td>
+              <!-- <td>
                 <span class="badge badge-pill badge-warning w-100">Medium</span>
-              </td>
+              </td> -->
               <td class="w-25">
                 <!-- More info of task 4 starts here -->
                 <a
@@ -951,36 +992,39 @@ Code each tasks using HTML, CSS, JavaScript</textarea
               </td>
               <td>
                 <!-- Tooltip of edit Modal of task 4 Starts here -->
-                <a data-toggle="tooltip" data-placement="left" title="Edit item"> 
-                <!-- Edit Modal of task 4 Starts here -->
-                <button
-                  type="button"
-                  class="btn btn-outline-info"
-                  data-toggle="modal"
-                  data-target="#exampleModalLong4"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title="Edit item"
                 >
-                  <!-- Edit icon of task 4 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-pencil-square"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!-- Edit Modal of task 4 Starts here -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-info"
+                    data-toggle="modal"
+                    data-target="#exampleModalLong4"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                    />
-                  </svg>
-                  <!-- Edit -->
-                  <!-- Edit icon of task 4 ends here -->
-                </button>
+                    <!-- Edit icon of task 4 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-pencil-square"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                    <!-- Edit icon of task 4 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of edit Modal of task 4 ends here -->
                 <div
@@ -1006,12 +1050,12 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
-                        <section id="edit4">
-                          <div
-                            class="container border card w-75 formcolor py-2"
-                          >
-                            <form>
+                      <form>
+                        <div class="modal-body bgcolor">
+                          <section id="edit4">
+                            <div
+                              class="container border card w-75 formcolor py-2"
+                            >
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
                                 <input
@@ -1062,22 +1106,22 @@ Styling the webpages using CSS and Bootstrap</textarea
                               </div>
                               <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            </form>
-                          </div>
-                        </section>
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
-                        </button>
-                      </div>
+                            </div>
+                          </section>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" class="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -1085,35 +1129,39 @@ Styling the webpages using CSS and Bootstrap</textarea
               </td>
               <td>
                 <!-- Tooltip of delete Modal of task 4 Starts here -->
-                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
-                <!--Delete Modal of task 4 Starts here-->
-                <button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  data-toggle="modal"
-                  data-target="#exampleModal4"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Delete item"
                 >
-                  <!-- delete icon 4 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-trash"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!--Delete Modal of task 4 Starts here-->
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    data-toggle="modal"
+                    data-target="#exampleModal4"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                    />
-                  </svg>
-                  <!-- delete icon 4 ends here -->
-                </button>
+                    <!-- delete icon 4 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-trash"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                      />
+                    </svg>
+                    <!-- delete icon 4 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of delete Modal of task 4 ends here -->
                 <div
@@ -1167,12 +1215,12 @@ Styling the webpages using CSS and Bootstrap</textarea
             <tr>
               <th scope="row">5</th>
               <td>Collaboration</td>
-              <td><span class="badge badge-danger w-100">To- Do</span></td>
-              <td>Reny</td>
+              <td><span class="badge badge-pill badge-danger w-100">To- Do</span></td>
+              <td class="text-center">Reny</td>
               <td>22-12-2020</td>
-              <td>
+              <!-- <td>
                 <span class="badge w-100 badge-pill badge-info">Low</span>
-              </td>
+              </td> -->
               <td class="w-25">
                 <!-- More info of task 5 starts here -->
                 <a
@@ -1193,37 +1241,40 @@ Styling the webpages using CSS and Bootstrap</textarea
                 <!-- More info of task 5 ends here -->
               </td>
               <td>
-                <!-- Tooltip of edit Modal of task 1 Starts here -->
-                <a data-toggle="tooltip" data-placement="left" title="Edit item"> 
-                <!-- Edit Modal of task 5 Starts here -->
-                <button
-                  type="button"
-                  class="btn btn-outline-info"
-                  data-toggle="modal"
-                  data-target="#exampleModalLong5"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <!-- Tooltip of edit Modal of task 5 Starts here -->
+                <a
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  title="Edit item"
                 >
-                  <!-- Edit icon of task 5 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-pencil-square"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!-- Edit Modal of task 5 Starts here -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-info"
+                    data-toggle="modal"
+                    data-target="#exampleModalLong5"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                    />
-                  </svg>
-                  <!-- Edit -->
-                  <!-- Edit icon of task 5 ends here -->
-                </button>
+                    <!-- Edit icon of task 5 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-pencil-square"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                    <!-- Edit icon of task 5 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of edit Modal of task 5 ends here -->
                 <div
@@ -1249,12 +1300,13 @@ Styling the webpages using CSS and Bootstrap</textarea
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <form>
+                      <div class="modal-body bgcolor">
                         <section id="edit5">
                           <div
                             class="container border card w-75 formcolor py-2"
                           >
-                            <form>
+                            
                               <div class="form-group col-md-10">
                                 <label for="inputEmail4">Task Name</label>
                                 <input
@@ -1305,7 +1357,7 @@ Collaborating the project using Github</textarea
                               </div>
                               <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            </form>
+                            
                           </div>
                         </section>
                       </div>
@@ -1321,6 +1373,7 @@ Collaborating the project using Github</textarea
                           Save changes
                         </button>
                       </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -1328,35 +1381,39 @@ Collaborating the project using Github</textarea
               </td>
               <td>
                 <!-- Tooltip of delete Modal of task 5 Starts here -->
-                <a data-toggle="tooltip" data-placement="top" title="Delete item">  
-                <!--Delete Modal of task 5 Starts here-->
-                <button
-                  type="button"
-                  class="btn btn-outline-danger"
-                  data-toggle="modal"
-                  data-target="#exampleModal5"
-                  data-keyboard="false"
-                  data-backdrop="static"
+                <a
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Delete item"
                 >
-                  <!-- delete icon 5 starts here -->
-                  <svg
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 16 16"
-                    class="bi bi-trash"
-                    fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <!--Delete Modal of task 5 Starts here-->
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger"
+                    data-toggle="modal"
+                    data-target="#exampleModal5"
+                    data-keyboard="false"
+                    data-backdrop="static"
                   >
-                    <path
-                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                    />
-                  </svg>
-                  <!-- delete icon 5 ends here -->
-                </button>
+                    <!-- delete icon 5 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-trash"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                      />
+                    </svg>
+                    <!-- delete icon 5 ends here -->
+                  </button>
                 </a>
                 <!-- Tooltip of delete Modal of task 5 ends here -->
                 <div
@@ -1425,21 +1482,35 @@ Collaborating the project using Github</textarea
               <img
                 src="./images/quote7.png"
                 class="d-block w-100 h-25"
-                alt="..."
+                alt="inspiringquote1"
               />
             </div>
             <div class="carousel-item h-25">
               <img
                 src="./images/quote10.png"
                 class="d-block w-100 h-25"
-                alt="..."
+                alt="inspiringquote2"
+              />
+            </div>
+            <div class="carousel-item h-25">
+              <img
+                src="./images/quote13.png"
+                class="d-block w-100 h-25"
+                alt="inspiringquote3"
               />
             </div>
             <div class="carousel-item h-25">
               <img
                 src="./images/quote9.png"
                 class="d-block w-100 h-25"
-                alt="..."
+                alt="inspiringquote3"
+              />
+            </div>
+            <div class="carousel-item h-25">
+              <img
+                src="./images/quote11.png"
+                class="d-block w-100 h-25"
+                alt="inspiringquote3"
               />
             </div>
           </div>
@@ -1466,6 +1537,15 @@ Collaborating the project using Github</textarea
       <!-- Images carousel ends -->
     </section>
     <!-- homepage ends here -->
+
+    <!-- FOOTER -->
+    <footer class="container mt-5">
+      <p class="float-right"><a href="#">Back to top</a></p>
+      <p>
+        &copy; 2020-2021 Company, Inc. &middot; <a href="#">Privacy</a> &middot;
+        <a href="#">Terms</a>
+      </p>
+    </footer>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
