@@ -121,43 +121,43 @@
                   <section id="add">
                     <div class="container border card w-75 formcolor py-2">
                       <div class="form-group col-md-10">
-                        <label for="taskNameInput">Task Name</label>
+                        <label for="newTaskNameInput">Task Name</label>
                         <input
                           type="text"
                           class="form-control"
-                          id="taskNameInput"
-                          name="taskNameInput"
+                          id="newTaskNameInput"
+                          name="newTaskNameInput"
                         />
                       </div>
                       <div class="form-group col-md-10">
-                        <label for="descriptionInput"
+                        <label for="newTaskDescription"
                           >Description</label
                         >
                         <textarea
                           class="form-control"
-                          id="descriptionInput"
+                          id="newTaskDescription"
                           rows="3"
                         ></textarea>
                       </div>
                       <div class="form-group col-md-10">
-                        <label for="DueDateInput">Due Date</label>
+                        <label for="newTaskDueDate">Due Date</label>
                         <input
                           type="date"
                           class="form-control"
-                          id="DueDateInput"
+                          id="newTaskDueDate"
                         />
                       </div>
                       <div class="form-group col-md-10">
-                        <label for="assignedInput">Assigned To</label>
-                        <select id="assignedInput" class="form-control">
+                        <label for="newTaskAssignedTo">Assigned To</label>
+                        <select id="newTaskAssignedTo" class="form-control">
                           <option selected></option>
                           <option>Reny</option>
                           <option>Angel</option>
                         </select>
                       </div>
                       <div class="form-group col-md-10">
-                        <label for="statusInput">Status</label>
-                        <select id="statusInput" class="form-control">
+                        <label for="newTaskStatusInput">Status</label>
+                        <select id="newTaskStatusInput" class="form-control">
                           <option selected>To-do</option>
                           <option>In progress</option>
                           <option>Review</option>
@@ -167,6 +167,7 @@
                     </div>
                   </section>
                 </div>
+                
                 <div class="modal-footer">
                   <button
                     type="button"
@@ -175,9 +176,13 @@
                   >
                     Close
                   </button>
-                  <button type="button" class="btn btn-primary">
+                  <div id="alertMessage" style="display: none" class="alert alert-danger" role="alert">
+                    Error message    
+                    </div>
+                  <button type="submit" class="btn btn-primary">
                     Save changes
                   </button>
+
                 </div>
               </form>
             </div>
