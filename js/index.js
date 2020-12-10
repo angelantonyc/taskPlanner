@@ -12,7 +12,12 @@ newTaskForm.addEventListener("submit", (event) => {
   const newTaskAssignedTo = document.querySelector("#newTaskAssignedTo");
   const newTaskDueDate = document.querySelector("#newTaskDueDate");
   const newTaskStatusInput = document.querySelector("#newTaskStatusInput");
-  const errorMessage = document.querySelector("#alertMessage");
+
+  //Select alert messages
+  const newTaskNameAlert = document.querySelector("#newTaskNameAlert");
+  const newTaskDescAlert = document.querySelector("#newTaskDescAlert");
+  const newTaskDateAlert = document.querySelector("#newTaskDateAlert");
+  const newTaskAssignAlert = document.querySelector("#newTaskAssignAlert");
 
   /*
         Validation code here
@@ -24,42 +29,58 @@ newTaskForm.addEventListener("submit", (event) => {
   const newAssignedTo = newTaskAssignedTo.value;
   const newDueDate = newTaskDueDate.value;
   const newStatus = newTaskStatusInput.value;
+
+  // Alert message for new task name
   if (!validFormFieldInput(newName)) {
-    errorMessage.innerHTML = "Invalid name input";
-    errorMessage.style.display = "block";
+    newTaskNameAlert.innerHTML = "Name field is required";
+    newTaskNameAlert.style.display = "block";
+    newTaskNameAlert.style.color = "red";
+    newTaskNameInput.style.borderColor = "red";
   } else {
-    errorMessage.style.display = "none";
+    newTaskNameAlert.style.display = "none";
+    newTaskNameInput.style.borderColor = "";
   }
 
+  // Alert message for new task description
   if (!validFormFieldInput(newDescription)) {
-    errorMessage.innerHTML = "Invalid description input";
-    errorMessage.style.display = "block";
+    newTaskDescAlert.innerHTML = "Description field is required";
+    newTaskDescAlert.style.display = "block";
+    newTaskDescAlert.style.color = "red";
+    newTaskDescription.style.borderColor = "red";
   } else {
-    errorMessage.style.display = "none";
+    newTaskDescAlert.style.display = "none";
+    newTaskDescription.style.borderColor = "";
   }
-    // if (!validFormFieldInput(newAssignedTo)) {
-    //   errorMessage.innerHTML = "Invalid Assigned to input";
-    //   errorMessage.style.display = "block";
-    // } else {
-    //   errorMessage.style.display = "none";
-    // }
 
-    // if (!validFormFieldInput(newDueDate)) {
-    //   errorMessage.innerHTML = "Invalid date input";
-    //   errorMessage.style.display = "block";
-    // } else {
-    //   errorMessage.style.display = "none";
-    // }
+  // Alert message for new assign name
+  if (!validFormFieldInput(newAssignedTo)) {
+    newTaskAssignAlert.innerHTML = "Please Choose from list";
+    newTaskAssignAlert.style.display = "block";
+    newTaskAssignAlert.style.color = "red";
+    newTaskAssignedTo.style.borderColor = "red";
+  } else {
+    newTaskAssignAlert.style.display = "none";
+    newTaskAssignedTo.style.borderColor = "";
+  }
 
-    // if (!validFormFieldInput(newStatus)) {
-    //   errorMessage.innerHTML = "Invalid status input";
-    //   errorMessage.style.display = "block";
-    // } else {
-    //   errorMessage.style.display = "none";
-    // }
+  // Alert message for new task date
+  if (!validFormFieldInput(newDueDate)) {
+    newTaskDateAlert.innerHTML = "Invalid date format.";
+    newTaskDateAlert.style.display = "block";
+    newTaskDateAlert.style.color = "red";
+    newTaskDueDate.style.borderColor = "red";
+  } else {
+    newTaskDateAlert.style.display = "none";
+    newTaskDueDate.style.borderColor = "";
+  }
 });
 
-
+// function declaration for data validation
 function validFormFieldInput(data) {
   return data !== null && data !== "";
 }
+
+// For adding tooltip for edit and delete button
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
