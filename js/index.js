@@ -1,12 +1,24 @@
+// Select the New Task Date
+const newTaskDate = document.querySelector("#newTaskDueDate");
+
+// Add an on click event for due date
+newTaskDate.addEventListener("click", (currentDate) => {
+  let dateToday = new Date();
+  let dd = String(dateToday.getDate()).padStart(2, "0");
+  let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = dateToday.getFullYear();
+  let dateString = yyyy + "-" + mm + "-" + dd;
+  document.querySelector("#newTaskDueDate").min = dateString;
+});
+
 // Select the New Task Form
 const newTaskForm = document.querySelector("#newTaskForm");
-
 // Add an 'onsubmit' event listener
 newTaskForm.addEventListener("submit", (event) => {
   // Prevent default action
   event.preventDefault();
 
-  // Select the inputs
+  //   Select the inputs
   const newTaskNameInput = document.querySelector("#newTaskNameInput");
   const newTaskDescription = document.querySelector("#newTaskDescription");
   const newTaskAssignedTo = document.querySelector("#newTaskAssignedTo");
@@ -19,9 +31,9 @@ newTaskForm.addEventListener("submit", (event) => {
   const newTaskDateAlert = document.querySelector("#newTaskDateAlert");
   const newTaskAssignAlert = document.querySelector("#newTaskAssignAlert");
 
-  /*
-        Validation code here
-    */
+  //   /*
+  //         Validation code here
+  //     */
 
   // Get the values of the inputs
   const newName = newTaskNameInput.value;
@@ -65,7 +77,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
   // Alert message for new task date
   if (!validFormFieldInput(newDueDate)) {
-    newTaskDateAlert.innerHTML = "Invalid date format.";
+    newTaskDateAlert.innerHTML = "Please pick a date";
     newTaskDateAlert.style.display = "block";
     newTaskDateAlert.style.color = "red";
     newTaskDueDate.style.borderColor = "red";
