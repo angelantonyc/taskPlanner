@@ -67,6 +67,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
   // Alert message for new task description
   if (!validFormFieldInput(newDescription)) {
+    document.getElementById("newTaskDescription").focus();
     newTaskDescAlert.innerHTML = "Description field is required";
     newTaskDescAlert.style.display = "block";
     newTaskDescAlert.style.color = "red";
@@ -78,6 +79,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
   // Alert message for new assign name
   if (!validFormFieldInput(newAssignedTo)) {
+    // document.getElementById("newTaskNameInput").focus();
     newTaskAssignAlert.innerHTML = "Please Choose from list";
     newTaskAssignAlert.style.display = "block";
     newTaskAssignAlert.style.color = "red";
@@ -89,6 +91,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
   // Alert message for new task date
   if (!validFormFieldInput(newDueDate)) {
+    // document.getElementById("newTaskNameInput").focus();
     newTaskDateAlert.innerHTML = "Please pick a date";
     newTaskDateAlert.style.display = "block";
     newTaskDateAlert.style.color = "red";

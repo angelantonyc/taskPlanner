@@ -1,14 +1,13 @@
 // Select the New Task Date
 const newTaskDate = document.querySelector("#newTaskDueDate");
-
 // Add an on click event for due date
 newTaskDate.addEventListener("click", (currentDate) => {
-  let dateToday = new Date();
-  let dd = String(dateToday.getDate()).padStart(2, "0");
-  let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!
-  let yyyy = dateToday.getFullYear();
+  let dateToday = new Date();                                 // current timestamp is stored inside dateToday
+  let dd = String(dateToday.getDate()).padStart(2, "0");      //date is extracted
+  let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!, month is extracted
+  let yyyy = dateToday.getFullYear();                         // Year is extracted
   let dateString = yyyy + "-" + mm + "-" + dd;
-  document.querySelector("#newTaskDueDate").min = dateString;
+  document.querySelector("#newTaskDueDate").min = dateString;   //Passing the value of min to HTML
 });
 
 // Select the New Task Form
@@ -23,7 +22,6 @@ newTaskForm.addEventListener("submit", (event) => {
   const newTaskDescription = document.querySelector("#newTaskDescription");
   const newTaskAssignedTo = document.querySelector("#newTaskAssignedTo");
   const newTaskDueDate = document.querySelector("#newTaskDueDate");
-  const newTaskStatusInput = document.querySelector("#newTaskStatusInput");
 
   //Select alert messages
   const newTaskNameAlert = document.querySelector("#newTaskNameAlert");
@@ -40,11 +38,10 @@ newTaskForm.addEventListener("submit", (event) => {
   const newDescription = newTaskDescription.value;
   const newAssignedTo = newTaskAssignedTo.value;
   const newDueDate = newTaskDueDate.value;
-  const newStatus = newTaskStatusInput.value;
 
   // Alert message for new task name
   if (!validFormFieldInput(newName)) {
-    document.getElementById("newTaskNameInput").focus();
+    document.getElementById("newTaskNameInput").focus(); // give focus to task name when there is no input
     newTaskNameAlert.innerHTML = "Name field is required";
     newTaskNameAlert.style.display = "block";
     newTaskNameAlert.style.color = "red";
@@ -65,17 +62,6 @@ newTaskForm.addEventListener("submit", (event) => {
     newTaskDescription.style.borderColor = "";
   }
 
-  // Alert message for new assign name
-  if (!validFormFieldInput(newAssignedTo)) {
-    newTaskAssignAlert.innerHTML = "Please Choose from list";
-    newTaskAssignAlert.style.display = "block";
-    newTaskAssignAlert.style.color = "red";
-    newTaskAssignedTo.style.borderColor = "red";
-  } else {
-    newTaskAssignAlert.style.display = "none";
-    newTaskAssignedTo.style.borderColor = "";
-  }
-
   // Alert message for new task date
   if (!validFormFieldInput(newDueDate)) {
     newTaskDateAlert.innerHTML = "Please pick a date";
@@ -86,11 +72,22 @@ newTaskForm.addEventListener("submit", (event) => {
     newTaskDateAlert.style.display = "none";
     newTaskDueDate.style.borderColor = "";
   }
+
+  // Alert message for new assign name
+  if (!validFormFieldInput(newAssignedTo)) {
+    newTaskAssignAlert.innerHTML = "Please Choose from list";
+    newTaskAssignAlert.style.display = "block";
+    newTaskAssignAlert.style.color = "red";
+    newTaskAssignedTo.style.borderColor = "red";
+  } else {
+    newTaskAssignAlert.style.display = "none";
+    newTaskAssignedTo.style.borderColor = "";
+  }
 });
 
 // function declaration for data validation
 function validFormFieldInput(data) {
-  return data.trim().length;
+  return data.trim().length;        //return 0 if the length of the trimmed data is zero
 }
 
 // For adding tooltip for edit and delete button
