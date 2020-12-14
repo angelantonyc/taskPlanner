@@ -1,8 +1,18 @@
+// For focussing the cursor on click the add task modal button
+
+// function getfocus() {
+//   document.getElementById("newTaskNameInput").focus();
+// }
+
+$("#addTask").on("shown.bs.modal", function () {
+  $(this).find("#newTaskNameInput").focus();
+});
+
 // Select the New Task Date
 const newTaskDate = document.querySelector("#newTaskDueDate");
 
 // Add an on click event for due date
-newTaskDate.addEventListener("click", (min) => {
+newTaskDate.addEventListener("click", (currentDate) => {
   let dateToday = new Date();
   let dd = String(dateToday.getDate()).padStart(2, "0");
   let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -44,6 +54,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
   // Alert message for new task name
   if (!validFormFieldInput(newName)) {
+    document.getElementById("newTaskNameInput").focus();
     newTaskNameAlert.innerHTML = "Name field is required";
     newTaskNameAlert.style.display = "block";
     newTaskNameAlert.style.color = "red";
@@ -55,8 +66,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
   // Alert message for new task description
   if (!validFormFieldInput(newDescription)) {
-    newTaskDescAlert.innerHTML =
-      "<img style='width:10px; margin-bottom:3px;' src='./images/alerticon.png'> Description field is required";
+    newTaskDescAlert.innerHTML = "Description field is required";
     newTaskDescAlert.style.display = "block";
     newTaskDescAlert.style.color = "red";
     newTaskDescription.style.borderColor = "red";
@@ -67,8 +77,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
   // Alert message for new assign name
   if (!validFormFieldInput(newAssignedTo)) {
-    newTaskAssignAlert.innerHTML =
-      "<img style='width:10px; margin-bottom:3px;' src='./images/alerticon.png'> Please Choose from list";
+    newTaskAssignAlert.innerHTML = "Please Choose from list";
     newTaskAssignAlert.style.display = "block";
     newTaskAssignAlert.style.color = "red";
     newTaskAssignedTo.style.borderColor = "red";

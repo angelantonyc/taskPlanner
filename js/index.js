@@ -44,6 +44,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
   // Alert message for new task name
   if (!validFormFieldInput(newName)) {
+    document.getElementById("newTaskNameInput").focus();
     newTaskNameAlert.innerHTML = "Name field is required";
     newTaskNameAlert.style.display = "block";
     newTaskNameAlert.style.color = "red";
