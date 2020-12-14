@@ -18,6 +18,7 @@ newTaskDate.addEventListener("click", (currentDate) => {
   let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!
   let yyyy = dateToday.getFullYear();
   let dateString = yyyy + "-" + mm + "-" + dd;
+  console.log(dateToday, dateToday.getDate(), dd, dateToday.getMonth(), mm, yyyy, dateString);
   document.querySelector("#newTaskDueDate").min = dateString;
 });
 
@@ -100,7 +101,9 @@ newTaskForm.addEventListener("submit", (event) => {
 
 // function declaration for data validation
 function validFormFieldInput(data) {
-  return data !== null && data !== "";
+  alert(data.trim().length);
+  return data.trim().length;
+  
 }
 
 // For adding tooltip for edit and delete button

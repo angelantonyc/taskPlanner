@@ -90,7 +90,7 @@ newTaskForm.addEventListener("submit", (event) => {
 
 // function declaration for data validation
 function validFormFieldInput(data) {
-  return data !== null && data !== "";
+  return data.trim().length;
 }
 
 // For adding tooltip for edit and delete button
