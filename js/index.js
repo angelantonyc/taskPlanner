@@ -1,3 +1,5 @@
+// Initialize a new TaskManager with currentId set to 0
+const taskManager = new TaskManager(0);
 // Select the New Task Date
 const newTaskDate = document.querySelector("#newTaskDueDate");
 // Add an on click event for due date
@@ -28,18 +30,15 @@ newTaskForm.addEventListener("submit", (event) => {
   const newTaskDescAlert = document.querySelector("#newTaskDescAlert");
   const newTaskDateAlert = document.querySelector("#newTaskDateAlert");
   const newTaskAssignAlert = document.querySelector("#newTaskAssignAlert");
-
-  //   /*
-  //         Validation code here
-  //     */
-
   // Get the values of the inputs
   const newName = newTaskNameInput.value;
   const newDescription = newTaskDescription.value;
   const newAssignedTo = newTaskAssignedTo.value;
   const newDueDate = newTaskDueDate.value;
 
+  //         Validation code here
   // Alert message for new task name
+  let validFlag = false;
   if (!validFormFieldInput(newName)) {
     document.getElementById("newTaskNameInput").focus(); // give focus to task name when there is no input
     newTaskNameAlert.innerHTML = "Name field is required";
@@ -47,42 +46,64 @@ newTaskForm.addEventListener("submit", (event) => {
     newTaskNameAlert.style.color = "red";
     newTaskNameInput.style.borderColor = "red";
   } else {
+    validFlag = true;
     newTaskNameAlert.style.display = "none";
     newTaskNameInput.style.borderColor = "";
   }
 
   // Alert message for new task description
   if (!validFormFieldInput(newDescription)) {
+    validFlag = false;
     newTaskDescAlert.innerHTML = "Description field is required";
     newTaskDescAlert.style.display = "block";
     newTaskDescAlert.style.color = "red";
     newTaskDescription.style.borderColor = "red";
   } else {
+    validFlag = true;
     newTaskDescAlert.style.display = "none";
     newTaskDescription.style.borderColor = "";
   }
 
   // Alert message for new task date
   if (!validFormFieldInput(newDueDate)) {
+    validFlag = false;
     newTaskDateAlert.innerHTML = "Please pick a date";
     newTaskDateAlert.style.display = "block";
     newTaskDateAlert.style.color = "red";
     newTaskDueDate.style.borderColor = "red";
   } else {
+    validFlag = true;
     newTaskDateAlert.style.display = "none";
     newTaskDueDate.style.borderColor = "";
   }
 
   // Alert message for new assign name
   if (!validFormFieldInput(newAssignedTo)) {
+    validFlag = false;
     newTaskAssignAlert.innerHTML = "Please Choose from list";
     newTaskAssignAlert.style.display = "block";
     newTaskAssignAlert.style.color = "red";
     newTaskAssignedTo.style.borderColor = "red";
   } else {
+    validFlag = true;
     newTaskAssignAlert.style.display = "none";
     newTaskAssignedTo.style.borderColor = "";
   }
+  // Add the task to the task manager
+ if(validFlag == true){
+   taskManager.addTask(newName, newDescription, newDueDate, newAssignedTo);
+
+   $("#addTask").modal("hide");
+   taskManager.render();
+
+   // Clear the form
+   newTaskNameInput.value = "";
+   newTaskDescription.value = "";
+   newTaskAssignedTo.value = "";
+   newTaskDueDate.value = "";
+ }
+
+  
 });
 
 // function declaration for data validation
