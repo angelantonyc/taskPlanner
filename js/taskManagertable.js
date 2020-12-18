@@ -7,6 +7,7 @@ class TaskManager {
   //function addTask
   addTask(newAddTaskName, newAddDesc, newAddDate, newAddAssign) {
     //create a new object from the details of the add task
+    console.log(this.currentId);
     const newAddTask = {
       newAddId: this.currentId++,
       newAddTaskName: newAddTaskName,
@@ -41,7 +42,20 @@ class TaskManager {
   // function to display the book on the browser
   render() {
     const addModalDiv = document.querySelector("#tableBody");
-    // const addModalDiv2 = document.querySelector("#tableBody");
+    const addTableHeader = document.querySelector("#tableHeader");
+    
+      addTableHeader.innerHTML = `<tr>
+              <th scope="col">#</th>
+              <th scope="col" class="w-25">Task Name</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="w-25 pl-2 text-center">Assigned to</th>
+              <th scope="col" class="w-25">Due Date</th>
+              <th scope="col" class="w-25">Description</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>`;
+    
+
     addModalDiv.innerHTML = "";
     for (let i = 0; i < this.tasks.length; i++) {
       const tasksHtml = createTaskHtml(

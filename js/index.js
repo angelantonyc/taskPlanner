@@ -1,5 +1,6 @@
+
 // Initialize a new TaskManager with currentId set to 0
-const taskManager = new TaskManager(0);
+const taskManager = new TaskManager(1);
 // Select the New Task Date
 const newTaskDate = document.querySelector("#newTaskDueDate");
 // Add an on click event for due date
@@ -111,7 +112,7 @@ function validFormFieldInput(data) {
 }
 
 // Select the Tasks List
-// const tasksList = document.querySelector('#tasksList');
+
 const addModalDiv = document.querySelector("#tableBody");
 
 // Add an 'onclick' event listener to the Tasks List
