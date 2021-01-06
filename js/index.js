@@ -26,7 +26,7 @@ const newTaskDateAlert = document.querySelector("#newTaskDateAlert");
 const newTaskAssignAlert = document.querySelector("#newTaskAssignAlert");
 // Select the New Task Form
 const newTaskForm = document.querySelector("#newTaskForm");
-let validFlag;
+let validFlag;    //flag for data validation
 
 // Add an 'onsubmit' event listener
 newTaskForm.addEventListener("submit", (event) => {
@@ -41,58 +41,58 @@ newTaskForm.addEventListener("submit", (event) => {
 
   //         Validation code here
   // Alert message for new task name
-  validFlag = 0;
+  validFlag = true;
   if (!validFormFieldInput(newName)) {
+    validFlag = false;
     document.getElementById("newTaskNameInput").focus(); // give focus to task name when there is no input
     newTaskNameAlert.innerHTML = "Name field is required";
     newTaskNameAlert.style.display = "block";
     newTaskNameAlert.style.color = "red";
     newTaskNameInput.style.borderColor = "red";
   } else {
-    validFlag++;
     newTaskNameAlert.style.display = "none";
     newTaskNameInput.style.borderColor = "";
   }
 
   // Alert message for new task description
   if (!validFormFieldInput(newDescription)) {
+    validFlag = false;
     newTaskDescAlert.innerHTML = "Description field is required";
     newTaskDescAlert.style.display = "block";
     newTaskDescAlert.style.color = "red";
     newTaskDescription.style.borderColor = "red";
   } else {
-    validFlag++;
     newTaskDescAlert.style.display = "none";
     newTaskDescription.style.borderColor = "";
   }
 
   // Alert message for new task date
   if (!validFormFieldInput(newDueDate)) {
+    validFlag = false;
     newTaskDateAlert.innerHTML = "Please pick a date";
     newTaskDateAlert.style.display = "block";
     newTaskDateAlert.style.color = "red";
     newTaskDueDate.style.borderColor = "red";
   } else {
-    validFlag++;
     newTaskDateAlert.style.display = "none";
     newTaskDueDate.style.borderColor = "";
   }
 
   // Alert message for new assign name
   if (!validFormFieldInput(newAssignedTo)) {
+    validFlag = false;
     newTaskAssignAlert.innerHTML = "Please Choose from list";
     newTaskAssignAlert.style.display = "block";
     newTaskAssignAlert.style.color = "red";
     newTaskAssignedTo.style.borderColor = "red";
   } else {
-    validFlag++;
     newTaskAssignAlert.style.display = "none";
     newTaskAssignedTo.style.borderColor = "";
   }
 
   // Add the task to the task manager
 
-  if (validFlag == 4) {
+  if (validFlag === true) {
     taskManager.addTask(newName, newDescription, newDueDate, newAssignedTo);
 
     $("#addTask").modal("hide");

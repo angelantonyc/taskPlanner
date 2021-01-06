@@ -1,6 +1,5 @@
 // Initialize a new TaskManager with currentId set to 0
-const taskManager = new TaskManager(0);
-
+const taskManager = new TaskManager(1);
 // Select the New Task Date
 const newTaskDate = document.querySelector("#newTaskDueDate");
 // Add an on click event for due date
@@ -13,24 +12,26 @@ newTaskDate.addEventListener("click", (currentDate) => {
   document.querySelector("#newTaskDueDate").min = dateString; //Passing the value of min to HTML
 });
 
+//   Select the inputs
+const newTaskNameInput = document.querySelector("#newTaskNameInput");
+const newTaskDescription = document.querySelector("#newTaskDescription");
+const newTaskAssignedTo = document.querySelector("#newTaskAssignedTo");
+const newTaskDueDate = document.querySelector("#newTaskDueDate");
+
+//Select alert messages
+const newTaskNameAlert = document.querySelector("#newTaskNameAlert");
+const newTaskDescAlert = document.querySelector("#newTaskDescAlert");
+const newTaskDateAlert = document.querySelector("#newTaskDateAlert");
+const newTaskAssignAlert = document.querySelector("#newTaskAssignAlert");
 // Select the New Task Form
 const newTaskForm = document.querySelector("#newTaskForm");
+let validFlag;
+
 // Add an 'onsubmit' event listener
 newTaskForm.addEventListener("submit", (event) => {
   // Prevent default action
   event.preventDefault();
 
-  //   Select the inputs
-  const newTaskNameInput = document.querySelector("#newTaskNameInput");
-  const newTaskDescription = document.querySelector("#newTaskDescription");
-  const newTaskAssignedTo = document.querySelector("#newTaskAssignedTo");
-  const newTaskDueDate = document.querySelector("#newTaskDueDate");
-
-  //Select alert messages
-  const newTaskNameAlert = document.querySelector("#newTaskNameAlert");
-  const newTaskDescAlert = document.querySelector("#newTaskDescAlert");
-  const newTaskDateAlert = document.querySelector("#newTaskDateAlert");
-  const newTaskAssignAlert = document.querySelector("#newTaskAssignAlert");
   // Get the values of the inputs
   const newName = newTaskNameInput.value;
   const newDescription = newTaskDescription.value;
@@ -39,61 +40,66 @@ newTaskForm.addEventListener("submit", (event) => {
 
   //         Validation code here
   // Alert message for new task name
-  let validFlag = 0;
+  validFlag = true;
   if (!validFormFieldInput(newName)) {
+    validFlag = false;
     document.getElementById("newTaskNameInput").focus(); // give focus to task name when there is no input
     newTaskNameAlert.innerHTML = "Name field is required";
     newTaskNameAlert.style.display = "block";
     newTaskNameAlert.style.color = "red";
     newTaskNameInput.style.borderColor = "red";
   } else {
-    validFlag++;
+    
     newTaskNameAlert.style.display = "none";
     newTaskNameInput.style.borderColor = "";
   }
 
   // Alert message for new task description
   if (!validFormFieldInput(newDescription)) {
+    validFlag = false;
     newTaskDescAlert.innerHTML = "Description field is required";
     newTaskDescAlert.style.display = "block";
     newTaskDescAlert.style.color = "red";
     newTaskDescription.style.borderColor = "red";
   } else {
-    validFlag++;
+    
     newTaskDescAlert.style.display = "none";
     newTaskDescription.style.borderColor = "";
   }
 
   // Alert message for new task date
   if (!validFormFieldInput(newDueDate)) {
+    validFlag = false;
     newTaskDateAlert.innerHTML = "Please pick a date";
     newTaskDateAlert.style.display = "block";
     newTaskDateAlert.style.color = "red";
     newTaskDueDate.style.borderColor = "red";
   } else {
-    //check for min date
-    // convert date.setHours(0,0,0,0) then convert to getTime - this will give single number Seconds since 1970/1/1
-    validFlag++;
+    
     newTaskDateAlert.style.display = "none";
     newTaskDueDate.style.borderColor = "";
   }
 
   // Alert message for new assign name
   if (!validFormFieldInput(newAssignedTo)) {
+    validFlag = false;
     newTaskAssignAlert.innerHTML = "Please Choose from list";
     newTaskAssignAlert.style.display = "block";
     newTaskAssignAlert.style.color = "red";
     newTaskAssignedTo.style.borderColor = "red";
   } else {
-    validFlag++;
+    
     newTaskAssignAlert.style.display = "none";
     newTaskAssignedTo.style.borderColor = "";
   }
+
   // Add the task to the task manager
-  if (validFlag == 4) {
-    taskManager.addTask(newName, newDescription, newDueDate, newAssignedTo); // Calling addTask function to addtask values in to the array of tasks
-    $("#addTask").modal("hide"); //hiding the modal
-    taskManager.render(); //calling the render function to display in the table
+
+  if (validFlag === true) {
+    taskManager.addTask(newName, newDescription, newDueDate, newAssignedTo);
+
+    $("#addTask").modal("hide");
+    taskManager.render();
 
     // Clear the form
     newTaskNameInput.value = "";
@@ -107,6 +113,31 @@ newTaskForm.addEventListener("submit", (event) => {
 function validFormFieldInput(data) {
   return data.trim().length; //return 0 if the length of the trimmed data is zero
 }
+
+// Select the Tasks List
+
+const addModalDiv = document.querySelector("#tableBody");
+
+// Add an 'onclick' event listener to the Tasks List
+addModalDiv.addEventListener("click", (event) => {
+  // Check if a "Mark As Done" button was clicked
+  if (event.target.classList.contains("done-button")) {
+    // Get the parent Task
+    const parentTask = event.target.parentElement.parentElement;
+
+    // Get the taskId of the parent Task.
+    const taskId = Number(parentTask.dataset.taskId);
+
+    // Get the task from the TaskManager using the taskId
+    const task = taskManager.getTaskById(taskId);
+
+    // Update the task status to 'DONE'
+    task.newAddStatus = "DONE";
+
+    // Render the tasks
+    taskManager.render();
+  }
+});
 
 // For adding tooltip for edit and delete button
 $(function () {

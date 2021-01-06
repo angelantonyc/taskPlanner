@@ -2,13 +2,12 @@
 class TaskManager {
   constructor(currentId = 0) {
     this.tasks = [];
-      this.currentId = currentId;
-      console.log(currentId);
+    this.currentId = currentId;
   }
-    
-  //function addTask definition
+  //function addTask
   addTask(newAddTaskName, newAddDesc, newAddDate, newAddAssign) {
     //create a new object from the details of the add task
+    console.log(this.currentId);
     const newAddTask = {
       newAddId: this.currentId++,
       newAddTaskName: newAddTaskName,
@@ -17,16 +16,45 @@ class TaskManager {
       newAddAssign: newAddAssign,
       newAddStatus: "To-Do",
     };
-      console.log(newAddTask.newAddId);
     //push the object into the book arra
     this.tasks.push(newAddTask);
   }
-    
+
+  getTaskById(taskId) {
+    // Create a variable to store the found task
+    let foundTask;
+
+    // Loop over the tasks and find the task with the id passed as a parameter
+    for (let i = 0; i < this.tasks.length; i++) {
+      // Get the current task in the loop
+      const task = this.tasks[i];
+
+      // Check if its the right task by comparing the task's id to the id passed as a parameter
+      if (task.newAddId === taskId) {
+        // Store the task in the foundTask variable
+        foundTask = task;
+      }
+    }
+
+    // Return the found task
+    return foundTask;
+  }
   // function to display the book on the browser
   render() {
     const addModalDiv = document.querySelector("#tableBody");
+    const addTableHeader = document.querySelector("#tableHeader");
 
-    //clear the existing contents in the table
+    addTableHeader.innerHTML = `<tr>
+              <th scope="col">#</th>
+              <th scope="col" class="w-25">Task Name</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="w-25 pl-2 text-center">Assigned to</th>
+              <th scope="col" class="w-25">Due Date</th>
+              <th scope="col" class="w-25">Description</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>`;
+
     addModalDiv.innerHTML = "";
     for (let i = 0; i < this.tasks.length; i++) {
       const tasksHtml = createTaskHtml(
@@ -41,8 +69,6 @@ class TaskManager {
     }
   }
 } //end class
-
-
 //html input
 const createTaskHtml = (
   newAddId,
@@ -52,14 +78,15 @@ const createTaskHtml = (
   newAddAssign,
   newAddStatus
 ) => {
-    
   return `  
   <!-- Task 1 starts here -->
-              <tr>
+              <tr data-task-id=${newAddId}>
                 <th scope="row">${newAddId}</th>
                 <td>${newAddTaskName}</td>
                 <td>
-                  <span class="badge badge-pill badge-success w-100">${newAddStatus}</span>
+                  <span class="badge ${
+                    newAddStatus === "To-Do" ? "badge-danger" : "badge-success"
+                  }">${newAddStatus}</span>
                 </td>
                 <td class="text-center">${newAddAssign}</td>
                 <td>${newAddDate}</td>
@@ -81,6 +108,12 @@ const createTaskHtml = (
                     </div>
                   </div>
                   <!-- More info of task 1 ends here -->
+                </td>
+                <td class="w-25">
+                            <button class="btn btn-outline-success done-button ${
+                              newAddStatus === "To-Do" ? "visible" : "invisible"
+                            }">Mark As Done</button>
+
                 </td>
 
                 <td>

@@ -149,6 +149,7 @@
                           class="form-control"
                           id="newTaskDueDate"
                           max="2021-12-13"
+                          
                         />
                         <span id="newTaskDateAlert"> </span>
                       </div>
@@ -182,7 +183,7 @@
                     >
                       Close
                     </button>
-                    <button type="button" id="submitTaskBtn" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary">
     
                       Save changes
                     </button>
@@ -199,8 +200,9 @@
           class="table table-sm table-hover table-responsive border-info shadow p-4 mb-4 rounded hometable" id ="taskTable"
         >
           <!-- table heading starts here -->
-          <thead>
-            <tr>
+          <thead id = "tableHeader"> 
+            <th>No tasks yet, Please click on Add task to add a new task </th>
+            <!-- <tr>
               <th scope="col">#</th>
               <th scope="col" class="w-25">Task Name</th>
               <th scope="col">Status</th>
@@ -209,10 +211,11 @@
               <th scope="col" class="w-25">Description</th>
               <th scope="col"></th>
               <th scope="col"></th>
-            </tr>
+            </tr> -->
           </thead>
           <!-- table heading ends here -->
           <tbody id ="tableBody">
+            
             <!-- Task 1 starts here -->
             <!-- <tr>
               <th scope="row">1</th>
