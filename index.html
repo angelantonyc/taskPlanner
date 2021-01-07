@@ -128,7 +128,6 @@
                           id="newTaskNameInput"
                           name="newTaskNameInput"
                           placeholder="Enter task name"
-                        
                         />
                         <span id="newTaskNameAlert"> </span>
                       </div>
@@ -149,7 +148,6 @@
                           class="form-control"
                           id="newTaskDueDate"
                           max="2021-12-13"
-                          
                         />
                         <span id="newTaskDateAlert"> </span>
                       </div>
@@ -184,7 +182,6 @@
                       Close
                     </button>
                     <button type="submit" class="btn btn-primary">
-    
                       Save changes
                     </button>
                   </div>
@@ -197,11 +194,12 @@
 
         <!-- Tasks list starts here -->
         <table
-          class="table table-sm table-hover table-responsive border-info shadow p-4 mb-4 rounded hometable" id ="taskTable"
+          class="table table-sm table-hover table-responsive border-info shadow p-4 mb-4 rounded hometable"
+          id="taskTable"
         >
           <!-- table heading starts here -->
-          <thead id = "tableHeader"> 
-            <th>No tasks yet, Please click on Add task to add a new task </th>
+          <thead id="tableHeader">
+            <th>No tasks yet, Please click on Add task to add a new task</th>
             <!-- <tr>
               <th scope="col">#</th>
               <th scope="col" class="w-25">Task Name</th>
@@ -214,260 +212,155 @@
             </tr> -->
           </thead>
           <!-- table heading ends here -->
-          <tbody id ="tableBody">
+          <tbody id="tableBody">
             
-            <!-- Task 1 starts here -->
-            <!-- <tr>
-              <th scope="row">1</th>
-              <td>Wireframe</td>
-              <td>
-                <span class="badge badge-pill badge-success w-100">Done</span>
-              </td>
-              <td class="text-center">Reny</td>
-              <td>12-11-2020</td>
-              <td class="w-25">
-                <! -- More info of task 1 starts here -->
-                <!-- <a
-                  class="btn btn-outline-info pt-0 mt-0"
-                  data-toggle="collapse"
-                  href="#collapseExample1"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="collapseExample1"
-                >
-                  More Info...
-                </a>
-                <div class="collapse" id="collapseExample1">
-                  <div class="card card-body border-0 mt-1 infocolor">
-                    Wireframe the project using ninjamock
+
+            <!-- Edit Modal of task starts here -->
+            <div
+              class="modal fade"
+              id="exampleModalLong1"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalLongTitle1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle1">
+                      Edit Task
+                    </h2>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
-                </div> -->
-                <!-- More info of task 1 ends here -->
-              <!-- </td>
-
-              <td> -->
-                <!-- Tooltip of edit Modal of task 1 Starts here -->
-                <!-- <a
-                  data-toggle="tooltip"
-                  data-placement="left"
-                  title="Edit item"
-                > -->
-                  <!-- Edit Modal of task 1 Starts here -->
-                  <!-- <button
-                    type="button"
-                    class="btn btn-outline-info"
-                    data-toggle="modal"
-                    data-target="#exampleModalLong1"
-                    data-keyboard="false"
-                    data-backdrop="static"
-                  > -->
-                    <!-- Edit icon of task 1 starts here -->
-                    <!-- <svg
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 16 16"
-                      class="bi bi-pencil-square"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    > -->
-                      <!-- <path
-                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                      />
-                    </svg> -->
-                    <!-- Edit icon of task 1 ends here -->
-                  <!-- </button> -->
-                <!-- </a>
-                <!- Tooltip of edit Modal of task 1 ends here -->
-                <!-- <div
-                  class="modal fade"
-                  id="exampleModalLong1"
-                  tabindex="-1"
-                  role="dialog"
-                  aria-labelledby="exampleModalLongTitle1"
-                  aria-hidden="true"
-                >  -->
-                  <!-- <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLongTitle1">
-                          Edit Task
-                        </h2>
-                        <button
-                          type="button"
-                          class="close"
-                          data-dismiss="modal"
-                          aria-label="Close"
-                        >
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <form>
-                        <div class="modal-body bgcolor">
-                          <section id="edit1">
-                            <div
-                              class="container border card w-75 formcolor py-2"
+                  <form>
+                    <div class="modal-body bgcolor">
+                      <section id="edit1">
+                        <div class="container border card w-75 formcolor py-2">
+                          <div class="form-group col-md-10">
+                            <label for="inputEmail4">Task Name</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inputEmail4"
+                              name="inputEmail4"
+                              value="Wireframe"
+                            />
+                          </div>
+                          <div class="form-group col-md-10">
+                            <label for="exampleFormControlTextarea1"
+                              >Description</label
                             >
-                              <div class="form-group col-md-10">
-                                <label for="inputEmail4">Task Name</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="inputEmail4"
-                                  name="inputEmail4"
-                                  value="Wireframe"
-                                />
-                              </div>
-                              <div class="form-group col-md-10">
-                                <label for="exampleFormControlTextarea1"
-                                  >Description</label
-                                >
-                                <textarea
-                                  class="form-control"
-                                  id="exampleFormControlTextarea1"
-                                  rows="3"
-                                >
-Wireframe the project using ninjamock
-                                </textarea>
-                              </div>
+                            <textarea
+                              class="form-control"
+                              id="exampleFormControlTextarea1"
+                              rows="3"
+                            >
+  Wireframe the project using ninjamock
+                                  </textarea
+                            >
+                          </div>
 
-                              <div class="form-group col-md-10">
-                                <label for="inputPassword4">Due Date</label>
-                                <input
-                                  type="text" -->
-                                  <!-- class="form-control"
-                                  id="inputPassword4"
-                                  value="12-11-2020"
-                                /> -->
-                              <!-- </div>
-                              <div class="form-group col-md-10">
-                                <label for="inputState">Assigned To</label>
-                                <select id="inputState" class="form-control">
-                                  <option selected>Reny</option>
-                                  <option>Angel</option>
-                                </select>
-                              </div>
-                              <div class="form-group col-md-10">
-                                <label for="inputState">Status</label>
-                                <select id="inputState" class="form-control">
-                                  <option selected>Done</option>
-                                  <option>To do</option>
-                                  <option>In progress</option>
-                                  <option>Review</option>
-                                </select>
-                              </div> -->
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
-                                <button type="submit" class="btn btn-success">Cancel</button> -->
-                            <!-- </div>
-                          </section>
+                          <div class="form-group col-md-10">
+                            <label for="inputPassword4">Due Date</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="inputPassword4"
+                              value="12-11-2020"
+                            />
+                          </div>
+                          <div class="form-group col-md-10">
+                            <label for="inputState">Assigned To</label>
+                            <select id="inputState" class="form-control">
+                              <option selected>Reny</option>
+                              <option>Angel</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-md-10">
+                            <label for="inputState">Status</label>
+                            <select id="inputState" class="form-control">
+                              <option selected>Done</option>
+                              <option>To do</option>
+                              <option>In progress</option>
+                              <option>Review</option>
+                            </select>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Save changes
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Edit Modal of task Ends here -->
+
+            <!-- Delete Modal of task Starts here-->
+            <div
+                    class="modal fade"
+                    id="exampleModal1"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel1"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel1">
+                            Confirm
+                          </h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body bgcolor">
+                          Are you sure you want to delete this?
                         </div>
                         <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            data-dismiss="modal"
+                          >
+                            Yes
+                          </button>
                           <button
                             type="button"
                             class="btn btn-secondary"
                             data-dismiss="modal"
                           >
-                            Close
-                          </button>
-                          <button type="button" class="btn btn-primary">
-                            Save changes
+                            No
                           </button>
                         </div>
-                      </form>
+                      </div>
                     </div>
                   </div>
-                </div> -->
-                <!-- Edit Modal of task 1 Ends here -->
-              <!-- </td>
+                  <!-- Delete Modal of task Ends here-->
 
-              <td> -->
-                <!-- Tooltip of delete Modal of task 1 Starts here -->
-                <!-- <a
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Delete item"
-                > -->
-                  <!--Delete Modal of task 1 Starts here-->
-                  <!-- <button
-                    type="button"
-                    class="btn btn-outline-danger"
-                    data-toggle="modal"
-                    data-target="#exampleModal1"
-                    data-keyboard="false"
-                    data-backdrop="static"
-                  > -->
-                    <!-- delete icon 1 starts here -->
-                    <!-- <svg
-                      width="1em"
-                      height="1em"
-                      viewBox="0 0 16 16"
-                      class="bi bi-trash"
-                      fill="currentColor"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
-                      />
-                    </svg> -->
-                    <!-- delete icon 1 ends here -->
-                  <!-- </button>
-                </a> -->
-                <!-- Tooltip of delete Modal of task 1 ends here -->
-                <!-- <div
-                  class="modal fade"
-                  id="exampleModal1"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel1"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel1">
-                          Confirm
-                        </h5>
-                        <button
-                          type="button"
-                          class="close"
-                          data-dismiss="modal"
-                          aria-label="Close"
-                        >
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body bgcolor">
-                        Are you sure you want to delete this?
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-danger"
-                          data-dismiss="modal"
-                        >
-                          Yes
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-dismiss="modal"
-                        >
-                          No
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- Delete Modal of task 1 Ends here-->
-              <!-- </td>
-            </tr> -->
-            <!-- Task 1 ends here -->
+           
 
             <!-- Task 2 starts here -->
             <!-- <tr>
@@ -479,8 +372,8 @@ Wireframe the project using ninjamock
               <td class="text-center">Angel</td>
               <td>12-1-2021</td>
               <td class="w-25"> -->
-                <!-- More info of task 2 starts here -->
-                <!-- <a
+            <!-- More info of task 2 starts here -->
+            <!-- <a
                   class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample2"
@@ -495,17 +388,17 @@ Wireframe the project using ninjamock
                     Document each steps in the project for future use
                   </div>
                 </div> -->
-                <!-- More info of task 2 ends here -->
-              <!-- </td>
+            <!-- More info of task 2 ends here -->
+            <!-- </td>
               <td> -->
-                <!-- Tooltip of edit Modal of task 2 Starts here -->
-                <!-- <a
+            <!-- Tooltip of edit Modal of task 2 Starts here -->
+            <!-- <a
                   data-toggle="tooltip"
                   data-placement="left"
                   title="Edit item"
                 > -->
-                  <!-- Edit Modal of task 2 Starts here -->
-                  <!-- <button
+            <!-- Edit Modal of task 2 Starts here -->
+            <!-- <button
                     type="button"
                     class="btn btn-outline-info"
                     data-toggle="modal"
@@ -513,8 +406,8 @@ Wireframe the project using ninjamock
                     data-keyboard="false"
                     data-backdrop="static"
                   > -->
-                    <!-- Edit icon of task 2 starts here -->
-                    <!-- <svg
+            <!-- Edit icon of task 2 starts here -->
+            <!-- <svg
                       width="1em"
                       height="1em"
                       viewBox="0 0 16 16"
@@ -530,11 +423,11 @@ Wireframe the project using ninjamock
                         d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                       />
                     </svg> -->
-                    <!-- Edit icon of task 2 ends here -->
-                  <!-- </button>
+            <!-- Edit icon of task 2 ends here -->
+            <!-- </button>
                 </a> -->
-                <!-- Tooltip of edit Modal of task 2 ends here -->
-                <!-- <div
+            <!-- Tooltip of edit Modal of task 2 ends here -->
+            <!-- <div
                   class="modal fade"
                   id="exampleModalLong2"
                   tabindex="-1"
@@ -611,9 +504,9 @@ Document each steps in the project for future use</textarea
                                   <option>Done</option>
                                 </select>
                               </div> -->
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
+            <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            <!-- </div>
+            <!-- </div>
                           </section>
                         </div>
                         <div class="modal-footer">
@@ -632,17 +525,17 @@ Document each steps in the project for future use</textarea
                     </div>
                   </div>
                 </div> -->
-                <!-- Edit Modal of task 2 Ends here  -->
-              <!-- </td>
+            <!-- Edit Modal of task 2 Ends here  -->
+            <!-- </td>
               <td> -->
-                <!-- Tooltip of delete Modal of task 2 Starts here -->
-                <!-- <a
+            <!-- Tooltip of delete Modal of task 2 Starts here -->
+            <!-- <a
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Delete item"
                 > -->
-                  <!--Delete Modal of task 2 Starts here-->
-                  <!-- <button
+            <!--Delete Modal of task 2 Starts here-->
+            <!-- <button
                     type="button"
                     class="btn btn-outline-danger"
                     data-toggle="modal"
@@ -650,8 +543,8 @@ Document each steps in the project for future use</textarea
                     data-keyboard="false"
                     data-backdrop="static"
                   > -->
-                    <!-- delete icon 2 starts here -->
-                    <!-- <svg
+            <!-- delete icon 2 starts here -->
+            <!-- <svg
                       width="1em"
                       height="1em"
                       viewBox="0 0 16 16"
@@ -667,11 +560,11 @@ Document each steps in the project for future use</textarea
                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                       />
                     </svg> -->
-                    <!-- delete icon 2 ends here -->
-                  <!-- </button>
+            <!-- delete icon 2 ends here -->
+            <!-- </button>
                 </a> -->
-                <!-- Tooltip of delete Modal of task 2 ends here -->
-                <!-- <div
+            <!-- Tooltip of delete Modal of task 2 ends here -->
+            <!-- <div
                   class="modal fade"
                   id="exampleModal2"
                   tabindex="-1"
@@ -715,8 +608,8 @@ Document each steps in the project for future use</textarea
                     </div>
                   </div>
                 </div> -->
-                <!-- Delete Modal of task 2 Ends here-->
-              <!-- </td>
+            <!-- Delete Modal of task 2 Ends here-->
+            <!-- </td>
             </tr> -->
             <!-- Task 3 starts here -->
             <!-- <tr>
@@ -728,8 +621,8 @@ Document each steps in the project for future use</textarea
               <td class="text-center">Reny</td>
               <td>12-12-2020</td>
               <td class="w-25"> -->
-                <!-- More info of task 3 starts here -->
-                <!-- <a
+            <!-- More info of task 3 starts here -->
+            <!-- <a
                   class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample3"
@@ -744,17 +637,17 @@ Document each steps in the project for future use</textarea
                     Code each tasks using HTML, CSS, JavaScript
                   </div>
                 </div> -->
-                <!-- More info of task 3 ends here -->
-              <!-- </td>
+            <!-- More info of task 3 ends here -->
+            <!-- </td>
               <td> -->
-                <!-- Tooltip of edit Modal of task 3 Starts here -->
-                <!-- <a
+            <!-- Tooltip of edit Modal of task 3 Starts here -->
+            <!-- <a
                   data-toggle="tooltip"
                   data-placement="left"
                   title="Edit item"
                 > -->
-                  <!-- Edit Modal  of task 3 Starts here -->
-                  <!-- <button
+            <!-- Edit Modal  of task 3 Starts here -->
+            <!-- <button
                     type="button"
                     class="btn btn-outline-info"
                     data-toggle="modal"
@@ -762,8 +655,8 @@ Document each steps in the project for future use</textarea
                     data-keyboard="false"
                     data-backdrop="static"
                   > -->
-                    <!-- Edit icon of task 3 starts here -->
-                    <!-- <svg
+            <!-- Edit icon of task 3 starts here -->
+            <!-- <svg
                       width="1em"
                       height="1em"
                       viewBox="0 0 16 16"
@@ -779,12 +672,12 @@ Document each steps in the project for future use</textarea
                         d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                       />
                     </svg> -->
-                    <!-- Edit -->
-                    <!-- Edit icon of task 3 ends here -->
-                  <!-- </button>
+            <!-- Edit -->
+            <!-- Edit icon of task 3 ends here -->
+            <!-- </button>
                 </a> -->
-                <!-- Tooltip of edit Modal of task 3 ends here -->
-                <!-- <div
+            <!-- Tooltip of edit Modal of task 3 ends here -->
+            <!-- <div
                   class="modal fade"
                   id="exampleModalLong3"
                   tabindex="-1"
@@ -861,9 +754,9 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                                   <option>Done</option>
                                 </select>
                               </div> -->
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
+            <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            <!-- </div>
+            <!-- </div>
                           </section>
                         </div>
                         <div class="modal-footer">
@@ -882,17 +775,17 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                     </div>
                   </div>
                 </div> -->
-                <!-- Edit Modal of task 3 Ends here  -->
-              <!-- </td>
+            <!-- Edit Modal of task 3 Ends here  -->
+            <!-- </td>
               <td> -->
-                <!-- Tooltip of delete Modal of task 3 Starts here -->
-                <!-- <a
+            <!-- Tooltip of delete Modal of task 3 Starts here -->
+            <!-- <a
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Delete item"
                 > -->
-                  <!--Delete Modal of task 3 Starts here-->
-                  <!-- <button
+            <!--Delete Modal of task 3 Starts here-->
+            <!-- <button
                     type="button"
                     class="btn btn-outline-danger"
                     data-toggle="modal"
@@ -900,8 +793,8 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                     data-keyboard="false"
                     data-backdrop="static"
                   > -->
-                    <!-- delete icon 3 starts here -->
-                    <!-- <svg
+            <!-- delete icon 3 starts here -->
+            <!-- <svg
                       width="1em"
                       height="1em"
                       viewBox="0 0 16 16"
@@ -917,11 +810,11 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                       />
                     </svg> -->
-                    <!-- delete icon 3 ends here -->
-                  <!-- </button>
+            <!-- delete icon 3 ends here -->
+            <!-- </button>
                 </a> -->
-                <!-- Tooltip of delete Modal of task 3 ends here -->
-                <!-- <div
+            <!-- Tooltip of delete Modal of task 3 ends here -->
+            <!-- <div
                   class="modal fade"
                   id="exampleModal3"
                   tabindex="-1"
@@ -965,8 +858,8 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                     </div>
                   </div>
                 </div> -->
-                <!-- Delete Modal of task 3 Ends here-->
-              <!-- </td>
+            <!-- Delete Modal of task 3 Ends here-->
+            <!-- </td>
             </tr> -->
             <!-- Task 4 starts here -->
             <!-- <tr>
@@ -980,8 +873,8 @@ Code each tasks using HTML, CSS, JavaScript</textarea
               <td class="text-center">Angel</td>
               <td>22-1-2021</td>
               <td class="w-25"> -->
-                <!-- More info of task 4 starts here -->
-                <!-- <a
+            <!-- More info of task 4 starts here -->
+            <!-- <a
                   class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample4"
@@ -996,17 +889,17 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                     Styling the webpages using CSS and Bootstrap
                   </div>
                 </div> -->
-                <!-- More info of task 4 ends here -->
-              <!-- </td>
+            <!-- More info of task 4 ends here -->
+            <!-- </td>
               <td> -->
-                <!-- Tooltip of edit Modal of task 4 Starts here -->
-                <!-- <a
+            <!-- Tooltip of edit Modal of task 4 Starts here -->
+            <!-- <a
                   data-toggle="tooltip"
                   data-placement="left"
                   title="Edit item"
                 > -->
-                  <!-- Edit Modal of task 4 Starts here -->
-                  <!-- <button
+            <!-- Edit Modal of task 4 Starts here -->
+            <!-- <button
                     type="button"
                     class="btn btn-outline-info"
                     data-toggle="modal"
@@ -1014,8 +907,8 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                     data-keyboard="false"
                     data-backdrop="static"
                   > -->
-                    <!-- Edit icon of task 4 starts here -->
-                    <!-- <svg
+            <!-- Edit icon of task 4 starts here -->
+            <!-- <svg
                       width="1em"
                       height="1em"
                       viewBox="0 0 16 16"
@@ -1031,11 +924,11 @@ Code each tasks using HTML, CSS, JavaScript</textarea
                         d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                       />
                     </svg> -->
-                    <!-- Edit icon of task 4 ends here -->
-                  <!-- </button>
+            <!-- Edit icon of task 4 ends here -->
+            <!-- </button>
                 </a> -->
-                <!-- Tooltip of edit Modal of task 4 ends here -->
-                <!-- <div
+            <!-- Tooltip of edit Modal of task 4 ends here -->
+            <!-- <div
                   class="modal fade"
                   id="exampleModalLong4"
                   tabindex="-1"
@@ -1112,9 +1005,9 @@ Styling the webpages using CSS and Bootstrap</textarea
                                   <option>Done</option>
                                 </select>
                               </div> -->
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
+            <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            <!-- </div>
+            <!-- </div>
                           </section>
                         </div>
                         <div class="modal-footer">
@@ -1133,17 +1026,17 @@ Styling the webpages using CSS and Bootstrap</textarea
                     </div>
                   </div>
                 </div> -->
-                <!-- Edit Modal of task 4 Ends here  -->
-              <!-- </td>
+            <!-- Edit Modal of task 4 Ends here  -->
+            <!-- </td>
               <td> -->
-                <!-- Tooltip of delete Modal of task 4 Starts here -->
-                <!-- <a
+            <!-- Tooltip of delete Modal of task 4 Starts here -->
+            <!-- <a
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Delete item"
                 > -->
-                  <!--Delete Modal of task 4 Starts here-->
-                  <!-- <button
+            <!--Delete Modal of task 4 Starts here-->
+            <!-- <button
                     type="button"
                     class="btn btn-outline-danger"
                     data-toggle="modal"
@@ -1168,11 +1061,11 @@ Styling the webpages using CSS and Bootstrap</textarea
                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                       />
                     </svg> -->
-                    <!-- delete icon 4 ends here -->
-                  <!-- </button>
+            <!-- delete icon 4 ends here -->
+            <!-- </button>
                 </a> -->
-                <!-- Tooltip of delete Modal of task 4 ends here -->
-                <!-- <div
+            <!-- Tooltip of delete Modal of task 4 ends here -->
+            <!-- <div
                   class="modal fade"
                   id="exampleModal4"
                   tabindex="-1"
@@ -1216,8 +1109,8 @@ Styling the webpages using CSS and Bootstrap</textarea
                     </div>
                   </div>
                 </div> -->
-                <!-- Delete Modal of task 4 Ends here-->
-              <!-- </td>
+            <!-- Delete Modal of task 4 Ends here-->
+            <!-- </td>
             </tr> -->
             <!-- Task 5 starts here -->
             <!-- <tr>
@@ -1229,8 +1122,8 @@ Styling the webpages using CSS and Bootstrap</textarea
               <td class="text-center">Reny</td>
               <td>22-12-2020</td>
               <td class="w-25"> -->
-                <!-- More info of task 5 starts here -->
-                <!-- <a
+            <!-- More info of task 5 starts here -->
+            <!-- <a
                   class="btn btn-outline-info pt-0 mt-0"
                   data-toggle="collapse"
                   href="#collapseExample5"
@@ -1245,17 +1138,17 @@ Styling the webpages using CSS and Bootstrap</textarea
                     Collaborating the project using Github
                   </div>
                 </div> -->
-                <!-- More info of task 5 ends here -->
-              <!-- </td>
+            <!-- More info of task 5 ends here -->
+            <!-- </td>
               <td> -->
-                <!-- Tooltip of edit Modal of task 5 Starts here -->
-                <!-- <a
+            <!-- Tooltip of edit Modal of task 5 Starts here -->
+            <!-- <a
                   data-toggle="tooltip"
                   data-placement="left"
                   title="Edit item"
                 > -->
-                  <!-- Edit Modal of task 5 Starts here -->
-                  <!-- <button
+            <!-- Edit Modal of task 5 Starts here -->
+            <!-- <button
                     type="button"
                     class="btn btn-outline-info"
                     data-toggle="modal"
@@ -1263,8 +1156,8 @@ Styling the webpages using CSS and Bootstrap</textarea
                     data-keyboard="false"
                     data-backdrop="static"
                   > -->
-                    <!-- Edit icon of task 5 starts here -->
-                    <!-- <svg
+            <!-- Edit icon of task 5 starts here -->
+            <!-- <svg
                       width="1em"
                       height="1em"
                       viewBox="0 0 16 16"
@@ -1280,11 +1173,11 @@ Styling the webpages using CSS and Bootstrap</textarea
                         d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                       />
                     </svg> -->
-                    <!-- Edit icon of task 5 ends here -->
-                  <!-- </button>
+            <!-- Edit icon of task 5 ends here -->
+            <!-- </button>
                 </a> -->
-                <!-- Tooltip of edit Modal of task 5 ends here -->
-                <!-- <div
+            <!-- Tooltip of edit Modal of task 5 ends here -->
+            <!-- <div
                   class="modal fade"
                   id="exampleModalLong5"
                   tabindex="-1"
@@ -1361,9 +1254,9 @@ Collaborating the project using Github</textarea
                                   <option>Done</option>
                                 </select>
                               </div> -->
-                              <!-- <button type="submit" class="btn btn-success">Save Changes</button>
+            <!-- <button type="submit" class="btn btn-success">Save Changes</button>
                                 <button type="submit" class="btn btn-success">Cancel</button> -->
-                            <!-- </div>
+            <!-- </div>
                           </section>
                         </div>
                         <div class="modal-footer">
@@ -1382,17 +1275,17 @@ Collaborating the project using Github</textarea
                     </div>
                   </div>
                 </div> -->
-                <!-- Edit Modal of task 5 Ends here  -->
-              <!-- </td>
+            <!-- Edit Modal of task 5 Ends here  -->
+            <!-- </td>
               <td> -->
-                <!-- Tooltip of delete Modal of task 5 Starts here -->
-                <!-- <a
+            <!-- Tooltip of delete Modal of task 5 Starts here -->
+            <!-- <a
                   data-toggle="tooltip"
                   data-placement="top"
                   title="Delete item"
                 > -->
-                  <!--Delete Modal of task 5 Starts here-->
-                  <!-- <button
+            <!--Delete Modal of task 5 Starts here-->
+            <!-- <button
                     type="button"
                     class="btn btn-outline-danger"
                     data-toggle="modal"
@@ -1400,8 +1293,8 @@ Collaborating the project using Github</textarea
                     data-keyboard="false"
                     data-backdrop="static"
                   > -->
-                    <!-- delete icon 5 starts here -->
-                    <!-- <svg
+            <!-- delete icon 5 starts here -->
+            <!-- <svg
                       width="1em"
                       height="1em"
                       viewBox="0 0 16 16"
@@ -1417,11 +1310,11 @@ Collaborating the project using Github</textarea
                         d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                       />
                     </svg> -->
-                    <!-- delete icon 5 ends here -->
-                  <!-- </button>
+            <!-- delete icon 5 ends here -->
+            <!-- </button>
                 </a> -->
-                <!-- Tooltip of delete Modal of task 5 ends here -->
-                <!-- <div
+            <!-- Tooltip of delete Modal of task 5 ends here -->
+            <!-- <div
                   class="modal fade"
                   id="exampleModal5"
                   tabindex="-1"
@@ -1465,8 +1358,8 @@ Collaborating the project using Github</textarea
                     </div>
                   </div>
                 </div> -->
-                <!-- Delete Modal of task 5 Ends here-->
-              <!-- </td>
+            <!-- Delete Modal of task 5 Ends here-->
+            <!-- </td>
             </tr> -->
           </tbody>
         </table>
@@ -1574,7 +1467,5 @@ Collaborating the project using Github</textarea
     <script src="js/taskManagertable.js"></script>
     <script src="js/index.js"></script>
     <!-- <script src="js/taskManager.js"></script> -->
-     
-
   </body>
 </html>

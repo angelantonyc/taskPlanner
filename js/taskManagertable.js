@@ -43,8 +43,8 @@ class TaskManager {
   render() {
     const addModalDiv = document.querySelector("#tableBody");
     const addTableHeader = document.querySelector("#tableHeader");
-    
-      addTableHeader.innerHTML = `<tr>
+
+    addTableHeader.innerHTML = `<tr>
               <th scope="col">#</th>
               <th scope="col" class="w-25">Task Name</th>
               <th scope="col">Status</th>
@@ -54,7 +54,6 @@ class TaskManager {
               <th scope="col"></th>
               <th scope="col"></th>
             </tr>`;
-    
 
     addModalDiv.innerHTML = "";
     for (let i = 0; i < this.tasks.length; i++) {
@@ -92,7 +91,7 @@ const createTaskHtml = (
                 <td class="text-center">${newAddAssign}</td>
                 <td>${newAddDate}</td>
                 <td class="w-25">
-                  <!-- More info of task 1 starts here -->
+                  <!-- More info of task starts here -->
                   <a
                     class="btn btn-outline-info pt-0 mt-0"
                     data-toggle="collapse"
@@ -108,7 +107,7 @@ const createTaskHtml = (
                       ${newAddDesc}
                     </div>
                   </div>
-                  <!-- More info of task 1 ends here -->
+                  <!-- More info of task ends here -->
                 </td>
                 <td class="w-25">
                             <button class="btn btn-outline-success done-button ${
@@ -118,13 +117,13 @@ const createTaskHtml = (
                 </td>
 
                 <td>
-                  <!-- Tooltip of edit Modal of task 1 Starts here -->
+                  <!-- Tooltip of edit button Starts here -->
                   <a
                     data-toggle="tooltip"
                     data-placement="left"
                     title="Edit item"
                   >
-                    <!-- Edit Modal of task 1 Starts here -->
+                    <!-- Edit button Starts here -->
                     <button
                       type="button"
                       class="btn btn-outline-info"
@@ -133,7 +132,7 @@ const createTaskHtml = (
                       data-keyboard="false"
                       data-backdrop="static"
                     >
-                      <!-- Edit icon of task 1 starts here -->
+                      <!-- Edit icon starts here -->
                       <svg
                         width="1em"
                         height="1em"
@@ -150,119 +149,22 @@ const createTaskHtml = (
                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
                         />
                       </svg>
-                      <!-- Edit icon of task 1 ends here -->
+                      <!-- Edit icon ends here -->
                     </button>
+                    <!-- Edit button ends here -->
                   </a>
-                  <!-- Tooltip of edit Modal of task 1 ends here -->
-                  <div
-                    class="modal fade"
-                    id="exampleModalLong1"
-                    tabindex="-1"
-                    role="dialog"
-                    aria-labelledby="exampleModalLongTitle1"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h2 class="modal-title" id="exampleModalLongTitle1">
-                            Edit Task
-                          </h2>
-                          <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <form>
-                          <div class="modal-body bgcolor">
-                            <section id="edit1">
-                              <div
-                                class="container border card w-75 formcolor py-2"
-                              >
-                                <div class="form-group col-md-10">
-                                  <label for="inputEmail4">Task Name</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputEmail4"
-                                    name="inputEmail4"
-                                    value="Wireframe"
-                                  />
-                                </div>
-                                <div class="form-group col-md-10">
-                                  <label for="exampleFormControlTextarea1"
-                                    >Description</label
-                                  >
-                                  <textarea
-                                    class="form-control"
-                                    id="exampleFormControlTextarea1"
-                                    rows="3"
-                                  >
-  Wireframe the project using ninjamock
-                                  </textarea>
-                                </div>
-
-                                <div class="form-group col-md-10">
-                                  <label for="inputPassword4">Due Date</label>
-                                  <input
-                                    type="text"
-                                    class="form-control"
-                                    id="inputPassword4"
-                                    value="12-11-2020"
-                                  />
-                                </div>
-                                <div class="form-group col-md-10">
-                                  <label for="inputState">Assigned To</label>
-                                  <select id="inputState" class="form-control">
-                                    <option selected>Reny</option>
-                                    <option>Angel</option>
-                                  </select>
-                                </div>
-                                <div class="form-group col-md-10">
-                                  <label for="inputState">Status</label>
-                                  <select id="inputState" class="form-control">
-                                    <option selected>Done</option>
-                                    <option>To do</option>
-                                    <option>In progress</option>
-                                    <option>Review</option>
-                                  </select>
-                                </div>
-                                <!-- <button type="submit" class="btn btn-success">Save Changes</button>
-                                  <button type="submit" class="btn btn-success">Cancel</button> -->
-                              </div>
-                            </section>
-                          </div>
-                          <div class="modal-footer">
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              data-dismiss="modal"
-                            >
-                              Close
-                            </button>
-                            <button type="button" class="btn btn-primary">
-                              Save changes
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Edit Modal of task 1 Ends here -->
+                  <!-- Tooltip of edit button ends here -->
+                    <!--Edit modal code in index.html-->
                 </td>
 
                 <td>
-                  <!-- Tooltip of delete Modal of task 1 Starts here -->
+                  <!-- Tooltip of delete button Starts here -->
                   <a
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Delete item"
                   >
-                    <!--Delete Modal of task 1 Starts here-->
+                    <!--Delete button Starts here-->
                     <button
                       type="button"
                       class="btn btn-outline-danger"
@@ -271,7 +173,7 @@ const createTaskHtml = (
                       data-keyboard="false"
                       data-backdrop="static"
                     >
-                      <!-- delete icon 1 starts here -->
+                      <!-- delete icon starts here -->
                       <svg
                         width="1em"
                         height="1em"
@@ -288,79 +190,14 @@ const createTaskHtml = (
                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                         />
                       </svg>
-                      <!-- delete icon 1 ends here -->
+                      <!-- delete icon ends here -->
                     </button>
+                    <!--Delete button ends here-->
                   </a>
-                  <!-- Tooltip of delete Modal of task 1 ends here -->
-                  <div
-                    class="modal fade"
-                    id="exampleModal1"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel1"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel1">
-                            Confirm
-                          </h5>
-                          <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                          >
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body bgcolor">
-                          Are you sure you want to delete this?
-                        </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-danger"
-                            data-dismiss="modal"
-                          >
-                            Yes
-                          </button>
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-dismiss="modal"
-                          >
-                            No
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Delete Modal of task 1 Ends here-->
+                  <!-- Tooltip of delete button ends here -->
+                  <!-- Delete Modal code in index.html-->
                 </td>
               </tr>
-              <!-- Task 1 ends here -->
+              <!-- Task ends here -->
             `;
 };
-//end of function createTaskHtml
-
-//create an instance of class taskManager
-//const taskList = new TaskManager();
-//call the newAddTask method
-// taskList.addTask(
-//   "wireframe",
-//   "Wireframe the project using ninjamock",
-//   "16-12-2020",
-//   "Reny"
-// );
-// taskList.addTask(
-//   "wireframe2",
-//   "Wireframe the project using ninjamock",
-//   "16-12-2020",
-//   "Angel"
-// );
-//console.log(taskList.tasks);
-
-// Call the render function
-
-//taskList.render();
