@@ -80,6 +80,7 @@ const createTaskHtml = (
 ) => {
   return `  
   <!-- Task 1 starts here -->
+  
               <tr data-task-id=${newAddId}>
                 <th scope="row">${newAddId}</th>
                 <td>${newAddTaskName}</td>
@@ -201,3 +202,14 @@ const createTaskHtml = (
               <!-- Task ends here -->
             `;
 };
+
+const pieButton = document.querySelector("#pieButton");
+const pieChart = document.querySelector("#pieChart");
+pieButton.addEventListener("click", drawPie);
+console.log("pie");
+function drawPie() {
+  // x <- c(10, 20, 30, 40);
+  // pie(x);
+  console.log("pie button clicked");
+  pieChart.className = "pieChartClass";
+}

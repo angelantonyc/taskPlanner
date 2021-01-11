@@ -24,3 +24,29 @@
 .infocolor{
         background-color: rgb(250, 251, 252);
 }
+
+#pieButton{
+  /* margin-left:700px; */
+}
+
+    .pieChartClass { 
+        margin-top: 600px; 
+        margin-left:100px;
+        display: block; 
+        position: absolute; 
+        width: 400px; 
+        height: 400px; 
+        border-radius: 50%; 
+        background-image: conic-gradient( 
+            red 70deg,  
+            orange 0 100deg, 
+            blue 0 200deg,
+            green 0); 
+    } 
+  
+    
+    .pieChartClass { 
+        /* display: flex;  */
+        justify-content: center; 
+        align-items: center; 
+    } 

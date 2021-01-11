@@ -42,13 +42,9 @@ function checkHoliday() {
       // get the data we need for our html from the response
       const holidayCaption = data[0].name;
       console.log(holidayCaption);
-      if (data[0].type === "National") {
-        holidayMsg.innerHTML = `The chosen date is a public holiday : ${holidayCaption}`;
-        holidayMsg.style.color = "yellow";
-        //   holidayMsg.style.fontWeight = "bold";
-      } else {
-        holidayMsg.innerHTML = " ";
-      }
+      holidayMsg.innerHTML = `The chosen date is ${holidayCaption}`;
+      holidayMsg.style.color = 'yellow';
+    //   holidayMsg.style.fontWeight = "bold";
     })
     .catch((error) => {
       holidayMsg.innerHTML = " ";
