@@ -203,6 +203,7 @@ const createTaskHtml = (
             `;
 };
 
+//piechart view
 const pieButton = document.querySelector("#pieButton");
 const pieChart = document.querySelector("#pieChart");
 pieButton.addEventListener("click", drawPie);
