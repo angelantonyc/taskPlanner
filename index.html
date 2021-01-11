@@ -147,9 +147,10 @@
                           type="date"
                           class="form-control"
                           id="newTaskDueDate"
-                          max="2021-12-13"
+                          max="2022-12-13"
                         />
                         <span id="newTaskDateAlert"> </span>
+                        <div id ='holidayMsg'></div>
                       </div>
                       <div class="form-group col-md-10">
                         <label for="newTaskAssignedTo">Assigned To</label>
@@ -189,9 +190,10 @@
               </form>
             </div>
           </div>
+         
         </div>
         <!-- Add Task Modal end -->
-
+         <div id ="localTime"></div>
         <!-- Tasks list starts here -->
         <table
           class="table table-sm table-hover table-responsive border-info shadow p-4 mb-4 rounded hometable"
@@ -1466,6 +1468,7 @@ Collaborating the project using Github</textarea
     -->
     <script src="js/taskManagertable.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/api.js"></script>
     <!-- <script src="js/taskManager.js"></script> -->
   </body>
 </html>
