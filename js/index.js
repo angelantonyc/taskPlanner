@@ -27,7 +27,11 @@ const newTaskAssignAlert = document.querySelector("#newTaskAssignAlert");
 // Select the New Task Form
 const newTaskForm = document.querySelector("#newTaskForm");
 let validFlag;    //flag for data validation
+// Load the tasks from localStorage
+taskManager.load();
 
+// Render the tasks to the page
+taskManager.render();
 // Add an 'onsubmit' event listener
 newTaskForm.addEventListener("submit", (event) => {
   // Prevent default action
@@ -94,6 +98,8 @@ newTaskForm.addEventListener("submit", (event) => {
 
   if (validFlag === true) {
     taskManager.addTask(newName, newDescription, newDueDate, newAssignedTo);
+    // Save the tasks to localStorage
+    taskManager.save();
 
     $("#addTask").modal("hide");
     taskManager.render();
@@ -114,6 +120,7 @@ function validFormFieldInput(data) {
 // Select the Tasks List
 
 const addModalDiv = document.querySelector("#tableBody");
+console.log(addModalDiv);
 
 // Add an 'onclick' event listener to the Tasks List
 addModalDiv.addEventListener("click", (event) => {
@@ -121,20 +128,47 @@ addModalDiv.addEventListener("click", (event) => {
   if (event.target.classList.contains("done-button")) {
     // Get the parent Task
     const parentTask = event.target.parentElement.parentElement;
-    
+    console.log(parentTask.dataset.taskId);
+
     // Get the taskId of the parent Task.
     const taskId = Number(parentTask.dataset.taskId);
-    
+
     // Get the task from the TaskManager using the taskId
     const task = taskManager.getTaskById(taskId);
 
     // Update the task status to 'DONE'
     task.newAddStatus = "DONE";
 
+    // Save the tasks to localStorage
+    taskManager.save();
+
     // Render the tasks
     taskManager.render();
   }
+console.log(addModalDiv);
+// Add an 'onclick' event listener to the Delete Modal
+  //addModalDiv.addEventListener("click", (event) => {
+  
+    // Check if a "Delete" button was clicked
+    if (event.target.classList.contains('delete-button')) {
+      // Get the parent Task
+      const parentTask = event.target.parentElement.parentElement.parentElement;
+      console.log(parentTask.dataset.taskId);
+      // Get the taskId of the parent Task.
+      const taskId = Number(parentTask.dataset.taskId);
+
+      // Delete the task
+      taskManager.deleteTask(taskId);
+
+      // Save the tasks to localStorage
+      taskManager.save();
+
+      // Render the tasks
+      taskManager.render();
+    }
+
 });
+
 
 // For adding tooltip for edit and delete button
 $(function () {
