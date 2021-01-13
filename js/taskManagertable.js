@@ -7,7 +7,7 @@ class TaskManager {
   //function addTask
   addTask(newAddTaskName, newAddDesc, newAddDate, newAddAssign) {
     //create a new object from the details of the add task
-    console.log(this.currentId);
+
     const newAddTask = {
       newAddId: this.currentId++,
       newAddTaskName: newAddTaskName,
@@ -68,8 +68,8 @@ class TaskManager {
   render() {
     const addModalDiv = document.querySelector("#tableBody");
     const addTableHeader = document.querySelector("#tableHeader");
-
-    addTableHeader.innerHTML = `<tr>
+    if (this.tasks.length > 0) {
+      addTableHeader.innerHTML = `<tr>
               <th scope="col">#</th>
               <th scope="col" class="w-25">Task Name</th>
               <th scope="col">Status</th>
@@ -80,19 +80,28 @@ class TaskManager {
               <th scope="col"></th>
             </tr>`;
 
+      addModalDiv.innerHTML = "";
+      for (let i = 0; i < this.tasks.length; i++) {
+        const tasksHtml = createTaskHtml(
+          this.tasks[i].newAddId,
+          this.tasks[i].newAddTaskName,
+          this.tasks[i].newAddDesc,
+          this.tasks[i].newAddDate,
+          this.tasks[i].newAddAssign,
+          this.tasks[i].newAddStatus
+        );
+        addModalDiv.innerHTML += tasksHtml;
+      }
+    } else {
+      addTableHeader.innerHTML = "No tasks yet, Please click on Add task to add a new task";
     addModalDiv.innerHTML = "";
-    for (let i = 0; i < this.tasks.length; i++) {
-      const tasksHtml = createTaskHtml(
-        this.tasks[i].newAddId,
-        this.tasks[i].newAddTaskName,
-        this.tasks[i].newAddDesc,
-        this.tasks[i].newAddDate,
-        this.tasks[i].newAddAssign,
-        this.tasks[i].newAddStatus
-      );
-      addModalDiv.innerHTML += tasksHtml;
     }
+    
   }
+
+
+
+
   //localstorage starts here
   // Create the save method
   save() {
@@ -226,22 +235,23 @@ const createTaskHtml = (
                     data-placement="top"
                     title="Delete item"
                   >
-                  <img src="./images/image.png" class="delete-button" width="30" height="30" alt="...">
+                  <!--<img src="./images/image.png" class="delete-button" width="30" height="30" alt="..."> -->
                     <!--Delete button Starts here-->
-                    <!-- <button
+                    <button
                       type="button"
-                      class="btn btn-outline-danger deleteModal delete-button"
+                      id="deleteModal"
+                      class="btn btn-outline-danger"
                       data-toggle="modal"
-                      data-target=""
+                      data-target="#delModal-${newAddId}"
                       data-keyboard="false"
                       data-backdrop="static"
-                    > -->
-                      <!-- delete icon starts here -->
-                      <!-- <svg
+                    >
+                    <!-- delete icon starts here -->
+                      <svg
                         width="1em"
                         height="1em"
                         viewBox="0 0 16 16"
-                        class="bi bi-trash delete-button"
+                        class="bi bi-trash"
                         fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg"
                       >
@@ -252,13 +262,60 @@ const createTaskHtml = (
                           fill-rule="evenodd"
                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                         />
-                       </svg> -->
+                       </svg> 
                       <!-- delete icon ends here -->
-                      <!--</button> -->
+                      
+                      
+                      </button>
                     <!--Delete button ends here-->
                   </a>
                   <!-- Tooltip of delete button ends here -->
-                  <!-- Delete Modal code in index.html-->
+                  
+                  <!--Delete modal starts here-->
+                  <div
+              class="modal fade "
+              id="delModal-${newAddId}"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel1"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" id="modal-dialog-${newAddId}">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Confirm</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body bgcolor">
+                    Are you sure you want to delete this?
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      id= "deleteId"
+                      class="btn btn-danger delete-button"
+                      data-dismiss="modal"
+                    >
+                      Yes
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      No
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Delete modal ends here-->
                 </td>
               </tr>
               <!-- Task ends here -->
