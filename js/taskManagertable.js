@@ -23,6 +23,7 @@ class TaskManager {
   deleteTask(taskId) {
     // Create an empty array and store it in a new variable, newTasks
     const newTasks = [];
+    console.log("Delete task invoked for task:" + taskId);
 
     // Loop over the tasks
     for (let i = 0; i < this.tasks.length; i++) {
@@ -33,15 +34,20 @@ class TaskManager {
       if (task.newAddId !== taskId) {
         // Push the task to the newTasks array
         newTasks.push(task);
+        console.log("printing task array");
+        console.log(task);
       }
     }
     // Set this.tasks to newTasks
     this.tasks = newTasks;
+    console.log("printing new task array");
+    console.log(newTasks);
   }
 
   getTaskById(taskId) {
     // Create a variable to store the found task
     let foundTask;
+    console.log("Task function invoked with" + taskId);
 
     // Loop over the tasks and find the task with the id passed as a parameter
     for (let i = 0; i < this.tasks.length; i++) {
@@ -220,21 +226,22 @@ const createTaskHtml = (
                     data-placement="top"
                     title="Delete item"
                   >
+                  <img src="./images/image.png" class="delete-button" width="30" height="30" alt="...">
                     <!--Delete button Starts here-->
-                    <button
+                    <!-- <button
                       type="button"
                       class="btn btn-outline-danger deleteModal delete-button"
                       data-toggle="modal"
                       data-target=""
                       data-keyboard="false"
                       data-backdrop="static"
-                    >
+                    > -->
                       <!-- delete icon starts here -->
-                      <svg
+                      <!-- <svg
                         width="1em"
                         height="1em"
                         viewBox="0 0 16 16"
-                        class="bi bi-trash"
+                        class="bi bi-trash delete-button"
                         fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg"
                       >
@@ -245,9 +252,9 @@ const createTaskHtml = (
                           fill-rule="evenodd"
                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                         />
-                      </svg>
+                       </svg> -->
                       <!-- delete icon ends here -->
-                    </button>
+                      <!--</button> -->
                     <!--Delete button ends here-->
                   </a>
                   <!-- Tooltip of delete button ends here -->
@@ -269,5 +276,3 @@ const createTaskHtml = (
 //   console.log("pie button clicked");
 //   pieChart.className = "pieChartClass";
 // }
-
-
