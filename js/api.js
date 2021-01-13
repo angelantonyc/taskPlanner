@@ -40,17 +40,25 @@ function checkHoliday() {
     .then((response) => response.json())
     .then((data) => {
       // get the data we need for our html from the response
-      const holidayCaption = data[0].name;
-      console.log(holidayCaption);
-      if (data[0].type === "National") {
-        holidayMsg.innerHTML = `The chosen date is a public holiday : ${holidayCaption}`;
-        holidayMsg.style.color = "yellow";
-        //   holidayMsg.style.fontWeight = "bold";
-      } else {
-        holidayMsg.innerHTML = " ";
+
+      holidayMsg.innerHTML = "";
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].type === "National" || data[i].type === "Local holiday") {
+          const holidayCaption = data[i].name;
+          console.log(holidayCaption);
+          holidayMsg.innerHTML = `The chosen date is a public holiday : ${holidayCaption}`;
+          holidayMsg.style.color = "yellow";
+          console.log(data[i].type);
+          return;
+          // console.log(holidayCaption);
+          //   holidayMsg.style.fontWeight = "bold";
+        } else {
+          holidayMsg.innerHTML = "";
+          console.log(`else part ${data[i].type}`);
+        }
       }
     })
     .catch((error) => {
-      holidayMsg.innerHTML = " ";
+      holidayMsg.innerHTML = "";
     });
 }
