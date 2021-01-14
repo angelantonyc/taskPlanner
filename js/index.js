@@ -123,8 +123,8 @@ console.log(addModalDiv);
 
 // Add an 'onclick' event listener to the Tasks List
 addModalDiv.addEventListener("click", (event) => {
-  console.log("printing event");
-  console.log(event);
+  // console.log("printing event");
+  // console.log(event);
   // Check if a "Mark As Done" button was clicked
   if (event.target.classList.contains("done-button")) {
     // Get the parent Task
@@ -146,15 +146,28 @@ addModalDiv.addEventListener("click", (event) => {
     // Render the tasks
     taskManager.render();
   }
-  console.log(addModalDiv);
-  // Add an 'onclick' event listener to the Delete Modal
-  //addModalDiv.addEventListener("click", (event) => {
+  // console.log(addModalDiv);
+  
 
-  // Check if a "Delete" button was clicked
-  console.log(event);
+  
+});
+
+
+// Add an 'onclick' event listener to the Delete Modal
+// Check if a "Delete" button was clicked
+
+addModalDiv.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-button")) {
     // Get the parent Task
-    const parentTask = event.target.parentElement.parentElement.parentElement;
+    console.log("Found delete-button");
+    console.log(event);
+    // const parentTask =
+    //   event.target.parentElement.parentElement.parentElement.parentElement
+    //     .parentElement.parentElement;
+
+    //uses closest() from jQuery for flexibility in parent element
+    const parentTask = event.target.closest('tr');
+    console.log(parentTask);
     console.log(parentTask.dataset.taskId);
     // Get the taskId of the parent Task.
     const taskId = Number(parentTask.dataset.taskId);
