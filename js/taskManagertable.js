@@ -34,14 +34,14 @@ class TaskManager {
       if (task.newAddId !== taskId) {
         // Push the task to the newTasks array
         newTasks.push(task);
-        console.log("printing task array");
-        console.log(task);
+        //console.log("printing task array");
+        //console.log(task);
       }
     }
     // Set this.tasks to newTasks
     this.tasks = newTasks;
-    console.log("printing new task array");
-    console.log(newTasks);
+    //console.log("printing new task array");
+    //console.log(newTasks);
   }
 
   getTaskById(taskId) {
@@ -93,14 +93,11 @@ class TaskManager {
         addModalDiv.innerHTML += tasksHtml;
       }
     } else {
-      addTableHeader.innerHTML = "No tasks yet, Please click on Add task to add a new task";
-    addModalDiv.innerHTML = "";
+      addTableHeader.innerHTML =
+        "No tasks yet, Please click on Add task to add a new task";
+      addModalDiv.innerHTML = "";
     }
-    
   }
-
-
-
 
   //localstorage starts here
   // Create the save method
@@ -152,7 +149,7 @@ const createTaskHtml = (
   <!-- Task 1 starts here -->
   
               <tr data-task-id=${newAddId}>
-                <th scope="row">${newAddId}</th>
+                <th scope="row"></th>
                 <td>${newAddTaskName}</td>
                 <td>
                   <span class="badge ${
@@ -333,3 +330,5 @@ const createTaskHtml = (
 //   console.log("pie button clicked");
 //   pieChart.className = "pieChartClass";
 // }
+
+module.exports = TaskManager;
