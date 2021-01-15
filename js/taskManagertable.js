@@ -2,6 +2,9 @@
 class TaskManager {
   constructor(currentId = 0) {
     this.tasks = [];
+    this.todotasks = [];
+    this.donetasks = [];
+    this.alltasks = [];
     this.currentId = currentId;
   }
   //function addTask
@@ -64,6 +67,71 @@ class TaskManager {
     // Return the found task
     return foundTask;
   }
+  filterByStatusAll() {
+    let alltasks = [];
+    for (let i = 0; i < this.tasks.length; i++) {
+      // Get the current task in the loop
+      const task = this.tasks[i];
+
+      // Check if its the right task by comparing the task's id to the id passed as a parameter
+      
+      // Store the task in the foundTask variable
+      alltasks.push(task);
+      this.tasks = alltasks;
+      console.log("reset");
+      console.log(this.tasks);
+
+    
+    }
+  }
+
+  filterByStatusTodo() {
+    // let todotasks = [];
+    //let donetasks = [];
+this.alltasks= this.tasks;
+    // Loop over the tasks and find the task with the id passed as a parameter
+    for (let i = 0; i < this.tasks.length; i++) {
+      // Get the current task in the loop
+      const task = this.tasks[i];
+        // this.alltasks.push(task);
+      // Check if its the right task by comparing the task's id to the id passed as a parameter
+      if (task.newAddStatus === "To-Do") {
+        // Store the task in the foundTask variable
+        this.todotasks.push(task);
+      }
+      // else {
+      //   donetasks.push(task);
+      // }
+    }
+
+    // Return the found task
+    this.tasks = this.todotasks;
+  }
+  filterByStatusDone() {
+    //let todotasks = [];
+    // let donetasks = [];
+    this.tasks = this.alltasks;
+    console.log("done filter invoked");
+    // Loop over the tasks and find the task with the id passed as a parameter
+    for (let i = 0; i < this.tasks.length; i++) {
+      // Get the current task in the loop
+      const task = this.tasks[i];
+
+      // Check if its the right task by comparing the task's id to the id passed as a parameter
+      if (task.newAddStatus === "DONE") {
+        // Store the task in the foundTask variable
+        this.donetasks.push(task);
+        console.log(this.donetasks);
+      }
+      // else {
+      //   donetasks.push(task);
+      // }
+    }
+
+    // Return the found task
+    this.tasks = this.donetasks;
+    console.log(this.tasks);
+  }
   // function to display the book on the browser
   render() {
     const addModalDiv = document.querySelector("#tableBody");
@@ -71,8 +139,22 @@ class TaskManager {
     if (this.tasks.length > 0) {
       addTableHeader.innerHTML = `<tr>
               <th scope="col">#</th>
-              <th scope="col" class="w-25">Task Name</th>
-              <th scope="col">Status</th>
+              <th scope="col" class="w-25" >Task Name</th>
+              <th scope="col" class="w-25">
+              
+                            <!-- <label for="filterStatus">Status</label>-->
+                            <select id="filterStatus" class="form-control" onchange="">
+                             <option disabled selected>Status
+                          </option>
+                          
+                              <option value="Done" id="done">
+                              
+                      Done</option>
+                              <option value="To do" id="todo">To do</option>
+                              <!--<option value="In progress">In progress</option>
+                              <option value="Review">Review</option>-->
+                            </select>
+                          </th>
               <th scope="col" class="w-25 pl-2 text-center">Assigned to</th>
               <th scope="col" class="w-25">Due Date</th>
               <th scope="col" class="w-25">Description</th>
@@ -331,4 +413,6 @@ const createTaskHtml = (
 //   pieChart.className = "pieChartClass";
 // }
 
-module.exports = TaskManager;
+if (typeof module != "undefined") {
+  module.exports = TaskManager;
+}

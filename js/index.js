@@ -147,11 +147,7 @@ addModalDiv.addEventListener("click", (event) => {
     taskManager.render();
   }
   // console.log(addModalDiv);
-  
-
-  
 });
-
 
 // Add an 'onclick' event listener to the Delete Modal
 // Check if a "Delete" button was clicked
@@ -166,7 +162,7 @@ addModalDiv.addEventListener("click", (event) => {
     //     .parentElement.parentElement;
 
     //uses closest() from jQuery for flexibility in parent element
-    const parentTask = event.target.closest('tr');
+    const parentTask = event.target.closest("tr");
     console.log(parentTask);
     console.log(parentTask.dataset.taskId);
     // Get the taskId of the parent Task.
@@ -182,6 +178,60 @@ addModalDiv.addEventListener("click", (event) => {
     taskManager.render();
   }
 });
+// const addModalDiv = document.querySelector("#tableBody");
+const filterStatus = document.querySelector("#filterStatus");
+filterStatus.addEventListener("click", (event) => {
+  console.log(event);
+  var x = document.querySelector("#filterStatus").value;
+  console.log("x printing");
+  console.log(x);
+  if ((x === "Done")) {
+    console.log("if condition for fitler done");
+    document.querySelector(
+      "#filterStatus"
+    ).onchange = taskManager.filterByStatusDone();
+    //taskManager.filterByStatusDone();
+    taskManager.render();
+    taskManager.filterByStatusAll(); 
+
+  }
+  // else {
+  //   console.log("else for filter");
+  //   document.querySelector(
+  //     "#filterStatus"
+  //   ).onchange = taskManager.filterByStatusTodo();
+  //   taskManager.render();
+  // }
+});
+filterStatus.addEventListener("change", (event) => {
+  console.log(event);
+  var x = document.querySelector("#filterStatus").value;
+  console.log("x printing");
+  console.log(x);
+  if ((x === "To do")) {
+    console.log("else for filter");
+    document.querySelector(
+      "#filterStatus"
+    ).onchange = taskManager.filterByStatusTodo();
+    //taskManager.filterByStatusDone();
+    taskManager.render();
+    console.log(this.tasks);
+    taskManager.filterByStatusAll(); 
+    console.log("after resetting");
+    console.log(this.tasks);
+  }
+  // else {
+  //   console.log("else for filter");
+  //   document.querySelector(
+  //     "#filterStatus"
+  //   ).onchange = taskManager.filterByStatusTodo();
+  // taskManager.render();
+  // }
+});
+
+var x = document.querySelector("#filterStatus").value;
+console.log("x printing");
+console.log(x);
 
 // For adding tooltip for edit and delete button
 $(function () {
