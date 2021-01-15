@@ -27,7 +27,7 @@ describe("Testing taskManager class funciton", () => {
     //verify
     assert.strictEqual(actualLength, expectedLength);
   });
-  it("should GetTaskById for MarkasDone", () => {
+  it("should GetTaskById", () => {
     //setup
     const taskManager = new TaskManager(0);
     taskManager.addTask("Wireframing", "Using Ninjamock", "reny", "24/05/2021");
@@ -44,8 +44,8 @@ describe("Testing taskManager class funciton", () => {
     // };
 
     let result = taskManager.getTaskById(0);
-    // console.log(result);
-    // console.log(expected);
+    console.log(result);
+    console.log(expected);
 
     //verify
     assert.deepStrictEqual(result, expected);
