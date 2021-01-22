@@ -1,5 +1,6 @@
 // Initialize a new TaskManager with currentId set to 0
 const taskManager = new TaskManager(1);
+
 // Select the New Task Date
 const newTaskDate = document.querySelector("#newTaskDueDate");
 // Add an on click event for due date
@@ -17,20 +18,24 @@ const newTaskNameInput = document.querySelector("#newTaskNameInput");
 const newTaskDescription = document.querySelector("#newTaskDescription");
 const newTaskAssignedTo = document.querySelector("#newTaskAssignedTo");
 const newTaskDueDate = document.querySelector("#newTaskDueDate");
+const newTaskStatusInput = document.querySelector("#newTaskStatusInput");
 
 //Select alert messages
 const newTaskNameAlert = document.querySelector("#newTaskNameAlert");
 const newTaskDescAlert = document.querySelector("#newTaskDescAlert");
 const newTaskDateAlert = document.querySelector("#newTaskDateAlert");
 const newTaskAssignAlert = document.querySelector("#newTaskAssignAlert");
+
 // Select the New Task Form
 const newTaskForm = document.querySelector("#newTaskForm");
 let validFlag; //flag for data validation
+
 // Load the tasks from localStorage
 taskManager.load();
 
 // Render the tasks to the page
 taskManager.render();
+
 // Add an 'onsubmit' event listener
 newTaskForm.addEventListener("submit", (event) => {
   // Prevent default action
@@ -41,6 +46,7 @@ newTaskForm.addEventListener("submit", (event) => {
   const newDescription = newTaskDescription.value;
   const newAssignedTo = newTaskAssignedTo.value;
   const newDueDate = newTaskDueDate.value;
+  const newAddStatus = newTaskStatusInput.value;
 
   //         Validation code here
   // Alert message for new task name
@@ -96,7 +102,13 @@ newTaskForm.addEventListener("submit", (event) => {
   // Add the task to the task manager
 
   if (validFlag === true) {
-    taskManager.addTask(newName, newDescription, newDueDate, newAssignedTo);
+    taskManager.addTask(
+      newName,
+      newDescription,
+      newDueDate,
+      newAssignedTo,
+      newAddStatus
+    );
     // Save the tasks to localStorage
     taskManager.save();
 
@@ -118,13 +130,10 @@ function validFormFieldInput(data) {
 
 // Select the Tasks List
 
-const addModalDiv = document.querySelector("#tableBody");
-console.log(addModalDiv);
+const tableBody = document.querySelector("#tableBody");
 
 // Add an 'onclick' event listener to the Tasks List
-addModalDiv.addEventListener("click", (event) => {
-  // console.log("printing event");
-  // console.log(event);
+tableBody.addEventListener("click", (event) => {
   // Check if a "Mark As Done" button was clicked
   if (event.target.classList.contains("done-button")) {
     // Get the parent Task
@@ -137,8 +146,8 @@ addModalDiv.addEventListener("click", (event) => {
     // Get the task from the TaskManager using the taskId
     const task = taskManager.getTaskById(taskId);
 
-    // Update the task status to 'DONE'
-    task.newAddStatus = "DONE";
+    // Update the task status to 'Done'
+    task.newAddStatus = "Done";
 
     // Save the tasks to localStorage
     taskManager.save();
@@ -146,13 +155,12 @@ addModalDiv.addEventListener("click", (event) => {
     // Render the tasks
     taskManager.render();
   }
-  // console.log(addModalDiv);
 });
 
 // Add an 'onclick' event listener to the Delete Modal
 // Check if a "Delete" button was clicked
 
-addModalDiv.addEventListener("click", (event) => {
+tableBody.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-button")) {
     // Get the parent Task
     console.log("Found delete-button");
@@ -178,60 +186,33 @@ addModalDiv.addEventListener("click", (event) => {
     taskManager.render();
   }
 });
-// const addModalDiv = document.querySelector("#tableBody");
-const filterStatus = document.querySelector("#filterStatus");
-filterStatus.addEventListener("click", (event) => {
-  console.log(event);
-  var x = document.querySelector("#filterStatus").value;
-  console.log("x printing");
-  console.log(x);
-  if ((x === "Done")) {
-    console.log("if condition for fitler done");
-    document.querySelector(
-      "#filterStatus"
-    ).onchange = taskManager.filterByStatusDone();
-    //taskManager.filterByStatusDone();
-    taskManager.render();
-    taskManager.filterByStatusAll(); 
 
-  }
-  // else {
-  //   console.log("else for filter");
-  //   document.querySelector(
-  //     "#filterStatus"
-  //   ).onchange = taskManager.filterByStatusTodo();
-  //   taskManager.render();
-  // }
-});
+// Add an 'onclick' event listener to the status dropdown for fitering the tasks
+// Check if dropdown for status filtering was clicked
+let fiterStatus = document.querySelector("#filterStatus");
 filterStatus.addEventListener("change", (event) => {
-  console.log(event);
-  var x = document.querySelector("#filterStatus").value;
-  console.log("x printing");
-  console.log(x);
-  if ((x === "To do")) {
-    console.log("else for filter");
-    document.querySelector(
-      "#filterStatus"
-    ).onchange = taskManager.filterByStatusTodo();
-    //taskManager.filterByStatusDone();
-    taskManager.render();
-    console.log(this.tasks);
-    taskManager.filterByStatusAll(); 
-    console.log("after resetting");
-    console.log(this.tasks);
-  }
-  // else {
-  //   console.log("else for filter");
-  //   document.querySelector(
-  //     "#filterStatus"
-  //   ).onchange = taskManager.filterByStatusTodo();
-  // taskManager.render();
-  // }
+  taskManager.filterView(); // calling the function for calculating the filtervariable
 });
 
-var x = document.querySelector("#filterStatus").value;
-console.log("x printing");
-console.log(x);
+//date
+const dateTime = () => {
+  let dateT = new Date();
+  let day = dateT.toDateString();
+
+  let hours = dateT.getHours();
+  let minutes = dateT.getMinutes();
+  let seconds = dateT.getSeconds();
+  let ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  let strTime = hours + ":" + minutes + ":" + seconds + " " + ampm;
+  const currentDate = document.querySelector("#currentDate");
+  currentDate.innerHTML = `${day}  ${strTime} `;
+};
+setInterval(dateTime, 1000);
 
 // For adding tooltip for edit and delete button
 $(function () {

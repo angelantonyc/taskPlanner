@@ -2,13 +2,11 @@
 class TaskManager {
   constructor(currentId = 0) {
     this.tasks = [];
-    this.todotasks = [];
-    this.donetasks = [];
-    this.alltasks = [];
+    this.filterVar = "All";
     this.currentId = currentId;
   }
   //function addTask
-  addTask(newAddTaskName, newAddDesc, newAddDate, newAddAssign) {
+  addTask(newAddTaskName, newAddDesc, newAddDate, newAddAssign, newAddStatus) {
     //create a new object from the details of the add task
 
     const newAddTask = {
@@ -17,9 +15,9 @@ class TaskManager {
       newAddDesc: newAddDesc,
       newAddDate: newAddDate,
       newAddAssign: newAddAssign,
-      newAddStatus: "To-Do",
+      newAddStatus: newAddStatus,
     };
-    //push the object into the book arra
+    //push the object into the book array
     this.tasks.push(newAddTask);
   }
   // Create the deleteTask method
@@ -37,20 +35,15 @@ class TaskManager {
       if (task.newAddId !== taskId) {
         // Push the task to the newTasks array
         newTasks.push(task);
-        //console.log("printing task array");
-        //console.log(task);
       }
     }
     // Set this.tasks to newTasks
     this.tasks = newTasks;
-    //console.log("printing new task array");
-    //console.log(newTasks);
   }
 
   getTaskById(taskId) {
     // Create a variable to store the found task
     let foundTask;
-    console.log("Task function invoked with" + taskId);
 
     // Loop over the tasks and find the task with the id passed as a parameter
     for (let i = 0; i < this.tasks.length; i++) {
@@ -67,117 +60,60 @@ class TaskManager {
     // Return the found task
     return foundTask;
   }
-  filterByStatusAll() {
-    let alltasks = [];
-    for (let i = 0; i < this.tasks.length; i++) {
-      // Get the current task in the loop
-      const task = this.tasks[i];
 
-      // Check if its the right task by comparing the task's id to the id passed as a parameter
-      
-      // Store the task in the foundTask variable
-      alltasks.push(task);
-      this.tasks = alltasks;
-      console.log("reset");
-      console.log(this.tasks);
-
-    
-    }
+  filterView() {
+    this.filterVar = document.querySelector(
+      "#filterStatus"
+    ).selectedOptions[0].value;
+    this.render();
   }
 
-  filterByStatusTodo() {
-    // let todotasks = [];
-    //let donetasks = [];
-this.alltasks= this.tasks;
-    // Loop over the tasks and find the task with the id passed as a parameter
-    for (let i = 0; i < this.tasks.length; i++) {
-      // Get the current task in the loop
-      const task = this.tasks[i];
-        // this.alltasks.push(task);
-      // Check if its the right task by comparing the task's id to the id passed as a parameter
-      if (task.newAddStatus === "To-Do") {
-        // Store the task in the foundTask variable
-        this.todotasks.push(task);
-      }
-      // else {
-      //   donetasks.push(task);
-      // }
-    }
-
-    // Return the found task
-    this.tasks = this.todotasks;
-  }
-  filterByStatusDone() {
-    //let todotasks = [];
-    // let donetasks = [];
-    this.tasks = this.alltasks;
-    console.log("done filter invoked");
-    // Loop over the tasks and find the task with the id passed as a parameter
-    for (let i = 0; i < this.tasks.length; i++) {
-      // Get the current task in the loop
-      const task = this.tasks[i];
-
-      // Check if its the right task by comparing the task's id to the id passed as a parameter
-      if (task.newAddStatus === "DONE") {
-        // Store the task in the foundTask variable
-        this.donetasks.push(task);
-        console.log(this.donetasks);
-      }
-      // else {
-      //   donetasks.push(task);
-      // }
-    }
-
-    // Return the found task
-    this.tasks = this.donetasks;
-    console.log(this.tasks);
-  }
-  // function to display the book on the browser
   render() {
-    const addModalDiv = document.querySelector("#tableBody");
-    const addTableHeader = document.querySelector("#tableHeader");
-    if (this.tasks.length > 0) {
-      addTableHeader.innerHTML = `<tr>
-              <th scope="col">#</th>
-              <th scope="col" class="w-25" >Task Name</th>
-              <th scope="col" class="w-25">
-              
-                            <!-- <label for="filterStatus">Status</label>-->
-                            <select id="filterStatus" class="form-control" onchange="">
-                             <option disabled selected>Status
-                          </option>
-                          
-                              <option value="Done" id="done">
-                              
-                      Done</option>
-                              <option value="To do" id="todo">To do</option>
-                              <!--<option value="In progress">In progress</option>
-                              <option value="Review">Review</option>-->
-                            </select>
-                          </th>
-              <th scope="col" class="w-25 pl-2 text-center">Assigned to</th>
-              <th scope="col" class="w-25">Due Date</th>
-              <th scope="col" class="w-25">Description</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>`;
+    let taskNow;
+    let filteredTasks = [];
 
-      addModalDiv.innerHTML = "";
+    // check if filter variable is  All if yes, fetch its value and assign all tasks to filtered tasks, else filter the tasks
+    if (this.filterVar === "All") {
+      filteredTasks = this.tasks;
+    } else {
       for (let i = 0; i < this.tasks.length; i++) {
+        taskNow = this.tasks[i];
+        if (taskNow.newAddStatus === this.filterVar) {
+          filteredTasks.push(taskNow);
+        }
+      }
+    }
+
+    const tableBody = document.querySelector("#tableBody");
+    const addTableHeader = document.querySelector("#tableHeader");
+
+    if (filteredTasks.length > 0) {
+      tableBody.innerHTML = "";
+      for (let i = 0; i < filteredTasks.length; i++) {
         const tasksHtml = createTaskHtml(
-          this.tasks[i].newAddId,
-          this.tasks[i].newAddTaskName,
-          this.tasks[i].newAddDesc,
-          this.tasks[i].newAddDate,
-          this.tasks[i].newAddAssign,
-          this.tasks[i].newAddStatus
+          filteredTasks[i].newAddId,
+          filteredTasks[i].newAddTaskName,
+          filteredTasks[i].newAddDesc,
+          filteredTasks[i].newAddDate,
+          filteredTasks[i].newAddAssign,
+          filteredTasks[i].newAddStatus
         );
-        addModalDiv.innerHTML += tasksHtml;
+        tableBody.innerHTML += tasksHtml;
       }
     } else {
-      addTableHeader.innerHTML =
-        "No tasks yet, Please click on Add task to add a new task";
-      addModalDiv.innerHTML = "";
+      if (this.tasks.length <= 0) {
+        tableBody.innerHTML = `<tr>
+          <td colspan="8">
+            No tasks yet, Please click on Add task to add a new task
+          </td>
+        </tr>`;
+      } else {
+        tableBody.innerHTML = `<tr>
+          <td colspan="8">
+            No tasks with the status "${this.filterVar}"
+          </td>
+        </tr>`;
+      }
     }
   }
 
@@ -228,7 +164,7 @@ const createTaskHtml = (
   newAddStatus
 ) => {
   return `  
-  <!-- Task 1 starts here -->
+  <!-- Task starts here -->
   
               <tr data-task-id=${newAddId}>
                 <th scope="row"></th>
@@ -260,8 +196,8 @@ const createTaskHtml = (
                   <!-- More info of task ends here -->
                 </td>
                 <td class="w-25">
-                            <button id ="markAsDone" class="btn btn-outline-success done-button ${
-                              newAddStatus === "To-Do" ? "visible" : "invisible"
+                            <button id ="markAsDone" class="btn pt-0 mt-0 btn-outline-success done-button ${
+                              newAddStatus !== "Done" ? "visible" : "invisible"
                             }">Mark As Done</button>
 
                 </td>

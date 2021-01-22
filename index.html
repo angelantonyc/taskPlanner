@@ -17,9 +17,6 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./CSS/styles.css" />
-    <!-- <link rel="stylesheet" href="./CSS/angelstyles.css" />
-    <link rel="stylesheet" href="./CSS/renystyles.css" /> -->
-
     <title>Task Planner</title>
   </head>
 
@@ -55,11 +52,11 @@
               <a class="nav-link" href="#">Archive</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id= "pieButton">Pie Chart View</a>
+              <a class="nav-link" href="#" id="pieButton">Pie Chart View</a>
             </li>
           </ul>
 
-          <span class="navbar-text"> Welcome, Username!! </span>
+          <span class="navbar-text" id="currentDate"> </span>
         </div>
       </nav>
     </section>
@@ -169,7 +166,7 @@
                       <div class="form-group col-md-10">
                         <label for="newTaskStatusInput">Status</label>
                         <select id="newTaskStatusInput" class="form-control">
-                          <option selected>To-do</option>
+                          <option selected>To-Do</option>
                           <option>In progress</option>
                           <option>Review</option>
                           <option>Done</option>
@@ -195,11 +192,10 @@
           </div>
         </div>
         <!-- Add Task Modal end -->
-        
+
         <!-- <button type="button" class="btn btn-primary" id="pieButton">Click here for piechart</button> -->
-        
-          <div id="pieChart" class=""></div>
-        
+
+        <div id="pieChart" class=""></div>
 
         <!-- Tasks list starts here -->
         <table
@@ -208,20 +204,34 @@
         >
           <!-- table heading starts here -->
           <thead id="tableHeader">
-            <th>No tasks yet, Please click on Add task to add a new task</th>
-            <!-- <tr>
+            <tr class="tableHead">
               <th scope="col">#</th>
               <th scope="col" class="w-25">Task Name</th>
-              <th scope="col">Status</th>
+              <th scope="col" class="outStat">
+                <!-- <span class="stat"> -->
+                Status
+                <!-- </span> -->
+                <!-- <label for="filterStatus">Status</label>-->
+                <!-- <span class=""> -->
+                <select id="filterStatus" class="form-control dropdown">
+                  <option value="All" id="All">All</option>
+                  <option value="Done" id="Done">Done</option>
+                  <option value="To-Do" id="To-Do">To-Do</option>
+                  <option value="In progress">In progress</option>
+                  <option value="Review">Review</option>
+                </select>
+                <!-- </span> -->
+              </th>
               <th scope="col" class="w-25 pl-2 text-center">Assigned to</th>
               <th scope="col" class="w-25">Due Date</th>
               <th scope="col" class="w-25">Description</th>
               <th scope="col"></th>
               <th scope="col"></th>
-            </tr> -->
+            </tr>
           </thead>
           <!-- table heading ends here -->
           <tbody id="tableBody">
+
             <!-- Edit Modal of task starts here -->
             <div
               class="modal fade"
@@ -319,8 +329,6 @@
               </div>
             </div>
             <!-- Edit Modal of task Ends here -->
-
-            
 
             <!-- Task 2 starts here -->
             <!-- <tr>
@@ -1428,6 +1436,5 @@ Collaborating the project using Github</textarea
     <script src="js/taskManagertable.js"></script>
     <script src="js/index.js"></script>
     <script src="js/api.js"></script>
-    <!-- <script src="js/taskManager.js"></script> -->
   </body>
 </html>
