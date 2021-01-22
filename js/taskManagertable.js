@@ -5,7 +5,7 @@ class TaskManager {
     this.filterVar = "All";
     this.currentId = currentId;
   }
-  //function addTask
+  //function to add new task in add modal
   addTask(newAddTaskName, newAddDesc, newAddDate, newAddAssign, newAddStatus) {
     //create a new object from the details of the add task
 
@@ -17,29 +17,17 @@ class TaskManager {
       newAddAssign: newAddAssign,
       newAddStatus: newAddStatus,
     };
-    //push the object into the book array
+    //push the object into the tasks array
     this.tasks.push(newAddTask);
   }
-  // Create the deleteTask method
-  deleteTask(taskId) {
-    // Create an empty array and store it in a new variable, newTasks
-    const newTasks = [];
-    console.log("Delete task invoked for task:" + taskId);
-
-    // Loop over the tasks
-    for (let i = 0; i < this.tasks.length; i++) {
-      // Get the current task in the loop
-      const task = this.tasks[i];
-
-      // Check if the task id is not the task id passed in as a parameter
-      if (task.newAddId !== taskId) {
-        // Push the task to the newTasks array
-        newTasks.push(task);
-      }
-    }
-    // Set this.tasks to newTasks
-    this.tasks = newTasks;
-  }
+  // statusColor() {
+  //   const colorCode = {
+  //     "To-Do": "badge-danger",
+  //     "Done": "badge-success",
+  //     "Review": "badge-info",
+  //     "In progress": "badge-warning",
+  //   };
+  // }
 
   getTaskById(taskId) {
     // Create a variable to store the found task
@@ -61,17 +49,39 @@ class TaskManager {
     return foundTask;
   }
 
+  // Create the deleteTask method
+  deleteTask(taskId) {
+    // Create an empty array and store it in a new variable, newTasks
+    const newTasks = [];
+    console.log("Delete task invoked for task:" + taskId);
+
+    // Loop over the tasks
+    for (let i = 0; i < this.tasks.length; i++) {
+      // Get the current task in the loop
+      const task = this.tasks[i];
+
+      // Check if the task id is not the task id passed in as a parameter
+      if (task.newAddId !== taskId) {
+        // Push the task to the newTasks array
+        newTasks.push(task);
+      }
+    }
+    // Set this.tasks to newTasks
+    this.tasks = newTasks;
+  }
+
+  //Start of filter function
   filterView() {
     this.filterVar = document.querySelector(
       "#filterStatus"
     ).selectedOptions[0].value;
     this.render();
   }
-
+  // function to render the output
   render() {
     let taskNow;
     let filteredTasks = [];
-
+    //this.statusColor();
     // check if filter variable is  All if yes, fetch its value and assign all tasks to filtered tasks, else filter the tasks
     if (this.filterVar === "All") {
       filteredTasks = this.tasks;
@@ -83,9 +93,7 @@ class TaskManager {
         }
       }
     }
-
     const tableBody = document.querySelector("#tableBody");
-    const addTableHeader = document.querySelector("#tableHeader");
 
     if (filteredTasks.length > 0) {
       tableBody.innerHTML = "";
@@ -155,6 +163,187 @@ class TaskManager {
   }
 } //end class
 //html input
+// const createTaskHtml = (
+//   newAddId,
+//   newAddTaskName,
+//   newAddDesc,
+//   newAddDate,
+//   newAddAssign,
+//   newAddStatus
+// ) => {
+//   return `
+//   <!-- Task starts here -->
+
+//               <tr data-task-id=${newAddId}>
+//                 <th scope="row"></th>
+//                 <td>${newAddTaskName}</td>
+//                 <td>
+//                   <span class="badge ${newAddStatus === "To-Do" ? "badge-danger" : "badge-success"
+//                   }">
+//                   ${newAddStatus}</span>
+
+//                 </td>
+//                 <td class="text-center">${newAddAssign}</td>
+//                 <td>${newAddDate}</td>
+//                 <td class="w-25">
+//                   <!-- More info of task starts here -->
+//                   <a
+//                     class="btn btn-outline-info pt-0 mt-0"
+//                     data-toggle="collapse"
+//                     href="#collapseExample-${newAddId}"
+//                     role="button"
+//                     aria-expanded="false"
+//                     aria-controls="collapseExample"
+//                   >
+//                     More Info...
+//                   </a>
+//                   <div class="collapse" id="collapseExample-${newAddId}">
+//                     <div class="card card-body border-0 mt-1 infocolor">
+//                       ${newAddDesc}
+//                     </div>
+//                   </div>
+//                   <!-- More info of task ends here -->
+//                 </td>
+//                 <td class="w-25">
+//                             <button id ="markAsDone" class="btn pt-0 mt-0 btn-outline-success done-button ${
+//                               newAddStatus !== "Done" ? "visible" : "invisible"
+//                             }">Mark As Done</button>
+
+//                 </td>
+
+//                 <td>
+//                   <!-- Tooltip of edit button Starts here -->
+//                   <a
+//                     data-toggle="tooltip"
+//                     data-placement="left"
+//                     title="Edit item"
+//                   >
+//                     <!-- Edit button Starts here -->
+//                     <button
+//                       type="button"
+//                       class="btn btn-outline-info"
+//                       data-toggle="modal"
+//                       data-target="#exampleModalLong1"
+//                       data-keyboard="false"
+//                       data-backdrop="static"
+//                     >
+//                       <!-- Edit icon starts here -->
+//                       <svg
+//                         width="1em"
+//                         height="1em"
+//                         viewBox="0 0 16 16"
+//                         class="bi bi-pencil-square"
+//                         fill="currentColor"
+//                         xmlns="http://www.w3.org/2000/svg"
+//                       >
+//                         <path
+//                           d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+//                         />
+//                         <path
+//                           fill-rule="evenodd"
+//                           d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+//                         />
+//                       </svg>
+//                       <!-- Edit icon ends here -->
+//                     </button>
+//                     <!-- Edit button ends here -->
+//                   </a>
+//                   <!-- Tooltip of edit button ends here -->
+//                     <!--Edit modal code in index.html-->
+//                 </td>
+
+//                 <td>
+//                   <!-- Tooltip of delete button Starts here -->
+//                   <a
+//                     data-toggle="tooltip"
+//                     data-placement="top"
+//                     title="Delete item"
+//                   >
+//                   <!--<img src="./images/image.png" class="delete-button" width="30" height="30" alt="..."> -->
+//                     <!--Delete button Starts here-->
+//                     <button
+//                       type="button"
+//                       id="deleteModal"
+//                       class="btn btn-outline-danger"
+//                       data-toggle="modal"
+//                       data-target="#delModal-${newAddId}"
+//                       data-keyboard="false"
+//                       data-backdrop="static"
+//                     >
+//                     <!-- delete icon starts here -->
+//                       <svg
+//                         width="1em"
+//                         height="1em"
+//                         viewBox="0 0 16 16"
+//                         class="bi bi-trash"
+//                         fill="currentColor"
+//                         xmlns="http://www.w3.org/2000/svg"
+//                       >
+//                         <path
+//                           d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+//                         />
+//                         <path
+//                           fill-rule="evenodd"
+//                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+//                         />
+//                        </svg>
+//                       <!-- delete icon ends here -->
+
+//                       </button>
+//                     <!--Delete button ends here-->
+//                   </a>
+//                   <!-- Tooltip of delete button ends here -->
+
+//                   <!--Delete modal starts here-->
+//                   <div
+//               class="modal fade "
+//               id="delModal-${newAddId}"
+//               tabindex="-1"
+//               aria-labelledby="exampleModalLabel1"
+//               aria-hidden="true"
+//             >
+//               <div class="modal-dialog" id="modal-dialog-${newAddId}">
+//                 <div class="modal-content">
+//                   <div class="modal-header">
+//                     <h5 class="modal-title" id="exampleModalLabel1">Confirm</h5>
+//                     <button
+//                       type="button"
+//                       class="close"
+//                       data-dismiss="modal"
+//                       aria-label="Close"
+//                     >
+//                       <span aria-hidden="true">&times;</span>
+//                     </button>
+//                   </div>
+//                   <div class="modal-body bgcolor">
+//                     Are you sure you want to delete this?
+//                   </div>
+//                   <div class="modal-footer">
+//                     <button
+//                       type="button"
+//                       id= "deleteId"
+//                       class="btn btn-danger delete-button"
+//                       data-dismiss="modal"
+//                     >
+//                       Yes
+//                     </button>
+//                     <button
+//                       type="button"
+//                       class="btn btn-secondary"
+//                       data-dismiss="modal"
+//                     >
+//                       No
+//                     </button>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//             <!--Delete modal ends here-->
+//                 </td>
+//               </tr>
+//               <!-- Task ends here -->
+//             `;
+// };
 const createTaskHtml = (
   newAddId,
   newAddTaskName,
@@ -166,86 +355,27 @@ const createTaskHtml = (
   return `  
   <!-- Task starts here -->
   
-              <tr data-task-id=${newAddId}>
-                <th scope="row"></th>
-                <td>${newAddTaskName}</td>
-                <td>
-                  <span class="badge ${
-                    newAddStatus === "To-Do" ? "badge-danger" : "badge-success"
-                  }">${newAddStatus}</span>
-                </td>
-                <td class="text-center">${newAddAssign}</td>
-                <td>${newAddDate}</td>
-                <td class="w-25">
-                  <!-- More info of task starts here -->
-                  <a
-                    class="btn btn-outline-info pt-0 mt-0"
-                    data-toggle="collapse"
-                    href="#collapseExample1"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapseExample1"
-                  >
-                    More Info...
-                  </a>
-                  <div class="collapse" id="collapseExample1">
-                    <div class="card card-body border-0 mt-1 infocolor">
-                      ${newAddDesc}
-                    </div>
-                  </div>
-                  <!-- More info of task ends here -->
-                </td>
-                <td class="w-25">
-                            <button id ="markAsDone" class="btn pt-0 mt-0 btn-outline-success done-button ${
-                              newAddStatus !== "Done" ? "visible" : "invisible"
-                            }">Mark As Done</button>
+  <section data-task-id=${newAddId}>           
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">${newAddTaskName}</h5>
+              <small>${newAddDate}</small>
+      </div>
+          <p class="mb-1">
+             ${newAddDesc}
+          </p>
+            <small>${newAddAssign}</small>
+             <small><span class="badge ${
+               newAddStatus === "To-Do" ? "badge-danger" : "badge-success"
+             }">  ${newAddStatus}</span></small>
+             <p class="mb-1"><button id ="markAsDone" class="btn pt-0 mt-0 btn-outline-success done-button ${
+               newAddStatus !== "Done" ? "visible" : "invisible"
+             }">Mark As Done</button></p>
 
-                </td>
-
-                <td>
-                  <!-- Tooltip of edit button Starts here -->
-                  <a
-                    data-toggle="tooltip"
-                    data-placement="left"
-                    title="Edit item"
-                  >
-                    <!-- Edit button Starts here -->
-                    <button
-                      type="button"
-                      class="btn btn-outline-info"
-                      data-toggle="modal"
-                      data-target="#exampleModalLong1"
-                      data-keyboard="false"
-                      data-backdrop="static"
-                    >
-                      <!-- Edit icon starts here -->
-                      <svg
-                        width="1em"
-                        height="1em"
-                        viewBox="0 0 16 16"
-                        class="bi bi-pencil-square"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-                        />
-                        <path
-                          fill-rule="evenodd"
-                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-                        />
-                      </svg>
-                      <!-- Edit icon ends here -->
-                    </button>
-                    <!-- Edit button ends here -->
-                  </a>
-                  <!-- Tooltip of edit button ends here -->
-                    <!--Edit modal code in index.html-->
-                </td>
-
-                <td>
-                  <!-- Tooltip of delete button Starts here -->
-                  <a
+            <!-- Tooltip of delete button Starts here -->
+            <small>
+            
+            <a
                     data-toggle="tooltip"
                     data-placement="top"
                     title="Delete item"
@@ -277,15 +407,15 @@ const createTaskHtml = (
                           fill-rule="evenodd"
                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
                         />
-                       </svg> 
+                       </svg>
                       <!-- delete icon ends here -->
-                      
-                      
+
                       </button>
                     <!--Delete button ends here-->
                   </a>
                   <!-- Tooltip of delete button ends here -->
-                  
+                   </small>
+
                   <!--Delete modal starts here-->
                   <div
               class="modal fade "
@@ -322,8 +452,7 @@ const createTaskHtml = (
                     <button
                       type="button"
                       class="btn btn-secondary"
-                      data-dismiss="modal"
-                    >
+                      data-dismiss="modal">
                       No
                     </button>
                   </div>
@@ -331,10 +460,9 @@ const createTaskHtml = (
               </div>
             </div>
             <!--Delete modal ends here-->
-                </td>
-              </tr>
-              <!-- Task ends here -->
-            `;
+     
+          </a> 
+            </section>`;
 };
 
 //piechart view
