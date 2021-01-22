@@ -18,9 +18,9 @@
   text-align: center;
   margin-top: 0.5em;
 }
-.hometable {
+/* .hometable {
   background-color: rgb(250, 251, 252);
-}
+} */
 .infocolor {
   background-color: rgb(250, 251, 252);
 }
@@ -31,12 +31,20 @@
   /* padding: auto; */
   vertical-align: middle;
 }
-.outStat {
+/* .outStat {
   display: inline-flex;
   width: 120px;
   padding-top: 1.5em;
   padding-bottom: 14px;
-  /* height: 400px; */
+  height: 400px;
+}*/
+#tableBody
+{
+margin-top:auto;
+
+}
+#addButton{
+  margin-bottom:10px;
 }
 .dropdown {
   font-size: small;

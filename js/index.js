@@ -1,18 +1,5 @@
 // Initialize a new TaskManager with currentId set to 0
 const taskManager = new TaskManager(1);
-
-// Select the New Task Date
-const newTaskDate = document.querySelector("#newTaskDueDate");
-// Add an on click event for due date
-newTaskDate.addEventListener("click", (currentDate) => {
-  let dateToday = new Date(); // current timestamp is stored inside dateToday
-  let dd = String(dateToday.getDate()).padStart(2, "0"); //date is extracted
-  let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!, month is extracted
-  let yyyy = dateToday.getFullYear(); // Year is extracted
-  let dateString = yyyy + "-" + mm + "-" + dd;
-  document.querySelector("#newTaskDueDate").min = dateString; //Passing the value of min to HTML
-});
-
 //   Select the inputs
 const newTaskNameInput = document.querySelector("#newTaskNameInput");
 const newTaskDescription = document.querySelector("#newTaskDescription");
@@ -48,8 +35,8 @@ newTaskForm.addEventListener("submit", (event) => {
   const newDueDate = newTaskDueDate.value;
   const newAddStatus = newTaskStatusInput.value;
 
-  //         Validation code here
-  // Alert message for new task name
+  //   Validation code here
+  // Alert message for Task Name
   validFlag = true;
   if (!validFormFieldInput(newName)) {
     validFlag = false;
@@ -75,7 +62,7 @@ newTaskForm.addEventListener("submit", (event) => {
     newTaskDescription.style.borderColor = "";
   }
 
-  // Alert message for new task date
+  // Alert message for task date
   if (!validFormFieldInput(newDueDate)) {
     validFlag = false;
     newTaskDateAlert.innerHTML = "Please pick a date";
@@ -87,7 +74,7 @@ newTaskForm.addEventListener("submit", (event) => {
     newTaskDueDate.style.borderColor = "";
   }
 
-  // Alert message for new assign name
+  // Alert message for assign name
   if (!validFormFieldInput(newAssignedTo)) {
     validFlag = false;
     newTaskAssignAlert.innerHTML = "Please Choose from list";
@@ -128,30 +115,35 @@ function validFormFieldInput(data) {
   return data.trim().length; //return 0 if the length of the trimmed data is zero
 }
 
-// Select the Tasks List
+// Select the New Task Date
+const newTaskDate = document.querySelector("#newTaskDueDate");
+// Add an on click event for due date
+newTaskDate.addEventListener("click", (currentDate) => {
+  let dateToday = new Date(); // current timestamp is stored inside dateToday
+  let dd = String(dateToday.getDate()).padStart(2, "0"); //date is extracted
+  let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!, month is extracted
+  let yyyy = dateToday.getFullYear(); // Year is extracted
+  let dateString = yyyy + "-" + mm + "-" + dd;
+  document.querySelector("#newTaskDueDate").min = dateString; //Passing the value of min to HTML
+});
 
+// Codes for Mark As Done
 const tableBody = document.querySelector("#tableBody");
-
 // Add an 'onclick' event listener to the Tasks List
 tableBody.addEventListener("click", (event) => {
   // Check if a "Mark As Done" button was clicked
   if (event.target.classList.contains("done-button")) {
     // Get the parent Task
-    const parentTask = event.target.parentElement.parentElement;
+    const parentTask = event.target.parentElement.parentElement.parentElement;
     console.log(parentTask.dataset.taskId);
-
     // Get the taskId of the parent Task.
     const taskId = Number(parentTask.dataset.taskId);
-
     // Get the task from the TaskManager using the taskId
     const task = taskManager.getTaskById(taskId);
-
     // Update the task status to 'Done'
     task.newAddStatus = "Done";
-
     // Save the tasks to localStorage
     taskManager.save();
-
     // Render the tasks
     taskManager.render();
   }
@@ -163,15 +155,8 @@ tableBody.addEventListener("click", (event) => {
 tableBody.addEventListener("click", (event) => {
   if (event.target.classList.contains("delete-button")) {
     // Get the parent Task
-    console.log("Found delete-button");
-    console.log(event);
-    // const parentTask =
-    //   event.target.parentElement.parentElement.parentElement.parentElement
-    //     .parentElement.parentElement;
-
     //uses closest() from jQuery for flexibility in parent element
-    const parentTask = event.target.closest("tr");
-    console.log(parentTask);
+    const parentTask = event.target.closest("section");
     console.log(parentTask.dataset.taskId);
     // Get the taskId of the parent Task.
     const taskId = Number(parentTask.dataset.taskId);
@@ -194,7 +179,7 @@ filterStatus.addEventListener("change", (event) => {
   taskManager.filterView(); // calling the function for calculating the filtervariable
 });
 
-//date
+//date and time display in the NavBar
 const dateTime = () => {
   let dateT = new Date();
   let day = dateT.toDateString();
