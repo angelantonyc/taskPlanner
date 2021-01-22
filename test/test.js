@@ -27,25 +27,15 @@ describe("Testing taskManager class funciton", () => {
     //verify
     assert.strictEqual(actualLength, expectedLength);
   });
-  it("should GetTaskById", () => {
+  it("should GetTaskById for MarkasDone", () => {
     //setup
     const taskManager = new TaskManager(0);
     taskManager.addTask("Wireframing", "Using Ninjamock", "reny", "24/05/2021");
     taskManager.addTask("Collaboration", "Using Github", "angel", "24/06/2021");
     //explain
     let expected = taskManager.tasks[0];
-    // let expected = {
-    //   newAddAssign: 'Lavina',
-    //   newAddDate: '24/01/2021',
-    //   newAddDesc: 'At Aldi',
-    //   newAddId: 0,
-    //   newAddStatus: 'To-Do',
-    //   newAddTaskName: 'shoppping',
-    // };
 
     let result = taskManager.getTaskById(0);
-    console.log(result);
-    console.log(expected);
 
     //verify
     assert.deepStrictEqual(result, expected);
