@@ -1,14 +1,9 @@
-.navstyling {
+.navstyling, .formcolor  {
   background-color: rgb(75, 162, 184);
 }
 .navtxtcolor {
   color: black;
   font-weight: bold;
-}
-.formcolor {
-  background-color: rgb(75, 162, 184);
-  /* padding: 20px;
-  width: 700px; */
 }
 
 .bgcolor {
@@ -18,68 +13,31 @@
   text-align: center;
   margin-top: 0.5em;
 }
-/* .hometable {
-  background-color: rgb(250, 251, 252);
-} */
-.infocolor {
-  background-color: rgb(250, 251, 252);
+#tableBody {
+  margin-top: auto;
 }
-/* .stat{
-   width: 50px;
-} */
-.tableHead {
-  /* padding: auto; */
-  vertical-align: middle;
-}
-/* .outStat {
-  display: inline-flex;
-  width: 120px;
-  padding-top: 1.5em;
-  padding-bottom: 14px;
-  height: 400px;
-}*/
-#tableBody
-{
-margin-top:auto;
-
-}
-#addButton{
-  margin-bottom:10px;
+#addButton {
+  margin-bottom: 10px;
 }
 .dropdown {
   font-size: small;
-
-  width: 50px;
   padding: 0;
-  margin-left: 1em;
 }
-/* .inprogress{
-font-size:small;
-color:rgb(21, 224, 21);
-} */
-
-/* #pieButton{
-  /* margin-left:700px; */
-/* } */
-
-.pieChartClass {
-  margin-top: 600px;
-  margin-left: 100px;
-  display: block;
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background-image: conic-gradient(
-    red 70deg,
-    orange 0 100deg,
-    blue 0 200deg,
-    green 0
-  );
+.infocolor {
+  background-color: rgb(250, 251, 252);
 }
 
-.pieChartClass {
-  /* display: flex;  */
-  justify-content: center;
-  align-items: center;
+.donedelete {
+  float: right;
+}
+
+/* fix for modal flickering issue */
+.list-group-item,
+.list-group-item:hover {
+  z-index: auto;
+}
+
+/* To hide the count of days for tasks with status done */
+.hideElement {
+  display: none;
 }

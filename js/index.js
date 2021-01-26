@@ -107,6 +107,7 @@ newTaskForm.addEventListener("submit", (event) => {
     newTaskDescription.value = "";
     newTaskAssignedTo.value = "";
     newTaskDueDate.value = "";
+    document.querySelector("#holidayMsg").innerHTML = "";
   }
 });
 
@@ -119,23 +120,23 @@ function validFormFieldInput(data) {
 const newTaskDate = document.querySelector("#newTaskDueDate");
 // Add an on click event for due date
 newTaskDate.addEventListener("click", (currentDate) => {
-  let dateToday = new Date(); // current timestamp is stored inside dateToday
-  let dd = String(dateToday.getDate()).padStart(2, "0"); //date is extracted
-  let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!, month is extracted
-  let yyyy = dateToday.getFullYear(); // Year is extracted
-  let dateString = yyyy + "-" + mm + "-" + dd;
+  let dateString = taskManager.todaysDate();
   document.querySelector("#newTaskDueDate").min = dateString; //Passing the value of min to HTML
 });
 
 // Codes for Mark As Done
 const tableBody = document.querySelector("#tableBody");
+
 // Add an 'onclick' event listener to the Tasks List
+
 tableBody.addEventListener("click", (event) => {
+
   // Check if a "Mark As Done" button was clicked
   if (event.target.classList.contains("done-button")) {
     // Get the parent Task
-    const parentTask = event.target.parentElement.parentElement.parentElement;
-    console.log(parentTask.dataset.taskId);
+    // const parentTask = event.target.parentElement.parentElement.parentElement.parentElement;
+    //use closest() from jQuery for flexibility in parent element
+    const parentTask = event.target.closest("section");
     // Get the taskId of the parent Task.
     const taskId = Number(parentTask.dataset.taskId);
     // Get the task from the TaskManager using the taskId
@@ -147,17 +148,12 @@ tableBody.addEventListener("click", (event) => {
     // Render the tasks
     taskManager.render();
   }
-});
 
-// Add an 'onclick' event listener to the Delete Modal
-// Check if a "Delete" button was clicked
-
-tableBody.addEventListener("click", (event) => {
+  // Check if a "Delete" button was clicked
   if (event.target.classList.contains("delete-button")) {
     // Get the parent Task
-    //uses closest() from jQuery for flexibility in parent element
+    //use closest() from jQuery for flexibility in parent element
     const parentTask = event.target.closest("section");
-    console.log(parentTask.dataset.taskId);
     // Get the taskId of the parent Task.
     const taskId = Number(parentTask.dataset.taskId);
 
@@ -169,6 +165,17 @@ tableBody.addEventListener("click", (event) => {
 
     // Render the tasks
     taskManager.render();
+  }
+
+  // Check if a "More Info" button was clicked
+  if (event.target.classList.contains("moreInfo")) {
+    if (event.target.innerHTML.trim() === "Description") {
+      //toggle to hide info
+      event.target.innerHTML = "Hide";
+    } else if (event.target.innerHTML.trim() === "Hide") {
+      // toggle to more info
+      event.target.innerHTML = "Description";
+    }
   }
 });
 
@@ -183,7 +190,6 @@ filterStatus.addEventListener("change", (event) => {
 const dateTime = () => {
   let dateT = new Date();
   let day = dateT.toDateString();
-
   let hours = dateT.getHours();
   let minutes = dateT.getMinutes();
   let seconds = dateT.getSeconds();
@@ -199,7 +205,3 @@ const dateTime = () => {
 };
 setInterval(dateTime, 1000);
 
-// For adding tooltip for edit and delete button
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip();
-});
