@@ -49,22 +49,24 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Archive</a>
+              <a class="nav-link disabled" href="#">Archive</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="pieButton">Pie Chart View</a>
+              <a class="nav-link disabled" href="#" id="pieButton"
+                >Pie Chart View</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" >Filter By Status</a>
+              <a class="nav-link" href="#">Filter By Status</a>
             </li>
-            <li> <select id="filterStatus" class="form-control dropdown">
-          <option value="All" id="All">All</option>
-          <option value="Done" id="Done">Done</option>
-          <option value="To-Do" id="To-Do">To-Do</option>
-          <option value="In progress">In progress</option>
-          <option value="Review">Review</option>
-       
-        </select> 
+            <li>
+              <select id="filterStatus" class="form-control w-75 dropdown">
+                <option value="All" id="All">All Tasks</option>
+                <option value="Done" id="Done">Done</option>
+                <option value="To-Do" id="To-Do">To-Do</option>
+                <option value="In progress">In progress</option>
+                <option value="Review">Review</option>
+              </select>
             </li>
           </ul>
 
@@ -85,7 +87,7 @@
           data-target="#addTask"
           data-keyboard="false"
           data-backdrop="static"
-          id ="addButton"
+          id="addButton"
         >
           <!-- Add icon starts here -->
           <svg
@@ -111,7 +113,7 @@
           id="addTask"
           tabindex="-1"
           role="dialog"
-          aria-labelledby="exampleModalLongTitle1"
+          aria-labelledby="addModalTitle"
           aria-hidden="true"
         >
           <div class="modal-dialog" role="document">
@@ -119,7 +121,7 @@
               <form id="newTaskForm">
                 <div class="modal-body bgcolor">
                   <div class="modal-header">
-                    <h2 class="modal-title" id="exampleModalLongTitle1">
+                    <h2 class="modal-title" id="addModalTitle">
                       Add Task
                     </h2>
                     <button
@@ -208,107 +210,12 @@
 
         <!-- Tasks list starts here -->
         <!-- The list starts here -->
-        
-        <div class="list-group" id ="tableBody">
-              
-        </div>
+
+        <div class="list-group" id="tableBody"></div>
         <!-- The list ends here -->
       </div>
-      
-    
     </section>
-    <!-- Edit Modal of task starts here -->
-    <div
-      class="modal fade"
-      id="exampleModalLong1"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLongTitle1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalLongTitle1">Edit Task</h2>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form>
-            <div class="modal-body bgcolor">
-              <section id="edit1">
-                <div class="container border card w-75 formcolor py-2">
-                  <div class="form-group col-md-10">
-                    <label for="inputEmail4">Task Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputEmail4"
-                      name="inputEmail4"
-                      value="Wireframe"
-                    />
-                  </div>
-                  <div class="form-group col-md-10">
-                    <label for="exampleFormControlTextarea1">Description</label>
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                    >
-  Wireframe the project using ninjamock
-                                  </textarea
-                    >
-                  </div>
-
-                  <div class="form-group col-md-10">
-                    <label for="inputPassword4">Due Date</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="inputPassword4"
-                      value="12-11-2020"
-                    />
-                  </div>
-                  <div class="form-group col-md-10">
-                    <label for="editAssign">Assigned To</label>
-                    <select id="editAssign" class="form-control">
-                      <option selected>Reny</option>
-                      <option>Angel</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-10">
-                    <label for="editStatus">Status</label>
-                    <select id="editStatus" class="form-control">
-                      <option selected>Done</option>
-                      <option>To do</option>
-                      <option>In progress</option>
-                      <option>Review</option>
-                    </select>
-                  </div>
-                </div>
-              </section>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    
 
     <section id="quote">
       <!-- Images carousel  -->
