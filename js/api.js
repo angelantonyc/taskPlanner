@@ -1,4 +1,3 @@
-
 //Holiday API
 //let newTaskDate = document.querySelector('#newTaskDueDate');
 let holidayMsg = document.querySelector("#holidayMsg");
@@ -24,7 +23,6 @@ function checkHoliday() {
           const holidayCaption = data[i].name;
           holidayMsg.innerHTML = `The chosen date is a public holiday : ${holidayCaption}`;
           holidayMsg.style.color = "yellow";
-          console.log(data[i].type);
           return;
         } else {
           holidayMsg.innerHTML = "";

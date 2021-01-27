@@ -94,29 +94,13 @@ class TaskManager {
     this.render();
   }
 
-  //Calculating no. of working days between today's date and due date
-  workingDaysBetweenDates = (dateNow, dueDate) => {
-    //holidays in the year of 2021 & 2022
-    let holidays = [
-      "2021-01-01",
-      "2021-01-26",
-      "2021-04-02",
-      "2021-04-05",
-      "2021-04-25",
-      "2021-12-27",
-      "2021-12-28",
-      "2022-01-03",
-      "2022-01-26",
-      "2022-04-15",
-      "2022-04-18",
-      "2022-04-25",
-      "2022-12-26",
-    ];
+  //Calculating no. of days between today's date and due date
+  daysBetweenDates = (dateNow, dueDate) => {
     let startDate = parseDate(dateNow); // convert today's date to date object
     let endDate = parseDate(dueDate); // convert task's due date to date object
 
-    // startDate.setHours(0, 0, 0, 0); // Start just after midnight
-    // endDate.setHours(0, 0, 0, 0); // End at midnight
+    startDate.setHours(0, 0, 0, 0); // Start just after midnight
+    endDate.setHours(0, 0, 0, 0); // End at midnight
 
     // Validate input
     if (dateNow === dueDate) {
@@ -127,44 +111,12 @@ class TaskManager {
 
     // Calculate days between dates
     let millisecondsPerDay = 86400 * 1000; // Day in milliseconds (24*60*60*1000)
-    startDate.setHours(0, 0, 0, 1); // Start just after midnight
-    endDate.setHours(23, 59, 59, 999); // End just before midnight
 
     let diff = endDate - startDate; // Milliseconds between datetime objects
     let days = Math.ceil(diff / millisecondsPerDay);
-    // Subtract two weekend days for every week in between
-    let weeks = Math.floor(days / 7);
-    days -= weeks * 2;
-
-    // Handle special cases
-    let startDay = startDate.getDay();
-    let endDay = endDate.getDay();
-
-    // Remove weekend which is not previously removed.
-    if (startDay - endDay > 1) {
-      days -= 2;
-    }
-    // Remove start day if span starts on Sunday but ends before Saturday
-    if (startDay == 0 && endDay != 6) {
-      days--;
-    }
-    // Remove end day if span ends on Saturday but starts after Sunday
-    if (endDay == 6 && startDay != 0) {
-      days--;
-    }
-    /* Here is the code for subtracting holidays*/
-    holidays.forEach((day) => {
-      if (day >= dateNow && day <= dueDate) {
-        /* If it is not saturday (6) or sunday (0), subtract it */
-        if (parseDate(day).getDay() % 6 != 0) {
-          days--;
-        }
-      }
-    });
+    
     if (days == 1) {
       return `${days} day remaining`;
-    } else if (days == 0) {
-      return "Due Today";
     } else {
       return `${days} days remaining`;
     }
@@ -190,12 +142,12 @@ class TaskManager {
     if (filteredTasks.length > 0) {
       tableBody.innerHTML = "";
       for (let i = 0; i < filteredTasks.length; i++) {
-        let countDays = this.workingDaysBetweenDates(
+        let countDays = this.daysBetweenDates(
           this.todaysDate(),
           filteredTasks[i].newAddDate
-        ); //calling function to calculate no. of working days for each tasks
+        ); //calling function to calculate no. of days for each tasks
 
-        let noOfDaysBadge;  //to store days badge color
+        let noOfDaysBadge; //to store days badge color
         if (this.colorCodeNoOfDays.hasOwnProperty(countDays)) {
           noOfDaysBadge = this.colorCodeNoOfDays[countDays];
         } else {
@@ -268,6 +220,7 @@ class TaskManager {
   }
 } //end class
 
+//Function to create inner HTML for rendering
 const createTaskHtml = (
   newAddId,
   newAddTaskName,
@@ -283,49 +236,31 @@ const createTaskHtml = (
   <!-- Task starts here -->
   
   
-  <section data-task-id=${newAddId}>           
-     <a class="list-group-item list-group-item-action flex-column align-items-start">
-      <div class="d-flex w-100 justify-content-between">
-              <h3 class="mb-1 taskName">${newAddTaskName} 
-              </h3>
-              <small><badge id="countDay" class="badge-pill p-1 ${countBadge} ${
-                newAddStatus === "Done" ? "hideElement" : " "
-                }  ">${countDays} </badge></small>
-              
-
-      </div>
-      <span>Due Date:   ${newAddDate} </span>
-    <p>
-    <button class="btn-sm btn-info moreInfo"
-                    data-toggle="collapse"
-                    href="#collapseExample-${newAddId}"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapseExample"
-                    id="moreInfo-${newAddId}"
-                  >
-                    Description
-                  </button> </p>
-        <p class="collapse border-1 mt-1 ml-1 mb-3 infocolor taskdetails" id="collapseExample-${newAddId}"><span> 
-                      
-                  ${newAddDesc}</span></p>
-                  
-                  
-      <p class="mt-1"><span>Assigned To: ${newAddAssign}</span>
-      <span class="mt-1 ml-5  badge ${newStatusColor}">${newAddStatus}</span>
-    
-      <span class="donedelete">
+ <section data-task-id=${newAddId}>           
+   <a class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+              <h4 class="mb-1 taskName">${newAddTaskName} 
+              </h4>
+              <small><badge id="countDay" class="badge-pill p-1 countD ${countBadge} ${
+    newAddStatus === "Done" ? "hideElement" : " "
+  }  ">${countDays} </badge></small>
+    </div>
       
-        <small><button id ="markAsDone" class="btn pt-0 mt-0 btn-outline-success done-button ${
+    <p class="border-1 mt-1 ml-1 mb-3 infocolor taskdetails" id="collapseExample-${newAddId}">
+        <span> ${newAddDesc}</span>
+        <span class="dat">Due Date: ${newAddDate} </span>
+    </p>
+    <p class="mt-1 mb-1">
+      <span>Assigned To: ${newAddAssign}</span>
+      <span class="mt-2 mb-2 ml-5 stat badge ${newStatusColor}">${newAddStatus}</span>
+      <span class="donedelete"> 
+        <small class="mr-5"><button id ="markAsDone" class="btn pt-0 mt-0 btn-outline-success done-button ${
           newAddStatus !== "Done" ? "visible" : "invisible"
         }">Mark As Done</button>
         </small>
-      
-          
-          <small>
-              <!--Delete button Starts here-->
-              
-              <button type="button" 
+        <small>
+            <!--Delete button Starts here-->
+            <button type="button" 
                       id="deleteModal-${newAddId}"
                       class="btn btn-outline-danger pt-0 mt-0"
                       data-toggle="modal"
@@ -353,10 +288,10 @@ const createTaskHtml = (
                       </svg> 
                         <!-- delete icon ends here -->
 
-              </button> 
-                        <!--Delete button ends here-->
+            </button> 
+            <!--Delete button ends here-->
           
-            <!--Delete modal starts here-->
+             <!--Delete modal starts here-->
         
             <div class="modal fade "
               id="delModal-${newAddId}"
@@ -364,9 +299,9 @@ const createTaskHtml = (
               aria-labelledby="ModalLabel-${newAddId}"
               aria-hidden="true">
               <div class="modal-dialog" id="modal-dialog-${newAddId}">
-              <div class="modal-content">
+               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="ModalLabel-${newAddId}">Confirm</h5>
+                 <h5 class="modal-title" id="ModalLabel-${newAddId}">Confirm</h5>
                   <button type="button"
                       class="close"
                       data-dismiss="modal"
@@ -378,7 +313,7 @@ const createTaskHtml = (
                 <div class="modal-body bgcolor">
                     Are you sure you want to delete this?
                 </div>
-                  <div class="modal-footer">
+                <div class="modal-footer">
                     <button
                           type="button"
                           id= "deleteId"
@@ -393,19 +328,20 @@ const createTaskHtml = (
                           data-dismiss="modal">
                           No
                     </button>
-                  </div>
                 </div>
+               </div>
               </div>
             </div> 
-                <!--Delete modal ends here-->
-                
+            <!--Delete modal ends here-->
           </small>
-     </span></p>
+      </span>
+    </p>
 
-     </a> 
-    </section>`;
+   </a> 
+  </section>`;
 };
 
+//Function definition for converting date into object from string
 const parseDate = (input) => {
   // Transform date from text to date
   let parts = input.split("-");
@@ -413,6 +349,7 @@ const parseDate = (input) => {
   return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
 };
 
+//For testing the methods
 if (typeof module != "undefined") {
   module.exports = TaskManager;
 }
