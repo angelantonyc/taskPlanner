@@ -102,13 +102,6 @@ newTaskForm.addEventListener("submit", (event) => {
     $("#addTask").modal("hide");
     taskManager.render();
 
-    // Clear the form
-    newTaskNameInput.value = "";
-    newTaskDescription.value = "";
-    newTaskAssignedTo.value = "";
-    newTaskDueDate.value = "";
-    newTaskStatusInput.value = "";
-    document.querySelector("#holidayMsg").innerHTML = "";
   }
 });
 
@@ -117,15 +110,23 @@ function validFormFieldInput(data) {
   return data.trim().length; //return 0 if the length of the trimmed data is zero
 }
 
-// Add an event listener for the close button in add task form to clear the form
-const addClose = document.querySelector(".addClose");
-addClose.addEventListener("click", (event) => {
+// Add an event listener for the add task button to clear the form
+const addButton = document.querySelector("#addButton");
+addButton.addEventListener("click", (event) => {
   newTaskNameInput.value = "";
   newTaskDescription.value = "";
   newTaskAssignedTo.value = "";
   newTaskDueDate.value = "";
   newTaskStatusInput.value = "";
   document.querySelector("#holidayMsg").innerHTML = "";
+  newTaskNameAlert.style.display = "none";
+  newTaskNameInput.style.borderColor = "";
+  newTaskDescAlert.style.display = "none";
+  newTaskDescription.style.borderColor = "";
+  newTaskDateAlert.style.display = "none";
+  newTaskDueDate.style.borderColor = "";
+  newTaskAssignAlert.style.display = "none";
+  newTaskAssignedTo.style.borderColor = "";
 });
 
 // Select the New Task Date
