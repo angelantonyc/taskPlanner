@@ -18,8 +18,7 @@ describe("Testing taskManager class funciton", () => {
     //predefined arraylength
     const taskManager = new TaskManager(0);
     taskManager.addTask("Wireframing", "Using Ninjamock", "reny", "24/05/2021");
-    taskManager.addTask("Collaboration", "Using Github", "angel", "24/06/2021");
-    let expectedLength = 1; //predefined arraylength after deletion
+    let expectedLength = 0; //predefined arraylength after deletion
     //explain
     taskManager.deleteTask(0);
     let actualLength = taskManager.tasks.length; //actual arraylength after deletion
@@ -30,7 +29,6 @@ describe("Testing taskManager class funciton", () => {
   it("should GetTaskById for MarkasDone", () => {
     //setup
     const taskManager = new TaskManager(0);
-    taskManager.addTask("Wireframing", "Using Ninjamock", "reny", "24/05/2021");
     taskManager.addTask("Collaboration", "Using Github", "angel", "24/06/2021");
     //explain
     let expected = taskManager.tasks[0];

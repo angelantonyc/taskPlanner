@@ -1,4 +1,5 @@
-.navstyling, .formcolor  {
+.navstyling,
+.formcolor {
   background-color: rgb(75, 162, 184);
 }
 .navtxtcolor {
@@ -26,11 +27,10 @@
 .infocolor {
   background-color: rgb(250, 251, 252);
 }
-
+.dat,
 .donedelete {
   float: right;
 }
-
 /* fix for modal flickering issue */
 .list-group-item,
 .list-group-item:hover {

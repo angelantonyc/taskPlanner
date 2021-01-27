@@ -1,5 +1,5 @@
 // Initialize a new TaskManager with currentId set to 0
-const taskManager = new TaskManager(1);
+const taskManager = new TaskManager(0);
 //   Select the inputs
 const newTaskNameInput = document.querySelector("#newTaskNameInput");
 const newTaskDescription = document.querySelector("#newTaskDescription");
@@ -107,6 +107,7 @@ newTaskForm.addEventListener("submit", (event) => {
     newTaskDescription.value = "";
     newTaskAssignedTo.value = "";
     newTaskDueDate.value = "";
+    newTaskStatusInput.value = "";
     document.querySelector("#holidayMsg").innerHTML = "";
   }
 });
@@ -115,6 +116,17 @@ newTaskForm.addEventListener("submit", (event) => {
 function validFormFieldInput(data) {
   return data.trim().length; //return 0 if the length of the trimmed data is zero
 }
+
+// Add an event listener for the close button in add task form to clear the form
+const addClose = document.querySelector(".addClose");
+addClose.addEventListener("click", (event) => {
+  newTaskNameInput.value = "";
+  newTaskDescription.value = "";
+  newTaskAssignedTo.value = "";
+  newTaskDueDate.value = "";
+  newTaskStatusInput.value = "";
+  document.querySelector("#holidayMsg").innerHTML = "";
+});
 
 // Select the New Task Date
 const newTaskDate = document.querySelector("#newTaskDueDate");
@@ -130,7 +142,6 @@ const tableBody = document.querySelector("#tableBody");
 // Add an 'onclick' event listener to the Tasks List
 
 tableBody.addEventListener("click", (event) => {
-
   // Check if a "Mark As Done" button was clicked
   if (event.target.classList.contains("done-button")) {
     // Get the parent Task
@@ -166,17 +177,6 @@ tableBody.addEventListener("click", (event) => {
     // Render the tasks
     taskManager.render();
   }
-
-  // Check if a "More Info" button was clicked
-  if (event.target.classList.contains("moreInfo")) {
-    if (event.target.innerHTML.trim() === "Description") {
-      //toggle to hide info
-      event.target.innerHTML = "Hide";
-    } else if (event.target.innerHTML.trim() === "Hide") {
-      // toggle to more info
-      event.target.innerHTML = "Description";
-    }
-  }
 });
 
 // Add an 'onclick' event listener to the status dropdown for fitering the tasks
@@ -204,4 +204,3 @@ const dateTime = () => {
   currentDate.innerHTML = `${day}  ${strTime} `;
 };
 setInterval(dateTime, 1000);
-
