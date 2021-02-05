@@ -137,9 +137,17 @@ newTaskDate.addEventListener("click", (currentDate) => {
   document.querySelector("#newTaskDueDate").min = dateString; //Passing the value of min to HTML
 });
 
+
+
+const editTaskName = document.querySelector(".editTaskName");
+const editDesc = document.querySelector(".editDesc");
+const editAssign = document.querySelector(".editAssign");
+const editDate = document.querySelector(".editDate");
+const editStatus = document.querySelector(".editStatus");
+
+
 // Codes for Mark As Done
 const tableBody = document.querySelector("#tableBody");
-
 // Add an 'onclick' event listener to the Tasks List
 
 tableBody.addEventListener("click", (event) => {
@@ -178,6 +186,37 @@ tableBody.addEventListener("click", (event) => {
     // Render the tasks
     taskManager.render();
   }
+
+  if (event.target.classList.contains("edit-button")) {
+    
+    const editNameVal = editTaskName.value;
+    const editDescVal = editDesc.value;
+    const editDateVal = editDate.value;
+    const editAssignVal = editAssign.value;
+    const editStatusVal = editStatus.value;
+    
+    // Get the parent Task
+    // const parentTask = event.target.parentElement.parentElement.parentElement.parentElement;
+    //use closest() from jQuery for flexibility in parent element
+    const parentTask = event.target.closest("section");
+    // Get the taskId of the parent Task.
+    const taskId = Number(parentTask.dataset.taskId);
+    // Get the task from the TaskManager using the taskId
+    const task = taskManager.getTaskById(taskId);
+    // Update the task status to 'Done'
+    task.newAddTaskName = editNameVal;
+    task.newAddDesc = editDescVal;
+    task.newAddDate = editDateVal;
+    task.newAddAssign = editAssignVal;
+    task.newAddStatus = editStatusVal;
+    console.log(task.newAddDate);
+    // console.log(editName);
+    // task.newAddStatus = "Done";
+    // Save the tasks to localStorage
+    taskManager.save();
+    // Render the tasks
+    taskManager.render();
+  }
 });
 
 // Add an 'onclick' event listener to the status dropdown for fitering the tasks
@@ -186,6 +225,12 @@ let fiterStatus = document.querySelector("#filterStatus");
 filterStatus.addEventListener("change", (event) => {
   taskManager.filterView(); // calling the function for calculating the filtervariable
 });
+
+// const editForm = document.querySelector("#${newAddId}");
+
+// editForm.addEventListener("submit", (event) => {
+//   console.log("edit submit clicked");
+// });
 
 //date and time display in the NavBar
 const dateTime = () => {

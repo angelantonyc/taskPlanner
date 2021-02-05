@@ -83,7 +83,23 @@ class TaskManager {
     let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!, month is extracted
     let yyyy = dateToday.getFullYear(); // Year is extracted
     let dateString = yyyy + "-" + mm + "-" + dd;
+    // let daterev = dd + "-" + mm + "-" + yyyy;
     return dateString;
+  }
+  // revDate() {
+  //   let dateToday = new Date("22-11-2020"); // current timestamp is stored inside dateToday
+  //   let dd = String(dateToday.getDate()).padStart(2, "0"); //date is extracted
+  //   let mm = String(dateToday.getMonth() + 1).padStart(2, "0"); //January is 0!, month is extracted
+  //   let yyyy = dateToday.getFullYear(); // Year is extracted
+  //   // let dateString = yyyy + "-" + mm + "-" + dd;
+  //   let daterev = dd + "-" + mm + "-" + yyyy;
+  //   return daterev;
+  // }
+  changeFormatDate(addDate) {
+    let dateR;
+    dateR = addDate.toString().split("-").reverse().join("-");
+    console.log(dateR);
+    return dateR;
   }
 
   //function to set the value of filterVar for filtering the tasks
@@ -114,7 +130,7 @@ class TaskManager {
 
     let diff = endDate - startDate; // Milliseconds between datetime objects
     let days = Math.ceil(diff / millisecondsPerDay);
-    
+
     if (days == 1) {
       return `${days} day remaining`;
     } else {
@@ -153,7 +169,9 @@ class TaskManager {
         } else {
           noOfDaysBadge = this.colorCodeNoOfDays["remaining"];
         }
-
+        console.log(filteredTasks[i].newAddDate);
+        let dateRev = this.changeFormatDate(filteredTasks[i].newAddDate);
+        console.log(dateRev);
         const tasksHtml = createTaskHtml(
           filteredTasks[i].newAddId,
           filteredTasks[i].newAddTaskName,
@@ -163,7 +181,8 @@ class TaskManager {
           filteredTasks[i].newAddStatus,
           this.colorCode[filteredTasks[i].newAddStatus],
           noOfDaysBadge,
-          countDays
+          countDays,
+          dateRev
         );
         tableBody.innerHTML += tasksHtml;
       }
@@ -230,7 +249,8 @@ const createTaskHtml = (
   newAddStatus,
   newStatusColor,
   countBadge,
-  countDays
+  countDays,
+  dateRev
 ) => {
   return `  
   <!-- Task starts here -->
@@ -258,6 +278,147 @@ const createTaskHtml = (
           newAddStatus !== "Done" ? "visible" : "invisible"
         }">Mark As Done</button>
         </small>
+        <small>
+        
+                
+                  <!-- Edit Modal of task 1 Starts here -->
+                  <button
+                    type="button"
+                    id="editButton-${newAddId}"
+                    class="btn btn-outline-info"
+                    data-toggle="modal"
+                    data-target="#editModal-${newAddId}"
+                    data-keyboard="false"
+                    data-backdrop="static"
+                  >
+                  
+                    <!-- Edit icon of task 1 starts here -->
+                    <svg
+                      width="1em"
+                      height="1em"
+                      viewBox="0 0 16 16"
+                      class="bi bi-pencil-square"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                      />
+                    </svg>
+                    <!-- Edit icon of task 1 ends here -->
+                  </button>
+                <!-- edit button ends here-->
+                <!--edit modal starts here-->
+                <div
+                  class="modal fade"
+                  id="editModal-${newAddId}"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="editmodallong-${newAddId}"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog" role="document" id="edit-dialog-${newAddId}">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h2 class="modal-title" id="editmodallong-${newAddId}">
+                          Edit Task
+                        </h2>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form id="${newAddId}">
+                        <div class="modal-body bgcolor">
+                          <div id="edit1">
+                            <div
+                              class="container border card w-75 formcolor py-2"
+                            >
+                              <div class="form-group col-md-10">
+                                <label for="inputtask-${newAddId}">Task Name</label>
+                                <input
+                                  type="text"
+                                  class="form-control editTaskName"
+                                  id="inputtask-${newAddId}"
+                                  name="inputtask-${newAddId}"
+                                  value="${newAddTaskName}"
+                                />
+                              </div>
+                              <div class="form-group col-md-10">
+                                <label for="textarea-${newAddId}"
+                                  >Description</label
+                                >
+                                <textarea
+                                  class="form-control editDesc"
+                                  id="textarea-${newAddId}"
+                                  rows="3"
+                                >
+${newAddDesc}
+                                </textarea>
+                              </div>
+
+                              <div class="form-group col-md-10">
+                                <label for="duedate-${newAddId}">Due Date</label>
+                                
+                                <input
+                                  type="date"
+                                  class="form-control editDate"
+                                  id="duedate-${newAddId}"
+                                  value=${dateRev}
+                                  max="2022-12-13"
+                                />
+                              </div>
+                              <div class="form-group col-md-10">
+                                <label for="assign-${newAddId}">Assigned To</label>
+                                <select id="assign-${newAddId}" class="form-control editAssign">
+                                  <option selected>${newAddAssign}</option>
+                                  <option>Angel</option>
+                                  <option>Reny</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-10">
+                                <label for="status-${newAddId}">Status</label>
+                                <select id="status-${newAddId}" class="form-control editStatus">
+                                  <option selected>${newAddStatus}</option>
+                                  <option>To do</option>
+                                  <option>In progress</option>
+                                  <option>Review</option>
+                                  <option>Done</option>
+                                </select>
+                              </div>
+                              
+                                
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" class="btn btn-primary edit-button">
+                            Save changes
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- Edit Modal of task 1 Ends here -->
+                </small>
+
+
         <small>
             <!--Delete button Starts here-->
             <button type="button" 
