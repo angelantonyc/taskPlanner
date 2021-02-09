@@ -1,5 +1,5 @@
 //Holiday API
-//let newTaskDate = document.querySelector('#newTaskDueDate');
+// let newTaskDate = document.querySelector('#newTaskDueDate');
 let holidayMsg = document.querySelector("#holidayMsg");
 newTaskDate.addEventListener("blur", checkHoliday);
 
